@@ -2,8 +2,7 @@
 #include "MCU/led.h"
 #include "MCU/tick.h"
 
-int main(void)
-{
+int main(void) {
   Tick_Init();
   Led_Init();
 
