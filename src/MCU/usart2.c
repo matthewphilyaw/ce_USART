@@ -16,6 +16,15 @@ static void SetBaudrate(uint32_t baud) {
 }
 
 static uint_fast8_t Open(uint32_t baudrate) {
+  if (IsOpen) {
+    return FALSE;
+  }
+
+  USART2->CR1 |= USART_CR1_UE; // enable usart
+  USART2->CR1 &= ~USART_CR1_M; // 8 bit data
+  USART2->CR2 &= ~USART_CR2_STOP; // 1 stop bit
+
+  SetBaudrate(9600);
   // TODO: Implement
   return FALSE;
 }
