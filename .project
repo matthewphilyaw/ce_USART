@@ -3,7 +3,6 @@
 	<name>ce_USART</name>
 	<comment></comment>
 	<projects>
-		<project>i2c</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>

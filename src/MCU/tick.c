@@ -2,7 +2,7 @@
 
 #define TIMER_FREQUENCY_HZ 1000
 
-static volatile TickCounter;
+static volatile uint32_t TickCounter;
 
 void Tick_Init(void) {
   SysTick_Config(SystemCoreClock / TIMER_FREQUENCY_HZ);
@@ -40,3 +40,7 @@ int_fast8_t Tick_DelayMs_NonBlocking(uint_fast8_t reset, TickType *config) {
   return TRUE;
 }
 
+void SysTick_Handler(void)
+{
+    TickCounter++;
+}

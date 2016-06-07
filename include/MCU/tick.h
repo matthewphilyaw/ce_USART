@@ -8,9 +8,9 @@ typedef struct {
   uint32_t DelayMs; // Set desired delay
 } TickType;
 
-void Tick_Init(void);
-uint32_t Tick_GetMs(void);
+void 		    Tick_Init(void);
+uint32_t 	  Tick_GetMs(void);
 int_fast8_t Tick_DelayMs_NonBlocking(uint_fast8_t reset, TickType *config);
-void Tick_Delay(uint32_t delayMs);
+void 		    Tick_DelayMs(uint32_t delayMs);
 
 #endif

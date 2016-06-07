@@ -1,9 +1,9 @@
 #ifndef __COMMON_H__
 #define __COMMON_H__
 
-#include<stdio.h>
-#include<stdlib.h>
-#include<stm32f4xx.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include "MCU/device.h"
 
 #define TRUE 1
 #define FALSE 0
