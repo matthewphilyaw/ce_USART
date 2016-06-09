@@ -4,6 +4,6 @@
 #include "common.h"
 #include "serial_interface.h"
 
-extern SerialInterface SerialPort2;
+extern SerialInterface SerialPort3;
 
 #endif
