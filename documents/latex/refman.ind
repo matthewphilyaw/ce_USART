@@ -1,0 +1,319 @@
+\begin{theindex}
+
+  \item {\+\_\+\+\_\+\+F\+P\+U\+\_\+\+P\+R\+E\+S\+E\+NT}
+    \subitem {device.\+h}, \hyperpage{14}
+
+  \indexspace
+
+  \item {blue\+\_\+led.\+c}
+    \subitem {Blue\+Led}, \hyperpage{20}
+    \subitem {L\+E\+D\+\_\+\+P\+I\+N\+\_\+\+BR}, \hyperpage{19}
+    \subitem {L\+E\+D\+\_\+\+P\+I\+N\+\_\+\+BS}, \hyperpage{19}
+    \subitem {L\+E\+D\+\_\+\+P\+I\+N\+\_\+\+O\+DR}, \hyperpage{20}
+    \subitem {Led\+\_\+\+Init}, \hyperpage{20}
+    \subitem {Led\+\_\+\+Off}, \hyperpage{20}
+    \subitem {Led\+\_\+\+On}, \hyperpage{20}
+    \subitem {Led\+\_\+\+Toggle}, \hyperpage{20}
+  \item {blue\+\_\+led.\+h}
+    \subitem {Red\+Led}, \hyperpage{15}
+  \item {Blue\+Led}
+    \subitem {blue\+\_\+led.\+c}, \hyperpage{20}
+    \subitem {red\+\_\+led.\+h}, \hyperpage{16}
+
+  \indexspace
+
+  \item {C\+O\+M\+P\+I\+L\+E\+D\+\_\+\+D\+A\+T\+A\+\_\+\+T\+I\+ME}
+    \subitem {common.\+h}, \hyperpage{13}
+  \item {Close}
+    \subitem {Serial\+Interface}, \hyperpage{10}
+    \subitem {usart3.\+c}, \hyperpage{29}
+  \item {common.\+h}
+    \subitem {C\+O\+M\+P\+I\+L\+E\+D\+\_\+\+D\+A\+T\+A\+\_\+\+T\+I\+ME}, 
+		\hyperpage{13}
+    \subitem {E\+N\+\_\+\+D\+E\+B\+U\+G\+\_\+\+I\+N\+T\+E\+R\+F\+A\+CE}, 
+		\hyperpage{13}
+    \subitem {F\+A\+L\+SE}, \hyperpage{13}
+    \subitem {F\+I\+R\+M\+W\+A\+R\+E\+\_\+\+V\+E\+R\+S\+I\+ON}, 
+		\hyperpage{13}
+    \subitem {H\+A\+R\+D\+W\+A\+R\+E\+\_\+\+V\+E\+R\+S\+I\+ON}, 
+		\hyperpage{14}
+    \subitem {T\+R\+UE}, \hyperpage{14}
+    \subitem {U\+S\+A\+R\+T\+\_\+\+O\+V\+E\+R\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+16}, 
+		\hyperpage{14}
+
+  \indexspace
+
+  \item {Delay\+Ms}
+    \subitem {Tick\+Type}, \hyperpage{11}
+  \item {device.\+h}
+    \subitem {\+\_\+\+\_\+\+F\+P\+U\+\_\+\+P\+R\+E\+S\+E\+NT}, 
+		\hyperpage{14}
+
+  \indexspace
+
+  \item {E\+N\+\_\+\+D\+E\+B\+U\+G\+\_\+\+I\+N\+T\+E\+R\+F\+A\+CE}
+    \subitem {common.\+h}, \hyperpage{13}
+
+  \indexspace
+
+  \item {F\+A\+L\+SE}
+    \subitem {common.\+h}, \hyperpage{13}
+  \item {F\+I\+R\+M\+W\+A\+R\+E\+\_\+\+V\+E\+R\+S\+I\+ON}
+    \subitem {common.\+h}, \hyperpage{13}
+
+  \indexspace
+
+  \item {Get\+Byte}
+    \subitem {Serial\+Interface}, \hyperpage{10}
+    \subitem {usart3.\+c}, \hyperpage{29}
+  \item {green\+\_\+led.\+c}
+    \subitem {Green\+Led}, \hyperpage{22}
+    \subitem {L\+E\+D\+\_\+\+P\+I\+N\+\_\+\+BR}, \hyperpage{21}
+    \subitem {L\+E\+D\+\_\+\+P\+I\+N\+\_\+\+BS}, \hyperpage{21}
+    \subitem {L\+E\+D\+\_\+\+P\+I\+N\+\_\+\+O\+DR}, \hyperpage{22}
+    \subitem {Led\+\_\+\+Init}, \hyperpage{22}
+    \subitem {Led\+\_\+\+Off}, \hyperpage{22}
+    \subitem {Led\+\_\+\+On}, \hyperpage{22}
+    \subitem {Led\+\_\+\+Toggle}, \hyperpage{22}
+  \item {green\+\_\+led.\+h}
+    \subitem {Green\+Led}, \hyperpage{15}
+  \item {Green\+Led}
+    \subitem {green\+\_\+led.\+c}, \hyperpage{22}
+    \subitem {green\+\_\+led.\+h}, \hyperpage{15}
+
+  \indexspace
+
+  \item {H\+A\+R\+D\+W\+A\+R\+E\+\_\+\+V\+E\+R\+S\+I\+ON}
+    \subitem {common.\+h}, \hyperpage{14}
+
+  \indexspace
+
+  \item {include/\+M\+C\+U/\+L\+E\+D/blue\+\_\+led.\+h}, \hyperpage{14}
+  \item {include/\+M\+C\+U/\+L\+E\+D/green\+\_\+led.\+h}, 
+		\hyperpage{15}
+  \item {include/\+M\+C\+U/\+L\+E\+D/red\+\_\+led.\+h}, \hyperpage{15}
+  \item {include/\+M\+C\+U/device.\+h}, \hyperpage{14}
+  \item {include/\+M\+C\+U/tick.\+h}, \hyperpage{16}
+  \item {include/\+M\+C\+U/usart3.\+h}, \hyperpage{17}
+  \item {include/common.\+h}, \hyperpage{13}
+  \item {include/led\+\_\+interface.\+h}, \hyperpage{14}
+  \item {include/serial\+\_\+interface.\+h}, \hyperpage{17}
+  \item {Init}
+    \subitem {Led\+Interface}, \hyperpage{9}
+  \item {Is\+Open}
+    \subitem {Serial\+Interface}, \hyperpage{10}
+    \subitem {usart3.\+c}, \hyperpage{29}
+  \item {Is\+Open\+Flag}
+    \subitem {usart3.\+c}, \hyperpage{31}
+  \item {Is\+Write\+Busy}
+    \subitem {usart3.\+c}, \hyperpage{29}
+
+  \indexspace
+
+  \item {L\+E\+D\+\_\+\+P\+I\+N\+\_\+\+BR}
+    \subitem {blue\+\_\+led.\+c}, \hyperpage{19}
+    \subitem {green\+\_\+led.\+c}, \hyperpage{21}
+    \subitem {red\+\_\+led.\+c}, \hyperpage{23}
+  \item {L\+E\+D\+\_\+\+P\+I\+N\+\_\+\+BS}
+    \subitem {blue\+\_\+led.\+c}, \hyperpage{19}
+    \subitem {green\+\_\+led.\+c}, \hyperpage{21}
+    \subitem {red\+\_\+led.\+c}, \hyperpage{23}
+  \item {L\+E\+D\+\_\+\+P\+I\+N\+\_\+\+O\+DR}
+    \subitem {blue\+\_\+led.\+c}, \hyperpage{20}
+    \subitem {green\+\_\+led.\+c}, \hyperpage{22}
+    \subitem {red\+\_\+led.\+c}, \hyperpage{24}
+  \item {Led\+\_\+\+Init}
+    \subitem {blue\+\_\+led.\+c}, \hyperpage{20}
+    \subitem {green\+\_\+led.\+c}, \hyperpage{22}
+    \subitem {red\+\_\+led.\+c}, \hyperpage{24}
+  \item {Led\+\_\+\+Off}
+    \subitem {blue\+\_\+led.\+c}, \hyperpage{20}
+    \subitem {green\+\_\+led.\+c}, \hyperpage{22}
+    \subitem {red\+\_\+led.\+c}, \hyperpage{24}
+  \item {Led\+\_\+\+On}
+    \subitem {blue\+\_\+led.\+c}, \hyperpage{20}
+    \subitem {green\+\_\+led.\+c}, \hyperpage{22}
+    \subitem {red\+\_\+led.\+c}, \hyperpage{24}
+  \item {Led\+\_\+\+Toggle}
+    \subitem {blue\+\_\+led.\+c}, \hyperpage{20}
+    \subitem {green\+\_\+led.\+c}, \hyperpage{22}
+    \subitem {red\+\_\+led.\+c}, \hyperpage{24}
+  \item {Led\+Interface}, \hyperpage{9}
+    \subitem {Init}, \hyperpage{9}
+    \subitem {Off}, \hyperpage{9}
+    \subitem {On}, \hyperpage{9}
+    \subitem {Toggle}, \hyperpage{9}
+
+  \indexspace
+
+  \item {main}
+    \subitem {main.\+c}, \hyperpage{18}
+  \item {main.\+c}
+    \subitem {main}, \hyperpage{18}
+    \subitem {Print\+Header}, \hyperpage{18}
+  \item {Mainpage.\+md}, \hyperpage{18}
+
+  \indexspace
+
+  \item {Off}
+    \subitem {Led\+Interface}, \hyperpage{9}
+  \item {On}
+    \subitem {Led\+Interface}, \hyperpage{9}
+  \item {Open}
+    \subitem {Serial\+Interface}, \hyperpage{10}
+    \subitem {usart3.\+c}, \hyperpage{29}
+
+  \indexspace
+
+  \item {Print\+Header}
+    \subitem {main.\+c}, \hyperpage{18}
+
+  \indexspace
+
+  \item {R\+E\+A\+D\+M\+E.\+md}, \hyperpage{18}
+  \item {red\+\_\+led.\+c}
+    \subitem {L\+E\+D\+\_\+\+P\+I\+N\+\_\+\+BR}, \hyperpage{23}
+    \subitem {L\+E\+D\+\_\+\+P\+I\+N\+\_\+\+BS}, \hyperpage{23}
+    \subitem {L\+E\+D\+\_\+\+P\+I\+N\+\_\+\+O\+DR}, \hyperpage{24}
+    \subitem {Led\+\_\+\+Init}, \hyperpage{24}
+    \subitem {Led\+\_\+\+Off}, \hyperpage{24}
+    \subitem {Led\+\_\+\+On}, \hyperpage{24}
+    \subitem {Led\+\_\+\+Toggle}, \hyperpage{24}
+    \subitem {Red\+Led}, \hyperpage{24}
+  \item {red\+\_\+led.\+h}
+    \subitem {Blue\+Led}, \hyperpage{16}
+  \item {Red\+Led}
+    \subitem {blue\+\_\+led.\+h}, \hyperpage{15}
+    \subitem {red\+\_\+led.\+c}, \hyperpage{24}
+  \item {Rx\+Buffer\+Has\+Data}
+    \subitem {Serial\+Interface}, \hyperpage{10}
+    \subitem {usart3.\+c}, \hyperpage{29}
+
+  \indexspace
+
+  \item {Send\+Array}
+    \subitem {Serial\+Interface}, \hyperpage{11}
+    \subitem {usart3.\+c}, \hyperpage{30}
+  \item {Send\+Byte}
+    \subitem {Serial\+Interface}, \hyperpage{11}
+    \subitem {usart3.\+c}, \hyperpage{31}
+  \item {Send\+String}
+    \subitem {Serial\+Interface}, \hyperpage{11}
+    \subitem {usart3.\+c}, \hyperpage{31}
+  \item {Serial\+Interface}, \hyperpage{10}
+    \subitem {Close}, \hyperpage{10}
+    \subitem {Get\+Byte}, \hyperpage{10}
+    \subitem {Is\+Open}, \hyperpage{10}
+    \subitem {Open}, \hyperpage{10}
+    \subitem {Rx\+Buffer\+Has\+Data}, \hyperpage{10}
+    \subitem {Send\+Array}, \hyperpage{11}
+    \subitem {Send\+Byte}, \hyperpage{11}
+    \subitem {Send\+String}, \hyperpage{11}
+  \item {Serial\+Port3}
+    \subitem {usart3.\+c}, \hyperpage{31}
+    \subitem {usart3.\+h}, \hyperpage{17}
+  \item {src/\+M\+C\+U/\+L\+E\+D/blue\+\_\+led.\+c}, \hyperpage{19}
+  \item {src/\+M\+C\+U/\+L\+E\+D/green\+\_\+led.\+c}, \hyperpage{21}
+  \item {src/\+M\+C\+U/\+L\+E\+D/red\+\_\+led.\+c}, \hyperpage{23}
+  \item {src/\+M\+C\+U/tick.\+c}, \hyperpage{25}
+  \item {src/\+M\+C\+U/usart3.\+c}, \hyperpage{26}
+  \item {src/main.\+c}, \hyperpage{18}
+  \item {Start\+Ms}
+    \subitem {Tick\+Type}, \hyperpage{11}
+  \item {Sys\+Tick\+\_\+\+Handler}
+    \subitem {tick.\+c}, \hyperpage{26}
+
+  \indexspace
+
+  \item {T\+I\+M\+E\+R\+\_\+\+F\+R\+E\+Q\+U\+E\+N\+C\+Y\+\_\+\+HZ}
+    \subitem {tick.\+c}, \hyperpage{25}
+  \item {T\+R\+UE}
+    \subitem {common.\+h}, \hyperpage{14}
+  \item {tick.\+c}
+    \subitem {Sys\+Tick\+\_\+\+Handler}, \hyperpage{26}
+    \subitem {T\+I\+M\+E\+R\+\_\+\+F\+R\+E\+Q\+U\+E\+N\+C\+Y\+\_\+\+HZ}, 
+		\hyperpage{25}
+    \subitem {Tick\+\_\+\+Delay\+Ms}, \hyperpage{26}
+    \subitem {Tick\+\_\+\+Delay\+Ms\+\_\+\+Non\+Blocking}, 
+		\hyperpage{26}
+    \subitem {Tick\+\_\+\+Get\+Ms}, \hyperpage{26}
+    \subitem {Tick\+\_\+\+Init}, \hyperpage{26}
+    \subitem {Tick\+Counter}, \hyperpage{26}
+  \item {tick.\+h}
+    \subitem {Tick\+\_\+\+Delay\+Ms}, \hyperpage{16}
+    \subitem {Tick\+\_\+\+Delay\+Ms\+\_\+\+Non\+Blocking}, 
+		\hyperpage{16}
+    \subitem {Tick\+\_\+\+Get\+Ms}, \hyperpage{16}
+    \subitem {Tick\+\_\+\+Init}, \hyperpage{17}
+  \item {Tick\+\_\+\+Delay\+Ms}
+    \subitem {tick.\+c}, \hyperpage{26}
+    \subitem {tick.\+h}, \hyperpage{16}
+  \item {Tick\+\_\+\+Delay\+Ms\+\_\+\+Non\+Blocking}
+    \subitem {tick.\+c}, \hyperpage{26}
+    \subitem {tick.\+h}, \hyperpage{16}
+  \item {Tick\+\_\+\+Get\+Ms}
+    \subitem {tick.\+c}, \hyperpage{26}
+    \subitem {tick.\+h}, \hyperpage{16}
+  \item {Tick\+\_\+\+Init}
+    \subitem {tick.\+c}, \hyperpage{26}
+    \subitem {tick.\+h}, \hyperpage{17}
+  \item {Tick\+Counter}
+    \subitem {tick.\+c}, \hyperpage{26}
+  \item {Tick\+Type}, \hyperpage{11}
+    \subitem {Delay\+Ms}, \hyperpage{11}
+    \subitem {Start\+Ms}, \hyperpage{11}
+  \item {Toggle}
+    \subitem {Led\+Interface}, \hyperpage{9}
+
+  \indexspace
+
+  \item {U\+A\+R\+T\+\_\+\+B\+R\+R\+\_\+\+S\+A\+M\+P\+L\+I\+N\+G16}
+    \subitem {usart3.\+c}, \hyperpage{28}
+  \item {U\+A\+R\+T\+\_\+\+B\+R\+R\+\_\+\+S\+A\+M\+P\+L\+I\+N\+G8}
+    \subitem {usart3.\+c}, \hyperpage{28}
+  \item {U\+A\+R\+T\+\_\+\+D\+I\+V\+\_\+\+S\+A\+M\+P\+L\+I\+N\+G16}
+    \subitem {usart3.\+c}, \hyperpage{28}
+  \item {U\+A\+R\+T\+\_\+\+D\+I\+V\+\_\+\+S\+A\+M\+P\+L\+I\+N\+G8}
+    \subitem {usart3.\+c}, \hyperpage{28}
+  \item {U\+A\+R\+T\+\_\+\+D\+I\+V\+F\+R\+A\+Q\+\_\+\+S\+A\+M\+P\+L\+I\+N\+G16}
+    \subitem {usart3.\+c}, \hyperpage{28}
+  \item {U\+A\+R\+T\+\_\+\+D\+I\+V\+F\+R\+A\+Q\+\_\+\+S\+A\+M\+P\+L\+I\+N\+G8}
+    \subitem {usart3.\+c}, \hyperpage{28}
+  \item {U\+A\+R\+T\+\_\+\+D\+I\+V\+M\+A\+N\+T\+\_\+\+S\+A\+M\+P\+L\+I\+N\+G16}
+    \subitem {usart3.\+c}, \hyperpage{28}
+  \item {U\+A\+R\+T\+\_\+\+D\+I\+V\+M\+A\+N\+T\+\_\+\+S\+A\+M\+P\+L\+I\+N\+G8}
+    \subitem {usart3.\+c}, \hyperpage{29}
+  \item {U\+S\+A\+R\+T\+\_\+\+O\+V\+E\+R\+\_\+\+S\+A\+M\+P\+L\+E\+\_\+16}
+    \subitem {common.\+h}, \hyperpage{14}
+  \item {usart3.\+c}
+    \subitem {Close}, \hyperpage{29}
+    \subitem {Get\+Byte}, \hyperpage{29}
+    \subitem {Is\+Open}, \hyperpage{29}
+    \subitem {Is\+Open\+Flag}, \hyperpage{31}
+    \subitem {Is\+Write\+Busy}, \hyperpage{29}
+    \subitem {Open}, \hyperpage{29}
+    \subitem {Rx\+Buffer\+Has\+Data}, \hyperpage{29}
+    \subitem {Send\+Array}, \hyperpage{30}
+    \subitem {Send\+Byte}, \hyperpage{31}
+    \subitem {Send\+String}, \hyperpage{31}
+    \subitem {Serial\+Port3}, \hyperpage{31}
+    \subitem {U\+A\+R\+T\+\_\+\+B\+R\+R\+\_\+\+S\+A\+M\+P\+L\+I\+N\+G16}, 
+		\hyperpage{28}
+    \subitem {U\+A\+R\+T\+\_\+\+B\+R\+R\+\_\+\+S\+A\+M\+P\+L\+I\+N\+G8}, 
+		\hyperpage{28}
+    \subitem {U\+A\+R\+T\+\_\+\+D\+I\+V\+\_\+\+S\+A\+M\+P\+L\+I\+N\+G16}, 
+		\hyperpage{28}
+    \subitem {U\+A\+R\+T\+\_\+\+D\+I\+V\+\_\+\+S\+A\+M\+P\+L\+I\+N\+G8}, 
+		\hyperpage{28}
+    \subitem {U\+A\+R\+T\+\_\+\+D\+I\+V\+F\+R\+A\+Q\+\_\+\+S\+A\+M\+P\+L\+I\+N\+G16}, 
+		\hyperpage{28}
+    \subitem {U\+A\+R\+T\+\_\+\+D\+I\+V\+F\+R\+A\+Q\+\_\+\+S\+A\+M\+P\+L\+I\+N\+G8}, 
+		\hyperpage{28}
+    \subitem {U\+A\+R\+T\+\_\+\+D\+I\+V\+M\+A\+N\+T\+\_\+\+S\+A\+M\+P\+L\+I\+N\+G16}, 
+		\hyperpage{28}
+    \subitem {U\+A\+R\+T\+\_\+\+D\+I\+V\+M\+A\+N\+T\+\_\+\+S\+A\+M\+P\+L\+I\+N\+G8}, 
+		\hyperpage{29}
+  \item {usart3.\+h}
+    \subitem {Serial\+Port3}, \hyperpage{17}
+
+\end{theindex}
