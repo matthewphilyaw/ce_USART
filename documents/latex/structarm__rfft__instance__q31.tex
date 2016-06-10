@@ -1,0 +1,92 @@
+\hypertarget{structarm__rfft__instance__q31}{}\section{arm\+\_\+rfft\+\_\+instance\+\_\+q31 Struct Reference}
+\label{structarm__rfft__instance__q31}\index{arm\+\_\+rfft\+\_\+instance\+\_\+q31@{arm\+\_\+rfft\+\_\+instance\+\_\+q31}}
+
+
+Instance structure for the Q31 R\+F\+F\+T/\+R\+I\+F\+FT function.  
+
+
+
+
+{\ttfamily \#include $<$arm\+\_\+math.\+h$>$}
+
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+uint32\+\_\+t \hyperlink{structarm__rfft__instance__q31_adf0d4604cf5546075d9d4cf122d6c986}{fft\+Len\+Real}
+\item 
+uint8\+\_\+t \hyperlink{structarm__rfft__instance__q31_a787d72055c89e4d62b188d6bd646341c}{ifft\+FlagR}
+\item 
+uint8\+\_\+t \hyperlink{structarm__rfft__instance__q31_ad56ec2425e2422108b8767b43d944591}{bit\+Reverse\+FlagR}
+\item 
+uint32\+\_\+t \hyperlink{structarm__rfft__instance__q31_a5b06f7f76c018db993fe6acc5708c589}{twid\+Coef\+R\+Modifier}
+\item 
+\hyperlink{arm__math_8h_adc89a3547f5324b7b3b95adec3806bc0}{q31\+\_\+t} $\ast$ \hyperlink{structarm__rfft__instance__q31_a059faa282f9186687d843ead4a7a0d7e}{p\+Twiddle\+A\+Real}
+\item 
+\hyperlink{arm__math_8h_adc89a3547f5324b7b3b95adec3806bc0}{q31\+\_\+t} $\ast$ \hyperlink{structarm__rfft__instance__q31_a611c385424ce77519f599980f96d5846}{p\+Twiddle\+B\+Real}
+\item 
+const \hyperlink{structarm__cfft__instance__q31}{arm\+\_\+cfft\+\_\+instance\+\_\+q31} $\ast$ \hyperlink{structarm__rfft__instance__q31_aa583d759b8b176ad1696b27eb5821daf}{p\+Cfft}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Instance structure for the Q31 R\+F\+F\+T/\+R\+I\+F\+FT function. 
+
+Definition at line 2183 of file arm\+\_\+math.\+h.
+
+
+
+\subsection{Field Documentation}
+\index{arm\+\_\+rfft\+\_\+instance\+\_\+q31@{arm\+\_\+rfft\+\_\+instance\+\_\+q31}!bit\+Reverse\+FlagR@{bit\+Reverse\+FlagR}}
+\index{bit\+Reverse\+FlagR@{bit\+Reverse\+FlagR}!arm\+\_\+rfft\+\_\+instance\+\_\+q31@{arm\+\_\+rfft\+\_\+instance\+\_\+q31}}
+\subsubsection[{\texorpdfstring{bit\+Reverse\+FlagR}{bitReverseFlagR}}]{\setlength{\rightskip}{0pt plus 5cm}uint8\+\_\+t bit\+Reverse\+FlagR}\hypertarget{structarm__rfft__instance__q31_ad56ec2425e2422108b8767b43d944591}{}\label{structarm__rfft__instance__q31_ad56ec2425e2422108b8767b43d944591}
+flag that enables (bit\+Reverse\+FlagR=1) or disables (bit\+Reverse\+FlagR=0) bit reversal of output. 
+
+Definition at line 2187 of file arm\+\_\+math.\+h.
+
+\index{arm\+\_\+rfft\+\_\+instance\+\_\+q31@{arm\+\_\+rfft\+\_\+instance\+\_\+q31}!fft\+Len\+Real@{fft\+Len\+Real}}
+\index{fft\+Len\+Real@{fft\+Len\+Real}!arm\+\_\+rfft\+\_\+instance\+\_\+q31@{arm\+\_\+rfft\+\_\+instance\+\_\+q31}}
+\subsubsection[{\texorpdfstring{fft\+Len\+Real}{fftLenReal}}]{\setlength{\rightskip}{0pt plus 5cm}uint32\+\_\+t fft\+Len\+Real}\hypertarget{structarm__rfft__instance__q31_adf0d4604cf5546075d9d4cf122d6c986}{}\label{structarm__rfft__instance__q31_adf0d4604cf5546075d9d4cf122d6c986}
+length of the real F\+FT. 
+
+Definition at line 2185 of file arm\+\_\+math.\+h.
+
+\index{arm\+\_\+rfft\+\_\+instance\+\_\+q31@{arm\+\_\+rfft\+\_\+instance\+\_\+q31}!ifft\+FlagR@{ifft\+FlagR}}
+\index{ifft\+FlagR@{ifft\+FlagR}!arm\+\_\+rfft\+\_\+instance\+\_\+q31@{arm\+\_\+rfft\+\_\+instance\+\_\+q31}}
+\subsubsection[{\texorpdfstring{ifft\+FlagR}{ifftFlagR}}]{\setlength{\rightskip}{0pt plus 5cm}uint8\+\_\+t ifft\+FlagR}\hypertarget{structarm__rfft__instance__q31_a787d72055c89e4d62b188d6bd646341c}{}\label{structarm__rfft__instance__q31_a787d72055c89e4d62b188d6bd646341c}
+flag that selects forward (ifft\+FlagR=0) or inverse (ifft\+FlagR=1) transform. 
+
+Definition at line 2186 of file arm\+\_\+math.\+h.
+
+\index{arm\+\_\+rfft\+\_\+instance\+\_\+q31@{arm\+\_\+rfft\+\_\+instance\+\_\+q31}!p\+Cfft@{p\+Cfft}}
+\index{p\+Cfft@{p\+Cfft}!arm\+\_\+rfft\+\_\+instance\+\_\+q31@{arm\+\_\+rfft\+\_\+instance\+\_\+q31}}
+\subsubsection[{\texorpdfstring{p\+Cfft}{pCfft}}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf arm\+\_\+cfft\+\_\+instance\+\_\+q31}$\ast$ p\+Cfft}\hypertarget{structarm__rfft__instance__q31_aa583d759b8b176ad1696b27eb5821daf}{}\label{structarm__rfft__instance__q31_aa583d759b8b176ad1696b27eb5821daf}
+points to the complex F\+FT instance. 
+
+Definition at line 2191 of file arm\+\_\+math.\+h.
+
+\index{arm\+\_\+rfft\+\_\+instance\+\_\+q31@{arm\+\_\+rfft\+\_\+instance\+\_\+q31}!p\+Twiddle\+A\+Real@{p\+Twiddle\+A\+Real}}
+\index{p\+Twiddle\+A\+Real@{p\+Twiddle\+A\+Real}!arm\+\_\+rfft\+\_\+instance\+\_\+q31@{arm\+\_\+rfft\+\_\+instance\+\_\+q31}}
+\subsubsection[{\texorpdfstring{p\+Twiddle\+A\+Real}{pTwiddleAReal}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf q31\+\_\+t}$\ast$ p\+Twiddle\+A\+Real}\hypertarget{structarm__rfft__instance__q31_a059faa282f9186687d843ead4a7a0d7e}{}\label{structarm__rfft__instance__q31_a059faa282f9186687d843ead4a7a0d7e}
+points to the real twiddle factor table. 
+
+Definition at line 2189 of file arm\+\_\+math.\+h.
+
+\index{arm\+\_\+rfft\+\_\+instance\+\_\+q31@{arm\+\_\+rfft\+\_\+instance\+\_\+q31}!p\+Twiddle\+B\+Real@{p\+Twiddle\+B\+Real}}
+\index{p\+Twiddle\+B\+Real@{p\+Twiddle\+B\+Real}!arm\+\_\+rfft\+\_\+instance\+\_\+q31@{arm\+\_\+rfft\+\_\+instance\+\_\+q31}}
+\subsubsection[{\texorpdfstring{p\+Twiddle\+B\+Real}{pTwiddleBReal}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf q31\+\_\+t}$\ast$ p\+Twiddle\+B\+Real}\hypertarget{structarm__rfft__instance__q31_a611c385424ce77519f599980f96d5846}{}\label{structarm__rfft__instance__q31_a611c385424ce77519f599980f96d5846}
+points to the imag twiddle factor table. 
+
+Definition at line 2190 of file arm\+\_\+math.\+h.
+
+\index{arm\+\_\+rfft\+\_\+instance\+\_\+q31@{arm\+\_\+rfft\+\_\+instance\+\_\+q31}!twid\+Coef\+R\+Modifier@{twid\+Coef\+R\+Modifier}}
+\index{twid\+Coef\+R\+Modifier@{twid\+Coef\+R\+Modifier}!arm\+\_\+rfft\+\_\+instance\+\_\+q31@{arm\+\_\+rfft\+\_\+instance\+\_\+q31}}
+\subsubsection[{\texorpdfstring{twid\+Coef\+R\+Modifier}{twidCoefRModifier}}]{\setlength{\rightskip}{0pt plus 5cm}uint32\+\_\+t twid\+Coef\+R\+Modifier}\hypertarget{structarm__rfft__instance__q31_a5b06f7f76c018db993fe6acc5708c589}{}\label{structarm__rfft__instance__q31_a5b06f7f76c018db993fe6acc5708c589}
+twiddle coefficient modifier that supports different size F\+F\+Ts with the same twiddle factor table. 
+
+Definition at line 2188 of file arm\+\_\+math.\+h.
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+system/include/cmsis/\hyperlink{arm__math_8h}{arm\+\_\+math.\+h}\end{DoxyCompactItemize}

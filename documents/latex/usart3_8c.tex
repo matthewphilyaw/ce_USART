@@ -1,0 +1,391 @@
+\hypertarget{usart3_8c}{}\section{src/\+M\+C\+U/usart3.c File Reference}
+\label{usart3_8c}\index{src/\+M\+C\+U/usart3.\+c@{src/\+M\+C\+U/usart3.\+c}}
+
+
+U\+S\+A\+RT driver.  
+
+
+{\ttfamily \#include $<$M\+C\+U/usart3.\+h$>$}\\*
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{usart3_8c_ab2310ab757fb08c669469579b1473d6f}{U\+A\+R\+T\+\_\+\+D\+I\+V\+\_\+\+S\+A\+M\+P\+L\+I\+N\+G16}(\+\_\+\+P\+C\+L\+K\+\_\+,  \+\_\+\+B\+A\+U\+D\+\_\+)                    ~(((\+\_\+\+P\+C\+L\+K\+\_\+)$\ast$25\+U)/(4\+U$\ast$(\+\_\+\+B\+A\+U\+D\+\_\+)))
+\begin{DoxyCompactList}\small\item\em Taken from the S\+T\+M32 H\+AL. \end{DoxyCompactList}\item 
+\#define \hyperlink{usart3_8c_a56f0995cf9f319c31a2f745454c583c2}{U\+A\+R\+T\+\_\+\+D\+I\+V\+M\+A\+N\+T\+\_\+\+S\+A\+M\+P\+L\+I\+N\+G16}(\+\_\+\+P\+C\+L\+K\+\_\+,  \+\_\+\+B\+A\+U\+D\+\_\+)            ~(\hyperlink{usart3_8c_ab2310ab757fb08c669469579b1473d6f}{U\+A\+R\+T\+\_\+\+D\+I\+V\+\_\+\+S\+A\+M\+P\+L\+I\+N\+G16}((\+\_\+\+P\+C\+L\+K\+\_\+), (\+\_\+\+B\+A\+U\+D\+\_\+))/100\+U)
+\item 
+\#define \hyperlink{usart3_8c_afcf53b01680a979ffd4d0926917c48ce}{U\+A\+R\+T\+\_\+\+D\+I\+V\+F\+R\+A\+Q\+\_\+\+S\+A\+M\+P\+L\+I\+N\+G16}(\+\_\+\+P\+C\+L\+K\+\_\+,  \+\_\+\+B\+A\+U\+D\+\_\+)            ~(((\hyperlink{usart3_8c_ab2310ab757fb08c669469579b1473d6f}{U\+A\+R\+T\+\_\+\+D\+I\+V\+\_\+\+S\+A\+M\+P\+L\+I\+N\+G16}((\+\_\+\+P\+C\+L\+K\+\_\+), (\+\_\+\+B\+A\+U\+D\+\_\+)) -\/ (\hyperlink{usart3_8c_a56f0995cf9f319c31a2f745454c583c2}{U\+A\+R\+T\+\_\+\+D\+I\+V\+M\+A\+N\+T\+\_\+\+S\+A\+M\+P\+L\+I\+N\+G16}((\+\_\+\+P\+C\+L\+K\+\_\+), (\+\_\+\+B\+A\+U\+D\+\_\+)) $\ast$ 100\+U)) $\ast$ 16\+U + 50\+U) / 100\+U)
+\item 
+\#define \hyperlink{usart3_8c_a9250770f3a90b54703cf9fcb5023e617}{U\+A\+R\+T\+\_\+\+B\+R\+R\+\_\+\+S\+A\+M\+P\+L\+I\+N\+G16}(\+\_\+\+P\+C\+L\+K\+\_\+,  \+\_\+\+B\+A\+U\+D\+\_\+)                    
+\item 
+\#define \hyperlink{usart3_8c_a0e55478fdf2c9b39dd62c6597c2dca8f}{U\+A\+R\+T\+\_\+\+D\+I\+V\+\_\+\+S\+A\+M\+P\+L\+I\+N\+G8}(\+\_\+\+P\+C\+L\+K\+\_\+,  \+\_\+\+B\+A\+U\+D\+\_\+)                      ~(((\+\_\+\+P\+C\+L\+K\+\_\+)$\ast$25\+U)/(2\+U$\ast$(\+\_\+\+B\+A\+U\+D\+\_\+)))
+\item 
+\#define \hyperlink{usart3_8c_ad83fe23ff14c5b3abdcd17289fda4805}{U\+A\+R\+T\+\_\+\+D\+I\+V\+M\+A\+N\+T\+\_\+\+S\+A\+M\+P\+L\+I\+N\+G8}(\+\_\+\+P\+C\+L\+K\+\_\+,  \+\_\+\+B\+A\+U\+D\+\_\+)              ~(\hyperlink{usart3_8c_a0e55478fdf2c9b39dd62c6597c2dca8f}{U\+A\+R\+T\+\_\+\+D\+I\+V\+\_\+\+S\+A\+M\+P\+L\+I\+N\+G8}((\+\_\+\+P\+C\+L\+K\+\_\+), (\+\_\+\+B\+A\+U\+D\+\_\+))/100\+U)
+\item 
+\#define \hyperlink{usart3_8c_a0fff17c6d76fe4f6fd078844402b0469}{U\+A\+R\+T\+\_\+\+D\+I\+V\+F\+R\+A\+Q\+\_\+\+S\+A\+M\+P\+L\+I\+N\+G8}(\+\_\+\+P\+C\+L\+K\+\_\+,  \+\_\+\+B\+A\+U\+D\+\_\+)              ~(((\hyperlink{usart3_8c_a0e55478fdf2c9b39dd62c6597c2dca8f}{U\+A\+R\+T\+\_\+\+D\+I\+V\+\_\+\+S\+A\+M\+P\+L\+I\+N\+G8}((\+\_\+\+P\+C\+L\+K\+\_\+), (\+\_\+\+B\+A\+U\+D\+\_\+)) -\/ (\hyperlink{usart3_8c_ad83fe23ff14c5b3abdcd17289fda4805}{U\+A\+R\+T\+\_\+\+D\+I\+V\+M\+A\+N\+T\+\_\+\+S\+A\+M\+P\+L\+I\+N\+G8}((\+\_\+\+P\+C\+L\+K\+\_\+), (\+\_\+\+B\+A\+U\+D\+\_\+)) $\ast$ 100\+U)) $\ast$ 8\+U + 50\+U) / 100\+U)
+\item 
+\#define \hyperlink{usart3_8c_aa80d222c1ad6f9ca0fddfc0b87fe8464}{U\+A\+R\+T\+\_\+\+B\+R\+R\+\_\+\+S\+A\+M\+P\+L\+I\+N\+G8}(\+\_\+\+P\+C\+L\+K\+\_\+,  \+\_\+\+B\+A\+U\+D\+\_\+)                      
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+static uint\+\_\+fast8\+\_\+t \hyperlink{usart3_8c_a906f1aace64469fd0373adb7fd869d52}{Is\+Open} (void)
+\begin{DoxyCompactList}\small\item\em Exposes Is\+Open\+Flag. \end{DoxyCompactList}\item 
+static uint\+\_\+fast8\+\_\+t \hyperlink{usart3_8c_a311152d529b2f47be36c6307fb8ae9bb}{Is\+Write\+Busy} (void)
+\begin{DoxyCompactList}\small\item\em Checks to see if U\+S\+A\+RT is writing. \end{DoxyCompactList}\item 
+static uint\+\_\+fast8\+\_\+t \hyperlink{usart3_8c_afce81c7c0c6a1354ed43fde2af17224b}{Open} (uint32\+\_\+t baudrate)
+\begin{DoxyCompactList}\small\item\em Enables and initializes the U\+S\+A\+RT. \end{DoxyCompactList}\item 
+static void \hyperlink{usart3_8c_a8b9655401063a7ddbd2a686c298c47cd}{Close} (void)
+\begin{DoxyCompactList}\small\item\em Close U\+S\+A\+RT. \end{DoxyCompactList}\item 
+static uint\+\_\+fast8\+\_\+t \hyperlink{usart3_8c_a97cea22d75f4a79b5313e8bf4500a529}{Send\+Byte} (uint8\+\_\+t source)
+\begin{DoxyCompactList}\small\item\em Send one byte over the U\+S\+A\+RT. \end{DoxyCompactList}\item 
+static int\+\_\+fast8\+\_\+t \hyperlink{usart3_8c_a37ec6964846678cc0b8f0a48f86bb7cb}{Rx\+Buffer\+Has\+Data} (void)
+\begin{DoxyCompactList}\small\item\em Checks to see if receive buffer has data. \end{DoxyCompactList}\item 
+static int\+\_\+fast8\+\_\+t \hyperlink{usart3_8c_ab6c13a6bb49641bf02a699ed9facaae5}{Get\+Byte} (uint8\+\_\+t $\ast$destination)
+\begin{DoxyCompactList}\small\item\em Checks to see if receive buffer has data. \end{DoxyCompactList}\item 
+static uint\+\_\+fast8\+\_\+t \hyperlink{usart3_8c_a72ae458f63c115d5a7f676a6938b1288}{Send\+String} (const uint8\+\_\+t $\ast$source)
+\begin{DoxyCompactList}\small\item\em Send string over the U\+S\+A\+RT. \end{DoxyCompactList}\item 
+static uint\+\_\+fast8\+\_\+t \hyperlink{usart3_8c_ac3ca7fd7bc19657d88bc96d4e56f6660}{Send\+Array} (const uint8\+\_\+t $\ast$source, uint32\+\_\+t length)
+\begin{DoxyCompactList}\small\item\em Send byte array over U\+S\+A\+RT. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+static uint\+\_\+fast8\+\_\+t \hyperlink{usart3_8c_adf6f26cc20f78150aa4127b23518f30e}{Is\+Open\+Flag} = \hyperlink{common_8h_aa93f0eb578d23995850d61f7d61c55c1}{F\+A\+L\+SE}
+\begin{DoxyCompactList}\small\item\em Flag to indicate the state of the U\+S\+A\+RT. \end{DoxyCompactList}\item 
+\hyperlink{struct_serial_interface}{Serial\+Interface} \hyperlink{usart3_8c_ae19ffa17d001ef05e437ddea8fff2321}{Serial\+Port3}
+\begin{DoxyCompactList}\small\item\em Setup \hyperlink{struct_serial_interface}{Serial\+Interface} struct. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+U\+S\+A\+RT driver. 
+
+\begin{DoxyAuthor}{Author}
+Matthew Philyaw (\href{mailto:matthew.philyaw@gmail.com}{\tt matthew.\+philyaw@gmail.\+com}) 
+\end{DoxyAuthor}
+
+
+\subsection{Macro Definition Documentation}
+\index{usart3.\+c@{usart3.\+c}!U\+A\+R\+T\+\_\+\+B\+R\+R\+\_\+\+S\+A\+M\+P\+L\+I\+N\+G16@{U\+A\+R\+T\+\_\+\+B\+R\+R\+\_\+\+S\+A\+M\+P\+L\+I\+N\+G16}}
+\index{U\+A\+R\+T\+\_\+\+B\+R\+R\+\_\+\+S\+A\+M\+P\+L\+I\+N\+G16@{U\+A\+R\+T\+\_\+\+B\+R\+R\+\_\+\+S\+A\+M\+P\+L\+I\+N\+G16}!usart3.\+c@{usart3.\+c}}
+\subsubsection[{\texorpdfstring{U\+A\+R\+T\+\_\+\+B\+R\+R\+\_\+\+S\+A\+M\+P\+L\+I\+N\+G16}{UART_BRR_SAMPLING16}}]{\setlength{\rightskip}{0pt plus 5cm}\#define U\+A\+R\+T\+\_\+\+B\+R\+R\+\_\+\+S\+A\+M\+P\+L\+I\+N\+G16(
+\begin{DoxyParamCaption}
+\item[{}]{\+\_\+\+P\+C\+L\+K\+\_\+, }
+\item[{}]{\+\_\+\+B\+A\+U\+D\+\_\+}
+\end{DoxyParamCaption}
+)}\hypertarget{usart3_8c_a9250770f3a90b54703cf9fcb5023e617}{}\label{usart3_8c_a9250770f3a90b54703cf9fcb5023e617}
+{\bfseries Value\+:}
+\begin{DoxyCode}
+(((\hyperlink{usart3_8c_a56f0995cf9f319c31a2f745454c583c2}{UART\_DIVMANT\_SAMPLING16}((\_PCLK\_), (\_BAUD\_)) << 4U) + \(\backslash\)
+                                                        (\hyperlink{usart3_8c_afcf53b01680a979ffd4d0926917c48ce}{UART\_DIVFRAQ\_SAMPLING16}((
+      \_PCLK\_), (\_BAUD\_)) & 0xF0U)) + \(\backslash\)
+                                                        (\hyperlink{usart3_8c_afcf53b01680a979ffd4d0926917c48ce}{UART\_DIVFRAQ\_SAMPLING16}((
+      \_PCLK\_), (\_BAUD\_)) & 0x0FU))
+\end{DoxyCode}
+
+
+Definition at line 18 of file usart3.\+c.
+
+\index{usart3.\+c@{usart3.\+c}!U\+A\+R\+T\+\_\+\+B\+R\+R\+\_\+\+S\+A\+M\+P\+L\+I\+N\+G8@{U\+A\+R\+T\+\_\+\+B\+R\+R\+\_\+\+S\+A\+M\+P\+L\+I\+N\+G8}}
+\index{U\+A\+R\+T\+\_\+\+B\+R\+R\+\_\+\+S\+A\+M\+P\+L\+I\+N\+G8@{U\+A\+R\+T\+\_\+\+B\+R\+R\+\_\+\+S\+A\+M\+P\+L\+I\+N\+G8}!usart3.\+c@{usart3.\+c}}
+\subsubsection[{\texorpdfstring{U\+A\+R\+T\+\_\+\+B\+R\+R\+\_\+\+S\+A\+M\+P\+L\+I\+N\+G8}{UART_BRR_SAMPLING8}}]{\setlength{\rightskip}{0pt plus 5cm}\#define U\+A\+R\+T\+\_\+\+B\+R\+R\+\_\+\+S\+A\+M\+P\+L\+I\+N\+G8(
+\begin{DoxyParamCaption}
+\item[{}]{\+\_\+\+P\+C\+L\+K\+\_\+, }
+\item[{}]{\+\_\+\+B\+A\+U\+D\+\_\+}
+\end{DoxyParamCaption}
+)}\hypertarget{usart3_8c_aa80d222c1ad6f9ca0fddfc0b87fe8464}{}\label{usart3_8c_aa80d222c1ad6f9ca0fddfc0b87fe8464}
+{\bfseries Value\+:}
+\begin{DoxyCode}
+(((\hyperlink{usart3_8c_ad83fe23ff14c5b3abdcd17289fda4805}{UART\_DIVMANT\_SAMPLING8}((\_PCLK\_), (\_BAUD\_)) << 4U) + \(\backslash\)
+                                                        ((\hyperlink{usart3_8c_a0fff17c6d76fe4f6fd078844402b0469}{UART\_DIVFRAQ\_SAMPLING8}((
+      \_PCLK\_), (\_BAUD\_)) & 0xF8U) << 1U)) + \(\backslash\)
+                                                        (\hyperlink{usart3_8c_a0fff17c6d76fe4f6fd078844402b0469}{UART\_DIVFRAQ\_SAMPLING8}((
+      \_PCLK\_), (\_BAUD\_)) & 0x07U))
+\end{DoxyCode}
+
+
+Definition at line 27 of file usart3.\+c.
+
+\index{usart3.\+c@{usart3.\+c}!U\+A\+R\+T\+\_\+\+D\+I\+V\+\_\+\+S\+A\+M\+P\+L\+I\+N\+G16@{U\+A\+R\+T\+\_\+\+D\+I\+V\+\_\+\+S\+A\+M\+P\+L\+I\+N\+G16}}
+\index{U\+A\+R\+T\+\_\+\+D\+I\+V\+\_\+\+S\+A\+M\+P\+L\+I\+N\+G16@{U\+A\+R\+T\+\_\+\+D\+I\+V\+\_\+\+S\+A\+M\+P\+L\+I\+N\+G16}!usart3.\+c@{usart3.\+c}}
+\subsubsection[{\texorpdfstring{U\+A\+R\+T\+\_\+\+D\+I\+V\+\_\+\+S\+A\+M\+P\+L\+I\+N\+G16}{UART_DIV_SAMPLING16}}]{\setlength{\rightskip}{0pt plus 5cm}\#define U\+A\+R\+T\+\_\+\+D\+I\+V\+\_\+\+S\+A\+M\+P\+L\+I\+N\+G16(
+\begin{DoxyParamCaption}
+\item[{}]{\+\_\+\+P\+C\+L\+K\+\_\+, }
+\item[{}]{\+\_\+\+B\+A\+U\+D\+\_\+}
+\end{DoxyParamCaption}
+)~(((\+\_\+\+P\+C\+L\+K\+\_\+)$\ast$25\+U)/(4\+U$\ast$(\+\_\+\+B\+A\+U\+D\+\_\+)))}\hypertarget{usart3_8c_ab2310ab757fb08c669469579b1473d6f}{}\label{usart3_8c_ab2310ab757fb08c669469579b1473d6f}
+
+
+Taken from the S\+T\+M32 H\+AL. 
+
+Set of macros to calculate fractional baud rate which differs for this M4 part compared to the M0 part in the course 
+
+Definition at line 13 of file usart3.\+c.
+
+\index{usart3.\+c@{usart3.\+c}!U\+A\+R\+T\+\_\+\+D\+I\+V\+\_\+\+S\+A\+M\+P\+L\+I\+N\+G8@{U\+A\+R\+T\+\_\+\+D\+I\+V\+\_\+\+S\+A\+M\+P\+L\+I\+N\+G8}}
+\index{U\+A\+R\+T\+\_\+\+D\+I\+V\+\_\+\+S\+A\+M\+P\+L\+I\+N\+G8@{U\+A\+R\+T\+\_\+\+D\+I\+V\+\_\+\+S\+A\+M\+P\+L\+I\+N\+G8}!usart3.\+c@{usart3.\+c}}
+\subsubsection[{\texorpdfstring{U\+A\+R\+T\+\_\+\+D\+I\+V\+\_\+\+S\+A\+M\+P\+L\+I\+N\+G8}{UART_DIV_SAMPLING8}}]{\setlength{\rightskip}{0pt plus 5cm}\#define U\+A\+R\+T\+\_\+\+D\+I\+V\+\_\+\+S\+A\+M\+P\+L\+I\+N\+G8(
+\begin{DoxyParamCaption}
+\item[{}]{\+\_\+\+P\+C\+L\+K\+\_\+, }
+\item[{}]{\+\_\+\+B\+A\+U\+D\+\_\+}
+\end{DoxyParamCaption}
+)~(((\+\_\+\+P\+C\+L\+K\+\_\+)$\ast$25\+U)/(2\+U$\ast$(\+\_\+\+B\+A\+U\+D\+\_\+)))}\hypertarget{usart3_8c_a0e55478fdf2c9b39dd62c6597c2dca8f}{}\label{usart3_8c_a0e55478fdf2c9b39dd62c6597c2dca8f}
+
+
+Definition at line 22 of file usart3.\+c.
+
+\index{usart3.\+c@{usart3.\+c}!U\+A\+R\+T\+\_\+\+D\+I\+V\+F\+R\+A\+Q\+\_\+\+S\+A\+M\+P\+L\+I\+N\+G16@{U\+A\+R\+T\+\_\+\+D\+I\+V\+F\+R\+A\+Q\+\_\+\+S\+A\+M\+P\+L\+I\+N\+G16}}
+\index{U\+A\+R\+T\+\_\+\+D\+I\+V\+F\+R\+A\+Q\+\_\+\+S\+A\+M\+P\+L\+I\+N\+G16@{U\+A\+R\+T\+\_\+\+D\+I\+V\+F\+R\+A\+Q\+\_\+\+S\+A\+M\+P\+L\+I\+N\+G16}!usart3.\+c@{usart3.\+c}}
+\subsubsection[{\texorpdfstring{U\+A\+R\+T\+\_\+\+D\+I\+V\+F\+R\+A\+Q\+\_\+\+S\+A\+M\+P\+L\+I\+N\+G16}{UART_DIVFRAQ_SAMPLING16}}]{\setlength{\rightskip}{0pt plus 5cm}\#define U\+A\+R\+T\+\_\+\+D\+I\+V\+F\+R\+A\+Q\+\_\+\+S\+A\+M\+P\+L\+I\+N\+G16(
+\begin{DoxyParamCaption}
+\item[{}]{\+\_\+\+P\+C\+L\+K\+\_\+, }
+\item[{}]{\+\_\+\+B\+A\+U\+D\+\_\+}
+\end{DoxyParamCaption}
+)~((({\bf U\+A\+R\+T\+\_\+\+D\+I\+V\+\_\+\+S\+A\+M\+P\+L\+I\+N\+G16}((\+\_\+\+P\+C\+L\+K\+\_\+), (\+\_\+\+B\+A\+U\+D\+\_\+)) -\/ ({\bf U\+A\+R\+T\+\_\+\+D\+I\+V\+M\+A\+N\+T\+\_\+\+S\+A\+M\+P\+L\+I\+N\+G16}((\+\_\+\+P\+C\+L\+K\+\_\+), (\+\_\+\+B\+A\+U\+D\+\_\+)) $\ast$ 100\+U)) $\ast$ 16\+U + 50\+U) / 100\+U)}\hypertarget{usart3_8c_afcf53b01680a979ffd4d0926917c48ce}{}\label{usart3_8c_afcf53b01680a979ffd4d0926917c48ce}
+
+
+Definition at line 15 of file usart3.\+c.
+
+\index{usart3.\+c@{usart3.\+c}!U\+A\+R\+T\+\_\+\+D\+I\+V\+F\+R\+A\+Q\+\_\+\+S\+A\+M\+P\+L\+I\+N\+G8@{U\+A\+R\+T\+\_\+\+D\+I\+V\+F\+R\+A\+Q\+\_\+\+S\+A\+M\+P\+L\+I\+N\+G8}}
+\index{U\+A\+R\+T\+\_\+\+D\+I\+V\+F\+R\+A\+Q\+\_\+\+S\+A\+M\+P\+L\+I\+N\+G8@{U\+A\+R\+T\+\_\+\+D\+I\+V\+F\+R\+A\+Q\+\_\+\+S\+A\+M\+P\+L\+I\+N\+G8}!usart3.\+c@{usart3.\+c}}
+\subsubsection[{\texorpdfstring{U\+A\+R\+T\+\_\+\+D\+I\+V\+F\+R\+A\+Q\+\_\+\+S\+A\+M\+P\+L\+I\+N\+G8}{UART_DIVFRAQ_SAMPLING8}}]{\setlength{\rightskip}{0pt plus 5cm}\#define U\+A\+R\+T\+\_\+\+D\+I\+V\+F\+R\+A\+Q\+\_\+\+S\+A\+M\+P\+L\+I\+N\+G8(
+\begin{DoxyParamCaption}
+\item[{}]{\+\_\+\+P\+C\+L\+K\+\_\+, }
+\item[{}]{\+\_\+\+B\+A\+U\+D\+\_\+}
+\end{DoxyParamCaption}
+)~((({\bf U\+A\+R\+T\+\_\+\+D\+I\+V\+\_\+\+S\+A\+M\+P\+L\+I\+N\+G8}((\+\_\+\+P\+C\+L\+K\+\_\+), (\+\_\+\+B\+A\+U\+D\+\_\+)) -\/ ({\bf U\+A\+R\+T\+\_\+\+D\+I\+V\+M\+A\+N\+T\+\_\+\+S\+A\+M\+P\+L\+I\+N\+G8}((\+\_\+\+P\+C\+L\+K\+\_\+), (\+\_\+\+B\+A\+U\+D\+\_\+)) $\ast$ 100\+U)) $\ast$ 8\+U + 50\+U) / 100\+U)}\hypertarget{usart3_8c_a0fff17c6d76fe4f6fd078844402b0469}{}\label{usart3_8c_a0fff17c6d76fe4f6fd078844402b0469}
+
+
+Definition at line 24 of file usart3.\+c.
+
+\index{usart3.\+c@{usart3.\+c}!U\+A\+R\+T\+\_\+\+D\+I\+V\+M\+A\+N\+T\+\_\+\+S\+A\+M\+P\+L\+I\+N\+G16@{U\+A\+R\+T\+\_\+\+D\+I\+V\+M\+A\+N\+T\+\_\+\+S\+A\+M\+P\+L\+I\+N\+G16}}
+\index{U\+A\+R\+T\+\_\+\+D\+I\+V\+M\+A\+N\+T\+\_\+\+S\+A\+M\+P\+L\+I\+N\+G16@{U\+A\+R\+T\+\_\+\+D\+I\+V\+M\+A\+N\+T\+\_\+\+S\+A\+M\+P\+L\+I\+N\+G16}!usart3.\+c@{usart3.\+c}}
+\subsubsection[{\texorpdfstring{U\+A\+R\+T\+\_\+\+D\+I\+V\+M\+A\+N\+T\+\_\+\+S\+A\+M\+P\+L\+I\+N\+G16}{UART_DIVMANT_SAMPLING16}}]{\setlength{\rightskip}{0pt plus 5cm}\#define U\+A\+R\+T\+\_\+\+D\+I\+V\+M\+A\+N\+T\+\_\+\+S\+A\+M\+P\+L\+I\+N\+G16(
+\begin{DoxyParamCaption}
+\item[{}]{\+\_\+\+P\+C\+L\+K\+\_\+, }
+\item[{}]{\+\_\+\+B\+A\+U\+D\+\_\+}
+\end{DoxyParamCaption}
+)~({\bf U\+A\+R\+T\+\_\+\+D\+I\+V\+\_\+\+S\+A\+M\+P\+L\+I\+N\+G16}((\+\_\+\+P\+C\+L\+K\+\_\+), (\+\_\+\+B\+A\+U\+D\+\_\+))/100\+U)}\hypertarget{usart3_8c_a56f0995cf9f319c31a2f745454c583c2}{}\label{usart3_8c_a56f0995cf9f319c31a2f745454c583c2}
+
+
+Definition at line 14 of file usart3.\+c.
+
+\index{usart3.\+c@{usart3.\+c}!U\+A\+R\+T\+\_\+\+D\+I\+V\+M\+A\+N\+T\+\_\+\+S\+A\+M\+P\+L\+I\+N\+G8@{U\+A\+R\+T\+\_\+\+D\+I\+V\+M\+A\+N\+T\+\_\+\+S\+A\+M\+P\+L\+I\+N\+G8}}
+\index{U\+A\+R\+T\+\_\+\+D\+I\+V\+M\+A\+N\+T\+\_\+\+S\+A\+M\+P\+L\+I\+N\+G8@{U\+A\+R\+T\+\_\+\+D\+I\+V\+M\+A\+N\+T\+\_\+\+S\+A\+M\+P\+L\+I\+N\+G8}!usart3.\+c@{usart3.\+c}}
+\subsubsection[{\texorpdfstring{U\+A\+R\+T\+\_\+\+D\+I\+V\+M\+A\+N\+T\+\_\+\+S\+A\+M\+P\+L\+I\+N\+G8}{UART_DIVMANT_SAMPLING8}}]{\setlength{\rightskip}{0pt plus 5cm}\#define U\+A\+R\+T\+\_\+\+D\+I\+V\+M\+A\+N\+T\+\_\+\+S\+A\+M\+P\+L\+I\+N\+G8(
+\begin{DoxyParamCaption}
+\item[{}]{\+\_\+\+P\+C\+L\+K\+\_\+, }
+\item[{}]{\+\_\+\+B\+A\+U\+D\+\_\+}
+\end{DoxyParamCaption}
+)~({\bf U\+A\+R\+T\+\_\+\+D\+I\+V\+\_\+\+S\+A\+M\+P\+L\+I\+N\+G8}((\+\_\+\+P\+C\+L\+K\+\_\+), (\+\_\+\+B\+A\+U\+D\+\_\+))/100\+U)}\hypertarget{usart3_8c_ad83fe23ff14c5b3abdcd17289fda4805}{}\label{usart3_8c_ad83fe23ff14c5b3abdcd17289fda4805}
+
+
+Definition at line 23 of file usart3.\+c.
+
+
+
+\subsection{Function Documentation}
+\index{usart3.\+c@{usart3.\+c}!Close@{Close}}
+\index{Close@{Close}!usart3.\+c@{usart3.\+c}}
+\subsubsection[{\texorpdfstring{Close(void)}{Close(void)}}]{\setlength{\rightskip}{0pt plus 5cm}static void Close (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{usart3_8c_a8b9655401063a7ddbd2a686c298c47cd}{}\label{usart3_8c_a8b9655401063a7ddbd2a686c298c47cd}
+
+
+Close U\+S\+A\+RT. 
+
+Disables the device 
+
+Definition at line 88 of file usart3.\+c.
+
+\index{usart3.\+c@{usart3.\+c}!Get\+Byte@{Get\+Byte}}
+\index{Get\+Byte@{Get\+Byte}!usart3.\+c@{usart3.\+c}}
+\subsubsection[{\texorpdfstring{Get\+Byte(uint8\+\_\+t $\ast$destination)}{GetByte(uint8_t *destination)}}]{\setlength{\rightskip}{0pt plus 5cm}static int\+\_\+fast8\+\_\+t Get\+Byte (
+\begin{DoxyParamCaption}
+\item[{uint8\+\_\+t $\ast$}]{destination}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{usart3_8c_ab6c13a6bb49641bf02a699ed9facaae5}{}\label{usart3_8c_ab6c13a6bb49641bf02a699ed9facaae5}
+
+
+Checks to see if receive buffer has data. 
+
+\begin{DoxyReturn}{Returns}
+1 = success 0 = no data -\/1 = port closed 
+\end{DoxyReturn}
+
+
+Definition at line 131 of file usart3.\+c.
+
+\index{usart3.\+c@{usart3.\+c}!Is\+Open@{Is\+Open}}
+\index{Is\+Open@{Is\+Open}!usart3.\+c@{usart3.\+c}}
+\subsubsection[{\texorpdfstring{Is\+Open(void)}{IsOpen(void)}}]{\setlength{\rightskip}{0pt plus 5cm}static uint\+\_\+fast8\+\_\+t Is\+Open (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{usart3_8c_a906f1aace64469fd0373adb7fd869d52}{}\label{usart3_8c_a906f1aace64469fd0373adb7fd869d52}
+
+
+Exposes Is\+Open\+Flag. 
+
+
+
+Definition at line 39 of file usart3.\+c.
+
+\index{usart3.\+c@{usart3.\+c}!Is\+Write\+Busy@{Is\+Write\+Busy}}
+\index{Is\+Write\+Busy@{Is\+Write\+Busy}!usart3.\+c@{usart3.\+c}}
+\subsubsection[{\texorpdfstring{Is\+Write\+Busy(void)}{IsWriteBusy(void)}}]{\setlength{\rightskip}{0pt plus 5cm}static uint\+\_\+fast8\+\_\+t Is\+Write\+Busy (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{usart3_8c_a311152d529b2f47be36c6307fb8ae9bb}{}\label{usart3_8c_a311152d529b2f47be36c6307fb8ae9bb}
+
+
+Checks to see if U\+S\+A\+RT is writing. 
+
+
+
+Definition at line 46 of file usart3.\+c.
+
+\index{usart3.\+c@{usart3.\+c}!Open@{Open}}
+\index{Open@{Open}!usart3.\+c@{usart3.\+c}}
+\subsubsection[{\texorpdfstring{Open(uint32\+\_\+t baudrate)}{Open(uint32_t baudrate)}}]{\setlength{\rightskip}{0pt plus 5cm}static uint\+\_\+fast8\+\_\+t Open (
+\begin{DoxyParamCaption}
+\item[{uint32\+\_\+t}]{baudrate}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{usart3_8c_afce81c7c0c6a1354ed43fde2af17224b}{}\label{usart3_8c_afce81c7c0c6a1354ed43fde2af17224b}
+
+
+Enables and initializes the U\+S\+A\+RT. 
+
+
+
+Definition at line 53 of file usart3.\+c.
+
+\index{usart3.\+c@{usart3.\+c}!Rx\+Buffer\+Has\+Data@{Rx\+Buffer\+Has\+Data}}
+\index{Rx\+Buffer\+Has\+Data@{Rx\+Buffer\+Has\+Data}!usart3.\+c@{usart3.\+c}}
+\subsubsection[{\texorpdfstring{Rx\+Buffer\+Has\+Data(void)}{RxBufferHasData(void)}}]{\setlength{\rightskip}{0pt plus 5cm}static int\+\_\+fast8\+\_\+t Rx\+Buffer\+Has\+Data (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{usart3_8c_a37ec6964846678cc0b8f0a48f86bb7cb}{}\label{usart3_8c_a37ec6964846678cc0b8f0a48f86bb7cb}
+
+
+Checks to see if receive buffer has data. 
+
+\begin{DoxyReturn}{Returns}
+1 = have data 0 = no data -\/1 = port closed 
+\end{DoxyReturn}
+
+
+Definition at line 117 of file usart3.\+c.
+
+\index{usart3.\+c@{usart3.\+c}!Send\+Array@{Send\+Array}}
+\index{Send\+Array@{Send\+Array}!usart3.\+c@{usart3.\+c}}
+\subsubsection[{\texorpdfstring{Send\+Array(const uint8\+\_\+t $\ast$source, uint32\+\_\+t length)}{SendArray(const uint8_t *source, uint32_t length)}}]{\setlength{\rightskip}{0pt plus 5cm}static uint\+\_\+fast8\+\_\+t Send\+Array (
+\begin{DoxyParamCaption}
+\item[{const uint8\+\_\+t $\ast$}]{source, }
+\item[{uint32\+\_\+t}]{length}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{usart3_8c_ac3ca7fd7bc19657d88bc96d4e56f6660}{}\label{usart3_8c_ac3ca7fd7bc19657d88bc96d4e56f6660}
+
+
+Send byte array over U\+S\+A\+RT. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em source} & pointer to byte array \\
+\hline
+{\em length} & of byte array\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+T\+R\+UE = success else port may not be open or invalid pointer 
+\end{DoxyReturn}
+
+
+Definition at line 174 of file usart3.\+c.
+
+\index{usart3.\+c@{usart3.\+c}!Send\+Byte@{Send\+Byte}}
+\index{Send\+Byte@{Send\+Byte}!usart3.\+c@{usart3.\+c}}
+\subsubsection[{\texorpdfstring{Send\+Byte(uint8\+\_\+t source)}{SendByte(uint8_t source)}}]{\setlength{\rightskip}{0pt plus 5cm}static uint\+\_\+fast8\+\_\+t Send\+Byte (
+\begin{DoxyParamCaption}
+\item[{uint8\+\_\+t}]{source}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{usart3_8c_a97cea22d75f4a79b5313e8bf4500a529}{}\label{usart3_8c_a97cea22d75f4a79b5313e8bf4500a529}
+
+
+Send one byte over the U\+S\+A\+RT. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em source} & byte to send\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+T\+R\+UE = success otherwise port is closed or other error 
+\end{DoxyReturn}
+
+
+Definition at line 98 of file usart3.\+c.
+
+\index{usart3.\+c@{usart3.\+c}!Send\+String@{Send\+String}}
+\index{Send\+String@{Send\+String}!usart3.\+c@{usart3.\+c}}
+\subsubsection[{\texorpdfstring{Send\+String(const uint8\+\_\+t $\ast$source)}{SendString(const uint8_t *source)}}]{\setlength{\rightskip}{0pt plus 5cm}static uint\+\_\+fast8\+\_\+t Send\+String (
+\begin{DoxyParamCaption}
+\item[{const uint8\+\_\+t $\ast$}]{source}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{usart3_8c_a72ae458f63c115d5a7f676a6938b1288}{}\label{usart3_8c_a72ae458f63c115d5a7f676a6938b1288}
+
+
+Send string over the U\+S\+A\+RT. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em source} & pointer to array holding string\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+T\+R\+UE = success else port may be closed or invalid pointer 
+\end{DoxyReturn}
+
+
+Definition at line 152 of file usart3.\+c.
+
+
+
+\subsection{Variable Documentation}
+\index{usart3.\+c@{usart3.\+c}!Is\+Open\+Flag@{Is\+Open\+Flag}}
+\index{Is\+Open\+Flag@{Is\+Open\+Flag}!usart3.\+c@{usart3.\+c}}
+\subsubsection[{\texorpdfstring{Is\+Open\+Flag}{IsOpenFlag}}]{\setlength{\rightskip}{0pt plus 5cm}uint\+\_\+fast8\+\_\+t Is\+Open\+Flag = {\bf F\+A\+L\+SE}\hspace{0.3cm}{\ttfamily [static]}}\hypertarget{usart3_8c_adf6f26cc20f78150aa4127b23518f30e}{}\label{usart3_8c_adf6f26cc20f78150aa4127b23518f30e}
+
+
+Flag to indicate the state of the U\+S\+A\+RT. 
+
+
+
+Definition at line 34 of file usart3.\+c.
+
+\index{usart3.\+c@{usart3.\+c}!Serial\+Port3@{Serial\+Port3}}
+\index{Serial\+Port3@{Serial\+Port3}!usart3.\+c@{usart3.\+c}}
+\subsubsection[{\texorpdfstring{Serial\+Port3}{SerialPort3}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Serial\+Interface} Serial\+Port3}\hypertarget{usart3_8c_ae19ffa17d001ef05e437ddea8fff2321}{}\label{usart3_8c_ae19ffa17d001ef05e437ddea8fff2321}
+{\bfseries Initial value\+:}
+\begin{DoxyCode}
+= \{
+  \hyperlink{usart3_8c_a906f1aace64469fd0373adb7fd869d52}{IsOpen},
+  \hyperlink{usart3_8c_afce81c7c0c6a1354ed43fde2af17224b}{Open},
+  \hyperlink{usart3_8c_a8b9655401063a7ddbd2a686c298c47cd}{Close},
+  \hyperlink{usart3_8c_a97cea22d75f4a79b5313e8bf4500a529}{SendByte},
+  \hyperlink{usart3_8c_a72ae458f63c115d5a7f676a6938b1288}{SendString},
+  \hyperlink{usart3_8c_ac3ca7fd7bc19657d88bc96d4e56f6660}{SendArray},
+  \hyperlink{usart3_8c_a37ec6964846678cc0b8f0a48f86bb7cb}{RxBufferHasData},
+  \hyperlink{usart3_8c_ab6c13a6bb49641bf02a699ed9facaae5}{GetByte}
+\}
+\end{DoxyCode}
+
+
+Setup \hyperlink{struct_serial_interface}{Serial\+Interface} struct. 
+
+
+
+Definition at line 192 of file usart3.\+c.
+

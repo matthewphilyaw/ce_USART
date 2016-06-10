@@ -1,0 +1,121 @@
+\hypertarget{group___exported__macro}{}\section{Exported\+\_\+macro}
+\label{group___exported__macro}\index{Exported\+\_\+macro@{Exported\+\_\+macro}}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{group___exported__macro_gafe96f32216ed830403db91a8b7d800ab}{S\+E\+T\+\_\+\+B\+IT}(R\+EG,  B\+IT)      ~((R\+EG) $\vert$= (B\+IT))
+\item 
+\#define \hyperlink{group___exported__macro_ga4c7b1529ef62c6310390108b0efc2bf0}{C\+L\+E\+A\+R\+\_\+\+B\+IT}(R\+EG,  B\+IT)  ~((R\+EG) \&= $\sim$(B\+IT))
+\item 
+\#define \hyperlink{group___exported__macro_ga8e897a88f6313cd46cf96224a47f11bf}{R\+E\+A\+D\+\_\+\+B\+IT}(R\+EG,  B\+IT)    ~((R\+EG) \& (B\+IT))
+\item 
+\#define \hyperlink{group___exported__macro_gad659fe5750e80990cb29b7b69562536e}{C\+L\+E\+A\+R\+\_\+\+R\+EG}(R\+EG)            ~((R\+EG) = (0x0))
+\item 
+\#define \hyperlink{group___exported__macro_gaf244d5e7076977aaa554cf2dab8bdbaa}{W\+R\+I\+T\+E\+\_\+\+R\+EG}(R\+EG,  V\+AL)  ~((R\+EG) = (V\+AL))
+\item 
+\#define \hyperlink{group___exported__macro_gaddb3cc7b2dc9c558f8fdb7b6fae4ec41}{R\+E\+A\+D\+\_\+\+R\+EG}(R\+EG)              ~((R\+EG))
+\item 
+\#define \hyperlink{group___exported__macro_ga6553c99f510c3bab8cc0a91602053247}{M\+O\+D\+I\+F\+Y\+\_\+\+R\+EG}(R\+EG,  C\+L\+E\+A\+R\+M\+A\+SK,  S\+E\+T\+M\+A\+SK)~\hyperlink{group___exported__macro_gaf244d5e7076977aaa554cf2dab8bdbaa}{W\+R\+I\+T\+E\+\_\+\+R\+EG}((R\+EG), (((\hyperlink{group___exported__macro_gaddb3cc7b2dc9c558f8fdb7b6fae4ec41}{R\+E\+A\+D\+\_\+\+R\+EG}(R\+EG)) \& ($\sim$(C\+L\+E\+A\+R\+M\+A\+SK))) $\vert$ (S\+E\+T\+M\+A\+SK)))
+\item 
+\#define \hyperlink{group___exported__macro_gaa8bd317fc11c9c53b3822dbfa03ede96}{P\+O\+S\+I\+T\+I\+O\+N\+\_\+\+V\+AL}(V\+AL)      ~(\hyperlink{group___c_m_s_i_s___core___instruction_interface_ga5d5bb1527e042be4a9fa5a33f65cc248}{\+\_\+\+\_\+\+C\+LZ}(\+\_\+\+\_\+\+R\+B\+IT(V\+AL)))
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+
+
+\subsection{Macro Definition Documentation}
+\index{Exported\+\_\+macro@{Exported\+\_\+macro}!C\+L\+E\+A\+R\+\_\+\+B\+IT@{C\+L\+E\+A\+R\+\_\+\+B\+IT}}
+\index{C\+L\+E\+A\+R\+\_\+\+B\+IT@{C\+L\+E\+A\+R\+\_\+\+B\+IT}!Exported\+\_\+macro@{Exported\+\_\+macro}}
+\subsubsection[{\texorpdfstring{C\+L\+E\+A\+R\+\_\+\+B\+IT}{CLEAR_BIT}}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+L\+E\+A\+R\+\_\+\+B\+IT(
+\begin{DoxyParamCaption}
+\item[{}]{R\+EG, }
+\item[{}]{B\+IT}
+\end{DoxyParamCaption}
+)~((R\+EG) \&= $\sim$(B\+IT))}\hypertarget{group___exported__macro_ga4c7b1529ef62c6310390108b0efc2bf0}{}\label{group___exported__macro_ga4c7b1529ef62c6310390108b0efc2bf0}
+
+
+Definition at line 212 of file stm32f4xx.\+h.
+
+\index{Exported\+\_\+macro@{Exported\+\_\+macro}!C\+L\+E\+A\+R\+\_\+\+R\+EG@{C\+L\+E\+A\+R\+\_\+\+R\+EG}}
+\index{C\+L\+E\+A\+R\+\_\+\+R\+EG@{C\+L\+E\+A\+R\+\_\+\+R\+EG}!Exported\+\_\+macro@{Exported\+\_\+macro}}
+\subsubsection[{\texorpdfstring{C\+L\+E\+A\+R\+\_\+\+R\+EG}{CLEAR_REG}}]{\setlength{\rightskip}{0pt plus 5cm}\#define C\+L\+E\+A\+R\+\_\+\+R\+EG(
+\begin{DoxyParamCaption}
+\item[{}]{R\+EG}
+\end{DoxyParamCaption}
+)~((R\+EG) = (0x0))}\hypertarget{group___exported__macro_gad659fe5750e80990cb29b7b69562536e}{}\label{group___exported__macro_gad659fe5750e80990cb29b7b69562536e}
+
+
+Definition at line 216 of file stm32f4xx.\+h.
+
+\index{Exported\+\_\+macro@{Exported\+\_\+macro}!M\+O\+D\+I\+F\+Y\+\_\+\+R\+EG@{M\+O\+D\+I\+F\+Y\+\_\+\+R\+EG}}
+\index{M\+O\+D\+I\+F\+Y\+\_\+\+R\+EG@{M\+O\+D\+I\+F\+Y\+\_\+\+R\+EG}!Exported\+\_\+macro@{Exported\+\_\+macro}}
+\subsubsection[{\texorpdfstring{M\+O\+D\+I\+F\+Y\+\_\+\+R\+EG}{MODIFY_REG}}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\+O\+D\+I\+F\+Y\+\_\+\+R\+EG(
+\begin{DoxyParamCaption}
+\item[{}]{R\+EG, }
+\item[{}]{C\+L\+E\+A\+R\+M\+A\+SK, }
+\item[{}]{S\+E\+T\+M\+A\+SK}
+\end{DoxyParamCaption}
+)~{\bf W\+R\+I\+T\+E\+\_\+\+R\+EG}((R\+EG), ((({\bf R\+E\+A\+D\+\_\+\+R\+EG}(R\+EG)) \& ($\sim$(C\+L\+E\+A\+R\+M\+A\+SK))) $\vert$ (S\+E\+T\+M\+A\+SK)))}\hypertarget{group___exported__macro_ga6553c99f510c3bab8cc0a91602053247}{}\label{group___exported__macro_ga6553c99f510c3bab8cc0a91602053247}
+
+
+Definition at line 222 of file stm32f4xx.\+h.
+
+\index{Exported\+\_\+macro@{Exported\+\_\+macro}!P\+O\+S\+I\+T\+I\+O\+N\+\_\+\+V\+AL@{P\+O\+S\+I\+T\+I\+O\+N\+\_\+\+V\+AL}}
+\index{P\+O\+S\+I\+T\+I\+O\+N\+\_\+\+V\+AL@{P\+O\+S\+I\+T\+I\+O\+N\+\_\+\+V\+AL}!Exported\+\_\+macro@{Exported\+\_\+macro}}
+\subsubsection[{\texorpdfstring{P\+O\+S\+I\+T\+I\+O\+N\+\_\+\+V\+AL}{POSITION_VAL}}]{\setlength{\rightskip}{0pt plus 5cm}\#define P\+O\+S\+I\+T\+I\+O\+N\+\_\+\+V\+AL(
+\begin{DoxyParamCaption}
+\item[{}]{V\+AL}
+\end{DoxyParamCaption}
+)~({\bf \+\_\+\+\_\+\+C\+LZ}(\+\_\+\+\_\+\+R\+B\+IT(V\+AL)))}\hypertarget{group___exported__macro_gaa8bd317fc11c9c53b3822dbfa03ede96}{}\label{group___exported__macro_gaa8bd317fc11c9c53b3822dbfa03ede96}
+
+
+Definition at line 224 of file stm32f4xx.\+h.
+
+\index{Exported\+\_\+macro@{Exported\+\_\+macro}!R\+E\+A\+D\+\_\+\+B\+IT@{R\+E\+A\+D\+\_\+\+B\+IT}}
+\index{R\+E\+A\+D\+\_\+\+B\+IT@{R\+E\+A\+D\+\_\+\+B\+IT}!Exported\+\_\+macro@{Exported\+\_\+macro}}
+\subsubsection[{\texorpdfstring{R\+E\+A\+D\+\_\+\+B\+IT}{READ_BIT}}]{\setlength{\rightskip}{0pt plus 5cm}\#define R\+E\+A\+D\+\_\+\+B\+IT(
+\begin{DoxyParamCaption}
+\item[{}]{R\+EG, }
+\item[{}]{B\+IT}
+\end{DoxyParamCaption}
+)~((R\+EG) \& (B\+IT))}\hypertarget{group___exported__macro_ga8e897a88f6313cd46cf96224a47f11bf}{}\label{group___exported__macro_ga8e897a88f6313cd46cf96224a47f11bf}
+
+
+Definition at line 214 of file stm32f4xx.\+h.
+
+\index{Exported\+\_\+macro@{Exported\+\_\+macro}!R\+E\+A\+D\+\_\+\+R\+EG@{R\+E\+A\+D\+\_\+\+R\+EG}}
+\index{R\+E\+A\+D\+\_\+\+R\+EG@{R\+E\+A\+D\+\_\+\+R\+EG}!Exported\+\_\+macro@{Exported\+\_\+macro}}
+\subsubsection[{\texorpdfstring{R\+E\+A\+D\+\_\+\+R\+EG}{READ_REG}}]{\setlength{\rightskip}{0pt plus 5cm}\#define R\+E\+A\+D\+\_\+\+R\+EG(
+\begin{DoxyParamCaption}
+\item[{}]{R\+EG}
+\end{DoxyParamCaption}
+)~((R\+EG))}\hypertarget{group___exported__macro_gaddb3cc7b2dc9c558f8fdb7b6fae4ec41}{}\label{group___exported__macro_gaddb3cc7b2dc9c558f8fdb7b6fae4ec41}
+
+
+Definition at line 220 of file stm32f4xx.\+h.
+
+\index{Exported\+\_\+macro@{Exported\+\_\+macro}!S\+E\+T\+\_\+\+B\+IT@{S\+E\+T\+\_\+\+B\+IT}}
+\index{S\+E\+T\+\_\+\+B\+IT@{S\+E\+T\+\_\+\+B\+IT}!Exported\+\_\+macro@{Exported\+\_\+macro}}
+\subsubsection[{\texorpdfstring{S\+E\+T\+\_\+\+B\+IT}{SET_BIT}}]{\setlength{\rightskip}{0pt plus 5cm}\#define S\+E\+T\+\_\+\+B\+IT(
+\begin{DoxyParamCaption}
+\item[{}]{R\+EG, }
+\item[{}]{B\+IT}
+\end{DoxyParamCaption}
+)~((R\+EG) $\vert$= (B\+IT))}\hypertarget{group___exported__macro_gafe96f32216ed830403db91a8b7d800ab}{}\label{group___exported__macro_gafe96f32216ed830403db91a8b7d800ab}
+
+
+Definition at line 210 of file stm32f4xx.\+h.
+
+\index{Exported\+\_\+macro@{Exported\+\_\+macro}!W\+R\+I\+T\+E\+\_\+\+R\+EG@{W\+R\+I\+T\+E\+\_\+\+R\+EG}}
+\index{W\+R\+I\+T\+E\+\_\+\+R\+EG@{W\+R\+I\+T\+E\+\_\+\+R\+EG}!Exported\+\_\+macro@{Exported\+\_\+macro}}
+\subsubsection[{\texorpdfstring{W\+R\+I\+T\+E\+\_\+\+R\+EG}{WRITE_REG}}]{\setlength{\rightskip}{0pt plus 5cm}\#define W\+R\+I\+T\+E\+\_\+\+R\+EG(
+\begin{DoxyParamCaption}
+\item[{}]{R\+EG, }
+\item[{}]{V\+AL}
+\end{DoxyParamCaption}
+)~((R\+EG) = (V\+AL))}\hypertarget{group___exported__macro_gaf244d5e7076977aaa554cf2dab8bdbaa}{}\label{group___exported__macro_gaf244d5e7076977aaa554cf2dab8bdbaa}
+
+
+Definition at line 218 of file stm32f4xx.\+h.
+

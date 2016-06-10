@@ -1,0 +1,65 @@
+\hypertarget{structarm__biquad__casd__df1__inst__q15}{}\section{arm\+\_\+biquad\+\_\+casd\+\_\+df1\+\_\+inst\+\_\+q15 Struct Reference}
+\label{structarm__biquad__casd__df1__inst__q15}\index{arm\+\_\+biquad\+\_\+casd\+\_\+df1\+\_\+inst\+\_\+q15@{arm\+\_\+biquad\+\_\+casd\+\_\+df1\+\_\+inst\+\_\+q15}}
+
+
+Instance structure for the Q15 Biquad cascade filter.  
+
+
+
+
+{\ttfamily \#include $<$arm\+\_\+math.\+h$>$}
+
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+int8\+\_\+t \hyperlink{structarm__biquad__casd__df1__inst__q15_af59c4ceb94f92d6613492b37e7c949de}{num\+Stages}
+\item 
+\hyperlink{arm__math_8h_ab5a8fb21a5b3b983d5f54f31614052ea}{q15\+\_\+t} $\ast$ \hyperlink{structarm__biquad__casd__df1__inst__q15_ae29dfdb736374fcddaeaec4b7770170c}{p\+State}
+\item 
+\hyperlink{arm__math_8h_ab5a8fb21a5b3b983d5f54f31614052ea}{q15\+\_\+t} $\ast$ \hyperlink{structarm__biquad__casd__df1__inst__q15_a7ca181a37f714d174445f486bebce26f}{p\+Coeffs}
+\item 
+int8\+\_\+t \hyperlink{structarm__biquad__casd__df1__inst__q15_a3603cbf084938b6931bcb05dfe487f09}{post\+Shift}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Instance structure for the Q15 Biquad cascade filter. 
+
+Definition at line 1220 of file arm\+\_\+math.\+h.
+
+
+
+\subsection{Field Documentation}
+\index{arm\+\_\+biquad\+\_\+casd\+\_\+df1\+\_\+inst\+\_\+q15@{arm\+\_\+biquad\+\_\+casd\+\_\+df1\+\_\+inst\+\_\+q15}!num\+Stages@{num\+Stages}}
+\index{num\+Stages@{num\+Stages}!arm\+\_\+biquad\+\_\+casd\+\_\+df1\+\_\+inst\+\_\+q15@{arm\+\_\+biquad\+\_\+casd\+\_\+df1\+\_\+inst\+\_\+q15}}
+\subsubsection[{\texorpdfstring{num\+Stages}{numStages}}]{\setlength{\rightskip}{0pt plus 5cm}int8\+\_\+t num\+Stages}\hypertarget{structarm__biquad__casd__df1__inst__q15_af59c4ceb94f92d6613492b37e7c949de}{}\label{structarm__biquad__casd__df1__inst__q15_af59c4ceb94f92d6613492b37e7c949de}
+number of 2nd order stages in the filter. Overall order is 2$\ast$num\+Stages. 
+
+Definition at line 1222 of file arm\+\_\+math.\+h.
+
+\index{arm\+\_\+biquad\+\_\+casd\+\_\+df1\+\_\+inst\+\_\+q15@{arm\+\_\+biquad\+\_\+casd\+\_\+df1\+\_\+inst\+\_\+q15}!p\+Coeffs@{p\+Coeffs}}
+\index{p\+Coeffs@{p\+Coeffs}!arm\+\_\+biquad\+\_\+casd\+\_\+df1\+\_\+inst\+\_\+q15@{arm\+\_\+biquad\+\_\+casd\+\_\+df1\+\_\+inst\+\_\+q15}}
+\subsubsection[{\texorpdfstring{p\+Coeffs}{pCoeffs}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf q15\+\_\+t}$\ast$ p\+Coeffs}\hypertarget{structarm__biquad__casd__df1__inst__q15_a7ca181a37f714d174445f486bebce26f}{}\label{structarm__biquad__casd__df1__inst__q15_a7ca181a37f714d174445f486bebce26f}
+Points to the array of coefficients. The array is of length 5$\ast$num\+Stages. 
+
+Definition at line 1224 of file arm\+\_\+math.\+h.
+
+\index{arm\+\_\+biquad\+\_\+casd\+\_\+df1\+\_\+inst\+\_\+q15@{arm\+\_\+biquad\+\_\+casd\+\_\+df1\+\_\+inst\+\_\+q15}!post\+Shift@{post\+Shift}}
+\index{post\+Shift@{post\+Shift}!arm\+\_\+biquad\+\_\+casd\+\_\+df1\+\_\+inst\+\_\+q15@{arm\+\_\+biquad\+\_\+casd\+\_\+df1\+\_\+inst\+\_\+q15}}
+\subsubsection[{\texorpdfstring{post\+Shift}{postShift}}]{\setlength{\rightskip}{0pt plus 5cm}int8\+\_\+t post\+Shift}\hypertarget{structarm__biquad__casd__df1__inst__q15_a3603cbf084938b6931bcb05dfe487f09}{}\label{structarm__biquad__casd__df1__inst__q15_a3603cbf084938b6931bcb05dfe487f09}
+Additional shift, in bits, applied to each output sample. 
+
+Definition at line 1225 of file arm\+\_\+math.\+h.
+
+\index{arm\+\_\+biquad\+\_\+casd\+\_\+df1\+\_\+inst\+\_\+q15@{arm\+\_\+biquad\+\_\+casd\+\_\+df1\+\_\+inst\+\_\+q15}!p\+State@{p\+State}}
+\index{p\+State@{p\+State}!arm\+\_\+biquad\+\_\+casd\+\_\+df1\+\_\+inst\+\_\+q15@{arm\+\_\+biquad\+\_\+casd\+\_\+df1\+\_\+inst\+\_\+q15}}
+\subsubsection[{\texorpdfstring{p\+State}{pState}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf q15\+\_\+t}$\ast$ p\+State}\hypertarget{structarm__biquad__casd__df1__inst__q15_ae29dfdb736374fcddaeaec4b7770170c}{}\label{structarm__biquad__casd__df1__inst__q15_ae29dfdb736374fcddaeaec4b7770170c}
+Points to the array of state coefficients. The array is of length 4$\ast$num\+Stages. 
+
+Definition at line 1223 of file arm\+\_\+math.\+h.
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+system/include/cmsis/\hyperlink{arm__math_8h}{arm\+\_\+math.\+h}\end{DoxyCompactItemize}
