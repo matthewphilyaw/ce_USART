@@ -13,6 +13,6 @@
 #define COMPILED_DATA_TIME "[" __DATE__ " " __TIME__ "]"
 
 #define EN_DEBUG_INTERFACE
-#define USART_OVER_SAMPLE_16 1
+#define USART_OVER_SAMPLE_16
 
 #endif

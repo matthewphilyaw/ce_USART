@@ -18,21 +18,21 @@
 /**
  * \brief Turn Led on
  */
-void static Led_On(void) {
+static void Led_On(void) {
   GPIOB->BSRR |= LED_PIN_BS;
 }
 
 /**
  * \brief Turn Led off
  */
-void static Led_Off(void) {
+static void Led_Off(void) {
   GPIOB->BSRR |= LED_PIN_BR;
 }
 
 /**
  * \brief Toggle Led
  */
-void static Led_Toggle(void) {
+static void Led_Toggle(void) {
   if (GPIOB->ODR & LED_PIN_ODR) {
     Led_Off();
     return;
@@ -46,7 +46,7 @@ void static Led_Toggle(void) {
  *
  * This will be specific to the Led in use
  */
-void static Led_Init(void) {
+static void Led_Init(void) {
   RCC->AHB1ENR |= RCC_AHB1ENR_GPIOBEN;
 
   GPIOB->MODER   &= ~GPIO_MODER_MODER14;

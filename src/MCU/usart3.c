@@ -1,9 +1,10 @@
 /**
  * \file
+ *
  * \brief USART driver
  * \author Matthew Philyaw (matthew.philyaw@gmail.com)
  */
-#include <MCU/usart3.h>
+#include "MCU/usart3.h"
 
 /**
  * \brief Taken from the STM32 HAL
@@ -13,8 +14,8 @@
 #define UART_DIV_SAMPLING16(_PCLK_, _BAUD_)            (((_PCLK_)*25U)/(4U*(_BAUD_)))
 #define UART_DIVMANT_SAMPLING16(_PCLK_, _BAUD_)        (UART_DIV_SAMPLING16((_PCLK_), (_BAUD_))/100U)
 #define UART_DIVFRAQ_SAMPLING16(_PCLK_, _BAUD_)        (((UART_DIV_SAMPLING16((_PCLK_), (_BAUD_)) - (UART_DIVMANT_SAMPLING16((_PCLK_), (_BAUD_)) * 100U)) * 16U + 50U) / 100U)
-/* UART BRR = mantissa + overflow + fraction
-            = (UART DIVMANT << 4) + (UART DIVFRAQ & 0xF0) + (UART DIVFRAQ & 0x0FU) */
+
+/* UART BRR = mantissa + overflow + fraction = (UART DIVMANT << 4) + (UART DIVFRAQ & 0xF0) + (UART DIVFRAQ & 0x0FU) */
 #define UART_BRR_SAMPLING16(_PCLK_, _BAUD_)            (((UART_DIVMANT_SAMPLING16((_PCLK_), (_BAUD_)) << 4U) + \
                                                         (UART_DIVFRAQ_SAMPLING16((_PCLK_), (_BAUD_)) & 0xF0U)) + \
                                                         (UART_DIVFRAQ_SAMPLING16((_PCLK_), (_BAUD_)) & 0x0FU))
@@ -22,8 +23,8 @@
 #define UART_DIV_SAMPLING8(_PCLK_, _BAUD_)             (((_PCLK_)*25U)/(2U*(_BAUD_)))
 #define UART_DIVMANT_SAMPLING8(_PCLK_, _BAUD_)         (UART_DIV_SAMPLING8((_PCLK_), (_BAUD_))/100U)
 #define UART_DIVFRAQ_SAMPLING8(_PCLK_, _BAUD_)         (((UART_DIV_SAMPLING8((_PCLK_), (_BAUD_)) - (UART_DIVMANT_SAMPLING8((_PCLK_), (_BAUD_)) * 100U)) * 8U + 50U) / 100U)
-/* UART BRR = mantissa + overflow + fraction
-            = (UART DIVMANT << 4) + ((UART DIVFRAQ & 0xF8) << 1) + (UART DIVFRAQ & 0x07U) */
+
+/* UART BRR = mantissa + overflow + fraction = (UART DIVMANT << 4) + ((UART DIVFRAQ & 0xF8) << 1) + (UART DIVFRAQ & 0x07U) */
 #define UART_BRR_SAMPLING8(_PCLK_, _BAUD_)             (((UART_DIVMANT_SAMPLING8((_PCLK_), (_BAUD_)) << 4U) + \
                                                         ((UART_DIVFRAQ_SAMPLING8((_PCLK_), (_BAUD_)) & 0xF8U) << 1U)) + \
                                                         (UART_DIVFRAQ_SAMPLING8((_PCLK_), (_BAUD_)) & 0x07U))
@@ -69,8 +70,10 @@ static uint_fast8_t Open(uint32_t baudrate) {
   USART3->CR2 &= ~USART_CR2_STOP; // 1 stop bit
 
 #ifdef USART_OVER_SAMPLE_16
+  USART3->CR1 &= ~USART_CR1_OVER8;
   USART3->BRR = UART_BRR_SAMPLING16(SystemCoreClock, baudrate);
 #else
+  USART3->CR1 |= USART_CR1_OVER8;
   USART3->BRR = UART_BRR_SAMPLING8(SystemCoreClock, baudrate);
 #endif
 
@@ -129,16 +132,40 @@ static int_fast8_t RxBufferHasData(void) {
  *         -1 = port closed
  */
 static int_fast8_t GetByte(uint8_t *destination) {
-  if (!IsOpenFlag) {
+  if (!IsOpenFlag || !destination) {
     return -1;
   }
 
-  if (RxBufferHasData() == 0) {
+  int_fast8_t has_data = RxBufferHasData();
+  if (!has_data)
+  {
     return FALSE;
   }
+  else if (has_data < 0) ///< error
+  {
+    return -1;
+  }
 
+  /// \brief To clear error bits read status register and then the data register
+  uint32_t sr = USART3->SR;
   *destination = USART3->DR;
-  USART3->CR3 &= ~(USART_SR_RXNE);
+
+  /// \brief check various error conditions and return the correct error
+  if (sr & USART_SR_ORE) {
+    return SERIAL_OVERRUN;
+  }
+  else if (sr & USART_SR_FE) {
+    return SERIAL_FRAMING_ERROR;
+  }
+  else if (sr & USART_SR_PE) {
+    return SERIAL_PARITY_ERROR;
+  }
+  else if (sr & USART_SR_LBD) {
+    return SERIAL_LINE_BREAK_ERROR;
+  }
+  else if (sr & USART_SR_NE) {
+    return SERIAL_NOISE_ERROR;
+  }
 
   return TRUE;
 }
@@ -149,7 +176,7 @@ static int_fast8_t GetByte(uint8_t *destination) {
  *
  * \return TRUE = success else port may be closed or invalid pointer
  */
-static uint_fast8_t SendString(const uint8_t *source) {
+static uint_fast8_t SendString(const char *source) {
   if (!IsOpenFlag || !source) {
     return FALSE;
   }  
@@ -172,7 +199,7 @@ static uint_fast8_t SendString(const uint8_t *source) {
  * \return TRUE = success else port may not be open or invalid pointer
  */
 static uint_fast8_t SendArray(const uint8_t *source, uint32_t length) {
-  if (!IsOpen || !source) {
+  if (!IsOpenFlag || !source) {
     return FALSE;
   }  
   

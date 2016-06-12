@@ -22,8 +22,8 @@ int main(void) {
   Tick_Init();
 
   GreenLed.Init();
-  BlueLed.Init();
   RedLed.Init();
+  BlueLed.Init();
 
   SerialPort3.Open(115200);
 
@@ -31,23 +31,21 @@ int main(void) {
 
   uint8_t chr = 0;
   for (;;) {
-    if (SerialPort3.GetByte(&chr) == 0) {
+    BlueLed.Off();
+    int_fast8_t result = SerialPort3.GetByte(&chr);
+
+    if (!result) {
       continue;
     }
-
-    switch (chr) {
-      // 1
-      case 0x31:
-        GreenLed.Toggle();
-        break;
-      case 0x32:
-        BlueLed.Toggle();
-        break;
-      case 0x33:
-        RedLed.Toggle();
-        break;
+    else if (result == SERIAL_FRAMING_ERROR){
+      GreenLed.On();
+      continue;
+    }
+    else if (result == SERIAL_OVERRUN) {
+      BlueLed.On();
     }
 
+    RedLed.Off();
     SerialPort3.SendByte(chr);
   }
 }
@@ -70,4 +68,21 @@ static void PrintHeader() {
   SerialPort3.SendString(COMPILED_DATA_TIME);
   SerialPort3.SendString("\r");
   SerialPort3.SendString("#################################################################\r\r");
+}
+
+/**
+ * \brief override default fault handlers to blink red led
+ */
+void HardFault_Handler(void) {
+  for(;;) {
+    RedLed.Toggle();
+    for (int i = 0; i < 1000000; i++);
+  }
+}
+
+void UsageFault_Handler(void) {
+  for(;;) {
+    RedLed.Toggle();
+    for (int i = 0; i < 100000; i++);
+  }
 }
