@@ -31,7 +31,6 @@ int main(void) {
 
   uint8_t chr = 0;
   for (;;) {
-    BlueLed.Off();
     int_fast8_t result = SerialPort3.GetByte(&chr);
 
     if (!result) {
@@ -45,7 +44,6 @@ int main(void) {
       BlueLed.On();
     }
 
-    RedLed.Off();
     SerialPort3.SendByte(chr);
   }
 }
