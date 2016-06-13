@@ -5,15 +5,16 @@
  * \author Matthew Philyaw (matthew.philyaw@gmail.com)
  */
 #include "common.h"
-
 #include <MCU/LED/green_led.h>
 #include <MCU/LED/blue_led.h>
 #include <MCU/LED/red_led.h>
-
 #include "MCU/tick.h"
 #include "MCU/usart3.h"
 
+#define BAUDRATE 115200
+
 static void PrintHeader(void);
+void HardFault_Handler(void);
 
 /**
  * \brief Main function
@@ -25,23 +26,29 @@ int main(void) {
   RedLed.Init();
   BlueLed.Init();
 
-  SerialPort3.Open(115200);
+  SerialPort3.Open(BAUDRATE);
 
   PrintHeader();
 
   uint8_t chr = 0;
+  SerialResult_t err = SERIAL_SUCCESS;
   for (;;) {
-    int_fast8_t result = SerialPort3.GetByte(&chr);
-
-    if (!result) {
-      continue;
-    }
-    else if (result == SERIAL_FRAMING_ERROR){
-      GreenLed.On();
-      continue;
-    }
-    else if (result == SERIAL_OVERRUN) {
-      BlueLed.On();
+    if((err = SerialPort3.GetByte(&chr))) {
+      switch(err) {
+        case SERIAL_NO_DATA:
+          continue;
+          break;
+        case SERIAL_FRAMING_ERROR:
+          GreenLed.On();
+          continue;
+          break;
+        case SERIAL_OVER_RUN:
+          BlueLed.On();
+          break;
+        default:
+          HardFault_Handler();
+          break;
+      }
     }
 
     SerialPort3.SendByte(chr);

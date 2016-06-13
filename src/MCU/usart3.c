@@ -29,31 +29,27 @@
                                                         ((UART_DIVFRAQ_SAMPLING8((_PCLK_), (_BAUD_)) & 0xF8U) << 1U)) + \
                                                         (UART_DIVFRAQ_SAMPLING8((_PCLK_), (_BAUD_)) & 0x07U))
 
-/**
- * \brief Flag to indicate the state of the USART
- */
 static uint_fast8_t IsOpenFlag = FALSE;
 
-/**
- * \brief Exposes IsOpenFlag
- */
 static uint_fast8_t IsOpen(void) {
   return IsOpenFlag;
 }
 
-/**
- * \brief Checks to see if USART is writing
- */
+static void Close(void) {
+  USART3->CR1 &= ~(1);
+}
+
 static uint_fast8_t IsWriteBusy(void) {
   return !(USART3->SR & USART_SR_TXE);
 }
 
-/**
- * \brief Enables and initializes the USART
- */
-static uint_fast8_t Open(uint32_t baudrate) {
+static uint_fast8_t RxBufferHasData(void) {
+  return USART3->SR & USART_SR_RXNE;
+}
+
+static SerialResult_t Open(uint32_t baudrate) {
   if (IsOpenFlag) {
-    return FALSE;
+    return SERIAL_FAIL;
   }
 
   // enable GPIO TX pin
@@ -80,79 +76,45 @@ static uint_fast8_t Open(uint32_t baudrate) {
   USART3->CR1 |= USART_CR1_UE | USART_CR1_TE | USART_CR1_RE;
 
   IsOpenFlag = TRUE;
-  return TRUE;
+  return SERIAL_SUCCESS;
 }
 
-/**
- * \brief Close USART
- *
- * Disables the device
- */
-static void Close(void) {
-  USART3->CR1 &= ~(1);
-}
-
-/**
- * \brief Send one byte over the USART
- * \param source byte to send
- *
- * \return TRUE = success otherwise port is closed or other error
- */
-static uint_fast8_t SendByte(uint8_t source) {
+static SerialResult_t SendByte(uint8_t source) {
   if (!IsOpenFlag)
   {
-    return FALSE;
+    return SERIAL_CLOSED;
   }
 
   while (IsWriteBusy());
 
   USART3->DR = source;
 
-  return TRUE;
+  return SERIAL_SUCCESS;
 }
 
-/**
- * \brief Checks to see if receive buffer has data
- * \return  1 = have data
- *          0 = no data
- *         -1 = port closed
- */
-static int_fast8_t RxBufferHasData(void) {
-  if (!IsOpenFlag) {
-    return -1;
-  }
-
-  return USART3->SR & USART_SR_RXNE;
-}
-
-/**
- * \brief Checks to see if receive buffer has data
- * \return  1 = success
- *          0 = no data
- *         -1 = port closed
- */
-static int_fast8_t GetByte(uint8_t *destination) {
-  if (!IsOpenFlag || !destination) {
-    return -1;
-  }
-
-  int_fast8_t has_data = RxBufferHasData();
-  if (!has_data)
+static SerialResult_t GetByte(uint8_t *destination) {
+  if (!IsOpenFlag)
   {
-    return FALSE;
-  }
-  else if (has_data < 0) ///< error
-  {
-    return -1;
+    return SERIAL_CLOSED;
   }
 
+  if (!destination) {
+    return SERIAL_INVALID_PARAMETER;
+  }
+
+  uint_fast8_t hasData = RxBufferHasData();
   /// \brief To clear error bits read status register and then the data register
   uint32_t sr = USART3->SR;
   *destination = USART3->DR;
 
+  if (!hasData)
+  {
+    return SERIAL_NO_DATA;
+  }
+
   /// \brief check various error conditions and return the correct error
   if (sr & USART_SR_ORE) {
-    return SERIAL_OVERRUN;
+    return SERIAL_OVER_RUN;
   }
   else if (sr & USART_SR_FE) {
     return SERIAL_FRAMING_ERROR;
@@ -167,62 +129,54 @@ static int_fast8_t GetByte(uint8_t *destination) {
     return SERIAL_NOISE_ERROR;
   }
 
-  return TRUE;
+  return SERIAL_SUCCESS;
 }
 
-/**
- * \brief Send string over the USART
- * \param source pointer to array holding string
- *
- * \return TRUE = success else port may be closed or invalid pointer
- */
-static uint_fast8_t SendString(const char *source) {
-  if (!IsOpenFlag || !source) {
-    return FALSE;
-  }  
+static SerialResult_t SendString(const char *source) {
+  if (!IsOpenFlag) {
+    return SERIAL_CLOSED;
+  }
+
+  if (!source) {
+    return SERIAL_INVALID_PARAMETER;
+  }
 
   while(*source) {
-    if (!SendByte(*source)) {
-      return FALSE;
+    if (SendByte(*source)) {
+      return SERIAL_FAIL;
     }
     source++;
   }
 
-  return TRUE;
+  return SERIAL_SUCCESS;
 }
 
-/**
- * \brief Send byte array over USART
- * \param source pointer to byte array
- * \param length of byte array
- *
- * \return TRUE = success else port may not be open or invalid pointer
- */
-static uint_fast8_t SendArray(const uint8_t *source, uint32_t length) {
-  if (!IsOpenFlag || !source) {
-    return FALSE;
-  }  
+static SerialResult_t SendArray(const uint8_t *source, uint32_t length) {
+  if (!IsOpenFlag) {
+    return SERIAL_CLOSED;
+  }
+
+  if (!source) {
+    return SERIAL_INVALID_PARAMETER;
+  }
   
   for ( ; length; length--) {
-    if (!SendByte(*source)) {
-      return FALSE;
+    if (SendByte(*source)) {
+      return SERIAL_FAIL;
     }
     source++;
   }
 
-  return TRUE;
+  return SERIAL_SUCCESS;
 }
 
-/**
- * \brief Setup SerialInterface struct
- */
 SerialInterface SerialPort3 = {
   IsOpen,
+  RxBufferHasData,
   Open,
   Close,
   SendByte,
   SendString,
   SendArray,
-  RxBufferHasData,
   GetByte
 };
