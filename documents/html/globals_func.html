@@ -8,6 +8,14 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -71,24 +79,26 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="globals.html"><span>All</span></a></li>
       <li class="current"><a href="globals_func.html"><span>Functions</span></a></li>
       <li><a href="globals_vars.html"><span>Variables</span></a></li>
+      <li><a href="globals_enum.html"><span>Enumerations</span></a></li>
+      <li><a href="globals_eval.html"><span>Enumerator</span></a></li>
       <li><a href="globals_defs.html"><span>Macros</span></a></li>
     </ul>
   </div>
-  <div id="navrow4" class="tabs3">
-    <ul class="tablist">
-      <li><a href="#index_c"><span>c</span></a></li>
-      <li><a href="#index_g"><span>g</span></a></li>
-      <li><a href="#index_i"><span>i</span></a></li>
-      <li><a href="#index_l"><span>l</span></a></li>
-      <li><a href="#index_m"><span>m</span></a></li>
-      <li><a href="#index_o"><span>o</span></a></li>
-      <li><a href="#index_p"><span>p</span></a></li>
-      <li><a href="#index_r"><span>r</span></a></li>
-      <li><a href="#index_s"><span>s</span></a></li>
-      <li class="current"><a href="#index_t"><span>t</span></a></li>
-    </ul>
-  </div>
 </div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('globals_func.html','');});
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -104,33 +114,22 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 
 <div class="contents">
-&#160;
-
-<h3><a class="anchor" id="index_c"></a>- c -</h3><ul>
+&#160;<ul>
 <li>Close()
 : <a class="el" href="usart3_8c.html#a8b9655401063a7ddbd2a686c298c47cd">usart3.c</a>
 </li>
-</ul>
-
-
-<h3><a class="anchor" id="index_g"></a>- g -</h3><ul>
 <li>GetByte()
-: <a class="el" href="usart3_8c.html#ab6c13a6bb49641bf02a699ed9facaae5">usart3.c</a>
+: <a class="el" href="usart3_8c.html#a05a3d555d7db61ea60d126ad67129b0b">usart3.c</a>
 </li>
-</ul>
-
-
-<h3><a class="anchor" id="index_i"></a>- i -</h3><ul>
+<li>HardFault_Handler()
+: <a class="el" href="main_8c.html#a2bffc10d5bd4106753b7c30e86903bea">main.c</a>
+</li>
 <li>IsOpen()
 : <a class="el" href="usart3_8c.html#a906f1aace64469fd0373adb7fd869d52">usart3.c</a>
 </li>
 <li>IsWriteBusy()
 : <a class="el" href="usart3_8c.html#a311152d529b2f47be36c6307fb8ae9bb">usart3.c</a>
 </li>
-</ul>
-
-
-<h3><a class="anchor" id="index_l"></a>- l -</h3><ul>
 <li>Led_Init()
 : <a class="el" href="blue__led_8c.html#ac8c703767486bbeda9335c95f2f10c66">blue_led.c</a>
 , <a class="el" href="green__led_8c.html#ac8c703767486bbeda9335c95f2f10c66">green_led.c</a>
@@ -142,86 +141,61 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 , <a class="el" href="red__led_8c.html#aee983f3e28e266f2a037501b7901f4f7">red_led.c</a>
 </li>
 <li>Led_On()
-: <a class="el" href="blue__led_8c.html#aa3cd107f7f9db7f2beedfb7b2e7f332a">blue_led.c</a>
+: <a class="el" href="red__led_8c.html#aa3cd107f7f9db7f2beedfb7b2e7f332a">red_led.c</a>
 , <a class="el" href="green__led_8c.html#aa3cd107f7f9db7f2beedfb7b2e7f332a">green_led.c</a>
-, <a class="el" href="red__led_8c.html#aa3cd107f7f9db7f2beedfb7b2e7f332a">red_led.c</a>
+, <a class="el" href="blue__led_8c.html#aa3cd107f7f9db7f2beedfb7b2e7f332a">blue_led.c</a>
 </li>
 <li>Led_Toggle()
-: <a class="el" href="red__led_8c.html#a2285722b3e6652dd3ce14548abf30f5e">red_led.c</a>
+: <a class="el" href="green__led_8c.html#a2285722b3e6652dd3ce14548abf30f5e">green_led.c</a>
+, <a class="el" href="red__led_8c.html#a2285722b3e6652dd3ce14548abf30f5e">red_led.c</a>
 , <a class="el" href="blue__led_8c.html#a2285722b3e6652dd3ce14548abf30f5e">blue_led.c</a>
-, <a class="el" href="green__led_8c.html#a2285722b3e6652dd3ce14548abf30f5e">green_led.c</a>
 </li>
-</ul>
-
-
-<h3><a class="anchor" id="index_m"></a>- m -</h3><ul>
 <li>main()
 : <a class="el" href="main_8c.html#a840291bc02cba5474a4cb46a9b9566fe">main.c</a>
 </li>
-</ul>
-
-
-<h3><a class="anchor" id="index_o"></a>- o -</h3><ul>
 <li>Open()
-: <a class="el" href="usart3_8c.html#afce81c7c0c6a1354ed43fde2af17224b">usart3.c</a>
+: <a class="el" href="usart3_8c.html#af57aef940f133b369bc710f0bea493c2">usart3.c</a>
 </li>
-</ul>
-
-
-<h3><a class="anchor" id="index_p"></a>- p -</h3><ul>
 <li>PrintHeader()
 : <a class="el" href="main_8c.html#ac886de2a2531626125250ede0091062e">main.c</a>
 </li>
-</ul>
-
-
-<h3><a class="anchor" id="index_r"></a>- r -</h3><ul>
 <li>RxBufferHasData()
-: <a class="el" href="usart3_8c.html#a37ec6964846678cc0b8f0a48f86bb7cb">usart3.c</a>
+: <a class="el" href="usart3_8c.html#a27203de5fad47a3b0c36c1ff50d8bf51">usart3.c</a>
 </li>
-</ul>
-
-
-<h3><a class="anchor" id="index_s"></a>- s -</h3><ul>
 <li>SendArray()
-: <a class="el" href="usart3_8c.html#ac3ca7fd7bc19657d88bc96d4e56f6660">usart3.c</a>
+: <a class="el" href="usart3_8c.html#aa649202856760a048c8dfe0a251037f0">usart3.c</a>
 </li>
 <li>SendByte()
-: <a class="el" href="usart3_8c.html#a97cea22d75f4a79b5313e8bf4500a529">usart3.c</a>
+: <a class="el" href="usart3_8c.html#afe2d4770c55ca2fe8c7249c1f48d3300">usart3.c</a>
 </li>
 <li>SendString()
-: <a class="el" href="usart3_8c.html#a72ae458f63c115d5a7f676a6938b1288">usart3.c</a>
+: <a class="el" href="usart3_8c.html#aeabdd89dec120209e25bd7e09fbfb8dc">usart3.c</a>
 </li>
 <li>SysTick_Handler()
 : <a class="el" href="tick_8c.html#ab5e09814056d617c521549e542639b7e">tick.c</a>
 </li>
-</ul>
-
-
-<h3><a class="anchor" id="index_t"></a>- t -</h3><ul>
 <li>Tick_DelayMs()
-: <a class="el" href="tick_8h.html#a01864fcfa99d364250b9e3e10390ff93">tick.h</a>
-, <a class="el" href="tick_8c.html#a01864fcfa99d364250b9e3e10390ff93">tick.c</a>
+: <a class="el" href="tick_8c.html#a01864fcfa99d364250b9e3e10390ff93">tick.c</a>
 </li>
 <li>Tick_DelayMs_NonBlocking()
-: <a class="el" href="tick_8h.html#a700a086c5fb6a2a2491026af0fda77a8">tick.h</a>
-, <a class="el" href="tick_8c.html#a700a086c5fb6a2a2491026af0fda77a8">tick.c</a>
+: <a class="el" href="tick_8c.html#a700a086c5fb6a2a2491026af0fda77a8">tick.c</a>
 </li>
 <li>Tick_GetMs()
-: <a class="el" href="tick_8h.html#a5018c28a90fe9864e870a712c8e2b571">tick.h</a>
-, <a class="el" href="tick_8c.html#a5018c28a90fe9864e870a712c8e2b571">tick.c</a>
+: <a class="el" href="tick_8c.html#a5018c28a90fe9864e870a712c8e2b571">tick.c</a>
 </li>
 <li>Tick_Init()
-: <a class="el" href="tick_8h.html#acae0a023fcbd4801e394c473890925e7">tick.h</a>
-, <a class="el" href="tick_8c.html#acae0a023fcbd4801e394c473890925e7">tick.c</a>
+: <a class="el" href="tick_8c.html#acae0a023fcbd4801e394c473890925e7">tick.c</a>
 </li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.11
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.11 </li>
+  </ul>
+</div>
 </body>
 </html>

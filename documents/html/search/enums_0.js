@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['arm_5fstatus',['arm_status',['../arm__math_8h.html#a5e459c6409dfcd2927bb8a57491d7cf6',1,'arm_math.h']]]
+  ['serialresult_5ft',['SerialResult_t',['../serial__interface_8h.html#ae172a5da9c6ce3d48a6d31f5f40739c4',1,'serial_interface.h']]]
 ];

@@ -8,6 +8,14 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -71,16 +79,15 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li class="current"><a href="globals.html"><span>All</span></a></li>
       <li><a href="globals_func.html"><span>Functions</span></a></li>
       <li><a href="globals_vars.html"><span>Variables</span></a></li>
+      <li><a href="globals_enum.html"><span>Enumerations</span></a></li>
+      <li><a href="globals_eval.html"><span>Enumerator</span></a></li>
       <li><a href="globals_defs.html"><span>Macros</span></a></li>
     </ul>
   </div>
   <div id="navrow4" class="tabs3">
     <ul class="tablist">
-      <li><a href="#index__"><span>_</span></a></li>
       <li><a href="#index_b"><span>b</span></a></li>
       <li><a href="#index_c"><span>c</span></a></li>
-      <li><a href="#index_e"><span>e</span></a></li>
-      <li><a href="#index_f"><span>f</span></a></li>
       <li><a href="#index_g"><span>g</span></a></li>
       <li><a href="#index_h"><span>h</span></a></li>
       <li><a href="#index_i"><span>i</span></a></li>
@@ -95,6 +102,20 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     </ul>
   </div>
 </div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('globals.html','');});
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -110,19 +131,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 
 <div class="contents">
-<div class="textblock">Here is a list of all functions, variables, defines, enums, and typedefs with links to the files they belong to:</div>
-
-<h3><a class="anchor" id="index__"></a>- _ -</h3><ul>
-<li>__FPU_PRESENT
-: <a class="el" href="device_8h.html#ac1ba8a48ca926bddc88be9bfd7d42641">device.h</a>
-</li>
-</ul>
-
+<div class="textblock">Here is a list of all documented functions, variables, defines, enums, and typedefs with links to the documentation:</div>
 
 <h3><a class="anchor" id="index_b"></a>- b -</h3><ul>
+<li>BAUDRATE
+: <a class="el" href="main_8c.html#a734bbab06e1a9fd2e5522db0221ff6e3">main.c</a>
+</li>
 <li>BlueLed
-: <a class="el" href="red__led_8h.html#aa025b6a78aa89edf836129fc299b296e">red_led.h</a>
-, <a class="el" href="blue__led_8c.html#aa025b6a78aa89edf836129fc299b296e">blue_led.c</a>
+: <a class="el" href="blue__led_8c.html#aa025b6a78aa89edf836129fc299b296e">blue_led.c</a>
 </li>
 </ul>
 
@@ -131,43 +147,22 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>Close()
 : <a class="el" href="usart3_8c.html#a8b9655401063a7ddbd2a686c298c47cd">usart3.c</a>
 </li>
-<li>COMPILED_DATA_TIME
-: <a class="el" href="common_8h.html#a4c681fec0533353b247257c82546f7cd">common.h</a>
-</li>
-</ul>
-
-
-<h3><a class="anchor" id="index_e"></a>- e -</h3><ul>
-<li>EN_DEBUG_INTERFACE
-: <a class="el" href="common_8h.html#a5d95e93610ec76137962e82eebebd723">common.h</a>
-</li>
-</ul>
-
-
-<h3><a class="anchor" id="index_f"></a>- f -</h3><ul>
-<li>FALSE
-: <a class="el" href="common_8h.html#aa93f0eb578d23995850d61f7d61c55c1">common.h</a>
-</li>
-<li>FIRMWARE_VERSION
-: <a class="el" href="common_8h.html#aa14dc39d52ab121ceb570f1a265385e0">common.h</a>
-</li>
 </ul>
 
 
 <h3><a class="anchor" id="index_g"></a>- g -</h3><ul>
 <li>GetByte()
-: <a class="el" href="usart3_8c.html#ab6c13a6bb49641bf02a699ed9facaae5">usart3.c</a>
+: <a class="el" href="usart3_8c.html#a05a3d555d7db61ea60d126ad67129b0b">usart3.c</a>
 </li>
 <li>GreenLed
-: <a class="el" href="green__led_8h.html#a1f857926d52094e172f6a3b1d176f7a7">green_led.h</a>
-, <a class="el" href="green__led_8c.html#a1f857926d52094e172f6a3b1d176f7a7">green_led.c</a>
+: <a class="el" href="green__led_8c.html#a1f857926d52094e172f6a3b1d176f7a7">green_led.c</a>
 </li>
 </ul>
 
 
 <h3><a class="anchor" id="index_h"></a>- h -</h3><ul>
-<li>HARDWARE_VERSION
-: <a class="el" href="common_8h.html#a7c770e481dd85c7ffb40e3b3edb0beb5">common.h</a>
+<li>HardFault_Handler()
+: <a class="el" href="main_8c.html#a2bffc10d5bd4106753b7c30e86903bea">main.c</a>
 </li>
 </ul>
 
@@ -201,20 +196,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 , <a class="el" href="red__led_8c.html#aa3cd107f7f9db7f2beedfb7b2e7f332a">red_led.c</a>
 , <a class="el" href="blue__led_8c.html#aa3cd107f7f9db7f2beedfb7b2e7f332a">blue_led.c</a>
 </li>
-<li>LED_PIN_BR
-: <a class="el" href="blue__led_8c.html#a744c1f7ff451f751c71b8783569998ef">blue_led.c</a>
-, <a class="el" href="green__led_8c.html#a744c1f7ff451f751c71b8783569998ef">green_led.c</a>
-, <a class="el" href="red__led_8c.html#a744c1f7ff451f751c71b8783569998ef">red_led.c</a>
-</li>
 <li>LED_PIN_BS
-: <a class="el" href="red__led_8c.html#a6470934cf7f508640658b4996268c7f6">red_led.c</a>
+: <a class="el" href="green__led_8c.html#a6470934cf7f508640658b4996268c7f6">green_led.c</a>
 , <a class="el" href="blue__led_8c.html#a6470934cf7f508640658b4996268c7f6">blue_led.c</a>
-, <a class="el" href="green__led_8c.html#a6470934cf7f508640658b4996268c7f6">green_led.c</a>
-</li>
-<li>LED_PIN_ODR
-: <a class="el" href="blue__led_8c.html#ac1b3758b1cbfce4bba994f44d3983b98">blue_led.c</a>
-, <a class="el" href="green__led_8c.html#ac1b3758b1cbfce4bba994f44d3983b98">green_led.c</a>
-, <a class="el" href="red__led_8c.html#ac1b3758b1cbfce4bba994f44d3983b98">red_led.c</a>
+, <a class="el" href="red__led_8c.html#a6470934cf7f508640658b4996268c7f6">red_led.c</a>
 </li>
 <li>Led_Toggle()
 : <a class="el" href="blue__led_8c.html#a2285722b3e6652dd3ce14548abf30f5e">blue_led.c</a>
@@ -233,7 +218,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <h3><a class="anchor" id="index_o"></a>- o -</h3><ul>
 <li>Open()
-: <a class="el" href="usart3_8c.html#afce81c7c0c6a1354ed43fde2af17224b">usart3.c</a>
+: <a class="el" href="usart3_8c.html#af57aef940f133b369bc710f0bea493c2">usart3.c</a>
 </li>
 </ul>
 
@@ -247,28 +232,59 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <h3><a class="anchor" id="index_r"></a>- r -</h3><ul>
 <li>RedLed
-: <a class="el" href="blue__led_8h.html#a05fc3101abf3fdb5a02e1860bc0d7787">blue_led.h</a>
-, <a class="el" href="red__led_8c.html#a05fc3101abf3fdb5a02e1860bc0d7787">red_led.c</a>
+: <a class="el" href="red__led_8c.html#a05fc3101abf3fdb5a02e1860bc0d7787">red_led.c</a>
 </li>
 <li>RxBufferHasData()
-: <a class="el" href="usart3_8c.html#a37ec6964846678cc0b8f0a48f86bb7cb">usart3.c</a>
+: <a class="el" href="usart3_8c.html#a27203de5fad47a3b0c36c1ff50d8bf51">usart3.c</a>
 </li>
 </ul>
 
 
 <h3><a class="anchor" id="index_s"></a>- s -</h3><ul>
 <li>SendArray()
-: <a class="el" href="usart3_8c.html#ac3ca7fd7bc19657d88bc96d4e56f6660">usart3.c</a>
+: <a class="el" href="usart3_8c.html#aa649202856760a048c8dfe0a251037f0">usart3.c</a>
 </li>
 <li>SendByte()
-: <a class="el" href="usart3_8c.html#a97cea22d75f4a79b5313e8bf4500a529">usart3.c</a>
+: <a class="el" href="usart3_8c.html#afe2d4770c55ca2fe8c7249c1f48d3300">usart3.c</a>
 </li>
 <li>SendString()
-: <a class="el" href="usart3_8c.html#a72ae458f63c115d5a7f676a6938b1288">usart3.c</a>
+: <a class="el" href="usart3_8c.html#aeabdd89dec120209e25bd7e09fbfb8dc">usart3.c</a>
+</li>
+<li>SERIAL_CLOSED
+: <a class="el" href="serial__interface_8h.html#ae172a5da9c6ce3d48a6d31f5f40739c4a0879a49fbdb0e47aaa276fcb220a8c3d">serial_interface.h</a>
+</li>
+<li>SERIAL_FAIL
+: <a class="el" href="serial__interface_8h.html#ae172a5da9c6ce3d48a6d31f5f40739c4afdd840cf5bc0b40993401d8fde63f2de">serial_interface.h</a>
+</li>
+<li>SERIAL_FRAMING_ERROR
+: <a class="el" href="serial__interface_8h.html#ae172a5da9c6ce3d48a6d31f5f40739c4ac62ffdef80ba784471e2d93d542f70a9">serial_interface.h</a>
+</li>
+<li>SERIAL_INVALID_PARAMETER
+: <a class="el" href="serial__interface_8h.html#ae172a5da9c6ce3d48a6d31f5f40739c4a059de7834a940e20373a833f7d2fefb0">serial_interface.h</a>
+</li>
+<li>SERIAL_LINE_BREAK_ERROR
+: <a class="el" href="serial__interface_8h.html#ae172a5da9c6ce3d48a6d31f5f40739c4a52750d0b660b42a28b8314214170aeb6">serial_interface.h</a>
+</li>
+<li>SERIAL_NO_DATA
+: <a class="el" href="serial__interface_8h.html#ae172a5da9c6ce3d48a6d31f5f40739c4ad5c3886d458a256e0b67c0d6b970d107">serial_interface.h</a>
+</li>
+<li>SERIAL_NOISE_ERROR
+: <a class="el" href="serial__interface_8h.html#ae172a5da9c6ce3d48a6d31f5f40739c4a1f76bf2d1cbdcd940607bea205fcbaa8">serial_interface.h</a>
+</li>
+<li>SERIAL_OVER_RUN
+: <a class="el" href="serial__interface_8h.html#ae172a5da9c6ce3d48a6d31f5f40739c4ae133c7a55b6965d12bb7ac064122d9e3">serial_interface.h</a>
+</li>
+<li>SERIAL_PARITY_ERROR
+: <a class="el" href="serial__interface_8h.html#ae172a5da9c6ce3d48a6d31f5f40739c4a9147882c852ea4d177e166639f46950a">serial_interface.h</a>
+</li>
+<li>SERIAL_SUCCESS
+: <a class="el" href="serial__interface_8h.html#ae172a5da9c6ce3d48a6d31f5f40739c4ab99bd95ffdb27b080ca1fe560850b5ab">serial_interface.h</a>
 </li>
 <li>SerialPort3
-: <a class="el" href="usart3_8h.html#ae19ffa17d001ef05e437ddea8fff2321">usart3.h</a>
-, <a class="el" href="usart3_8c.html#ae19ffa17d001ef05e437ddea8fff2321">usart3.c</a>
+: <a class="el" href="usart3_8c.html#ae19ffa17d001ef05e437ddea8fff2321">usart3.c</a>
+</li>
+<li>SerialResult_t
+: <a class="el" href="serial__interface_8h.html#ae172a5da9c6ce3d48a6d31f5f40739c4">serial_interface.h</a>
 </li>
 <li>SysTick_Handler()
 : <a class="el" href="tick_8c.html#ab5e09814056d617c521549e542639b7e">tick.c</a>
@@ -278,29 +294,19 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <h3><a class="anchor" id="index_t"></a>- t -</h3><ul>
 <li>Tick_DelayMs()
-: <a class="el" href="tick_8h.html#a01864fcfa99d364250b9e3e10390ff93">tick.h</a>
-, <a class="el" href="tick_8c.html#a01864fcfa99d364250b9e3e10390ff93">tick.c</a>
+: <a class="el" href="tick_8c.html#a01864fcfa99d364250b9e3e10390ff93">tick.c</a>
 </li>
 <li>Tick_DelayMs_NonBlocking()
-: <a class="el" href="tick_8h.html#a700a086c5fb6a2a2491026af0fda77a8">tick.h</a>
-, <a class="el" href="tick_8c.html#a700a086c5fb6a2a2491026af0fda77a8">tick.c</a>
+: <a class="el" href="tick_8c.html#a700a086c5fb6a2a2491026af0fda77a8">tick.c</a>
 </li>
 <li>Tick_GetMs()
-: <a class="el" href="tick_8h.html#a5018c28a90fe9864e870a712c8e2b571">tick.h</a>
-, <a class="el" href="tick_8c.html#a5018c28a90fe9864e870a712c8e2b571">tick.c</a>
+: <a class="el" href="tick_8c.html#a5018c28a90fe9864e870a712c8e2b571">tick.c</a>
 </li>
 <li>Tick_Init()
-: <a class="el" href="tick_8h.html#acae0a023fcbd4801e394c473890925e7">tick.h</a>
-, <a class="el" href="tick_8c.html#acae0a023fcbd4801e394c473890925e7">tick.c</a>
-</li>
-<li>TickCounter
-: <a class="el" href="tick_8c.html#a497a8709fd22682ab11917334ea779d2">tick.c</a>
+: <a class="el" href="tick_8c.html#acae0a023fcbd4801e394c473890925e7">tick.c</a>
 </li>
 <li>TIMER_FREQUENCY_HZ
 : <a class="el" href="tick_8c.html#a290a7b04bb56e02e733a35599442a915">tick.c</a>
-</li>
-<li>TRUE
-: <a class="el" href="common_8h.html#aa8cecfc5c5c054d2875c03e77b7be15d">common.h</a>
 </li>
 </ul>
 
@@ -312,34 +318,16 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>UART_BRR_SAMPLING8
 : <a class="el" href="usart3_8c.html#aa80d222c1ad6f9ca0fddfc0b87fe8464">usart3.c</a>
 </li>
-<li>UART_DIV_SAMPLING16
-: <a class="el" href="usart3_8c.html#ab2310ab757fb08c669469579b1473d6f">usart3.c</a>
-</li>
-<li>UART_DIV_SAMPLING8
-: <a class="el" href="usart3_8c.html#a0e55478fdf2c9b39dd62c6597c2dca8f">usart3.c</a>
-</li>
-<li>UART_DIVFRAQ_SAMPLING16
-: <a class="el" href="usart3_8c.html#afcf53b01680a979ffd4d0926917c48ce">usart3.c</a>
-</li>
-<li>UART_DIVFRAQ_SAMPLING8
-: <a class="el" href="usart3_8c.html#a0fff17c6d76fe4f6fd078844402b0469">usart3.c</a>
-</li>
-<li>UART_DIVMANT_SAMPLING16
-: <a class="el" href="usart3_8c.html#a56f0995cf9f319c31a2f745454c583c2">usart3.c</a>
-</li>
-<li>UART_DIVMANT_SAMPLING8
-: <a class="el" href="usart3_8c.html#ad83fe23ff14c5b3abdcd17289fda4805">usart3.c</a>
-</li>
-<li>USART_OVER_SAMPLE_16
-: <a class="el" href="common_8h.html#ace3cf997a72cea2830f5c5cb8e4b05fc">common.h</a>
-</li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.11
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.11 </li>
+  </ul>
+</div>
 </body>
 </html>

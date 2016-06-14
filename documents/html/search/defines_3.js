@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['false',['FALSE',['../common_8h.html#aa93f0eb578d23995850d61f7d61c55c1',1,'common.h']]],
-  ['firmware_5fversion',['FIRMWARE_VERSION',['../common_8h.html#aa14dc39d52ab121ceb570f1a265385e0',1,'common.h']]]
+  ['uart_5fbrr_5fsampling16',['UART_BRR_SAMPLING16',['../usart3_8c.html#a9250770f3a90b54703cf9fcb5023e617',1,'usart3.c']]],
+  ['uart_5fbrr_5fsampling8',['UART_BRR_SAMPLING8',['../usart3_8c.html#aa80d222c1ad6f9ca0fddfc0b87fe8464',1,'usart3.c']]]
 ];

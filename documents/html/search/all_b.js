@@ -1,6 +1,10 @@
 var searchData=
 [
-  ['off',['Off',['../struct_led_interface.html#a029a02aac2d90bfb8c8a526af9c6f806',1,'LedInterface']]],
-  ['on',['On',['../struct_led_interface.html#a53489a630b9ad16869554f434da8a204',1,'LedInterface']]],
-  ['open',['Open',['../struct_serial_interface.html#aafb5a65915da9b72df39987f9c20050d',1,'SerialInterface::Open()'],['../usart3_8c.html#afce81c7c0c6a1354ed43fde2af17224b',1,'Open():&#160;usart3.c']]]
+  ['tick_2ec',['tick.c',['../tick_8c.html',1,'']]],
+  ['tick_5fdelayms',['Tick_DelayMs',['../tick_8c.html#a01864fcfa99d364250b9e3e10390ff93',1,'tick.c']]],
+  ['tick_5fdelayms_5fnonblocking',['Tick_DelayMs_NonBlocking',['../tick_8c.html#a700a086c5fb6a2a2491026af0fda77a8',1,'tick.c']]],
+  ['tick_5fgetms',['Tick_GetMs',['../tick_8c.html#a5018c28a90fe9864e870a712c8e2b571',1,'tick.c']]],
+  ['tick_5finit',['Tick_Init',['../tick_8c.html#acae0a023fcbd4801e394c473890925e7',1,'tick.c']]],
+  ['ticktype',['TickType',['../struct_tick_type.html',1,'']]],
+  ['timer_5ffrequency_5fhz',['TIMER_FREQUENCY_HZ',['../tick_8c.html#a290a7b04bb56e02e733a35599442a915',1,'tick.c']]]
 ];

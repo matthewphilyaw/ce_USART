@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['rxbufferhasdata',['RxBufferHasData',['../usart3_8c.html#a37ec6964846678cc0b8f0a48f86bb7cb',1,'usart3.c']]]
+  ['printheader',['PrintHeader',['../main_8c.html#ac886de2a2531626125250ede0091062e',1,'main.c']]]
 ];

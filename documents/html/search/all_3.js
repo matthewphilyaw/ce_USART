@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['delayms',['DelayMs',['../struct_tick_type.html#ae36f6fdb594fce60714a15611d8cfffa',1,'TickType']]],
-  ['device_2eh',['device.h',['../device_8h.html',1,'']]]
+  ['hardfault_5fhandler',['HardFault_Handler',['../main_8c.html#a2bffc10d5bd4106753b7c30e86903bea',1,'main.c']]]
 ];

@@ -8,6 +8,14 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -71,10 +79,26 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="globals.html"><span>All</span></a></li>
       <li><a href="globals_func.html"><span>Functions</span></a></li>
       <li><a href="globals_vars.html"><span>Variables</span></a></li>
+      <li><a href="globals_enum.html"><span>Enumerations</span></a></li>
+      <li><a href="globals_eval.html"><span>Enumerator</span></a></li>
       <li class="current"><a href="globals_defs.html"><span>Macros</span></a></li>
     </ul>
   </div>
 </div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('globals_defs.html','');});
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -91,44 +115,16 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div class="contents">
 &#160;<ul>
-<li>__FPU_PRESENT
-: <a class="el" href="device_8h.html#ac1ba8a48ca926bddc88be9bfd7d42641">device.h</a>
-</li>
-<li>COMPILED_DATA_TIME
-: <a class="el" href="common_8h.html#a4c681fec0533353b247257c82546f7cd">common.h</a>
-</li>
-<li>EN_DEBUG_INTERFACE
-: <a class="el" href="common_8h.html#a5d95e93610ec76137962e82eebebd723">common.h</a>
-</li>
-<li>FALSE
-: <a class="el" href="common_8h.html#aa93f0eb578d23995850d61f7d61c55c1">common.h</a>
-</li>
-<li>FIRMWARE_VERSION
-: <a class="el" href="common_8h.html#aa14dc39d52ab121ceb570f1a265385e0">common.h</a>
-</li>
-<li>HARDWARE_VERSION
-: <a class="el" href="common_8h.html#a7c770e481dd85c7ffb40e3b3edb0beb5">common.h</a>
-</li>
-<li>LED_PIN_BR
-: <a class="el" href="blue__led_8c.html#a744c1f7ff451f751c71b8783569998ef">blue_led.c</a>
-, <a class="el" href="green__led_8c.html#a744c1f7ff451f751c71b8783569998ef">green_led.c</a>
-, <a class="el" href="red__led_8c.html#a744c1f7ff451f751c71b8783569998ef">red_led.c</a>
+<li>BAUDRATE
+: <a class="el" href="main_8c.html#a734bbab06e1a9fd2e5522db0221ff6e3">main.c</a>
 </li>
 <li>LED_PIN_BS
 : <a class="el" href="blue__led_8c.html#a6470934cf7f508640658b4996268c7f6">blue_led.c</a>
 , <a class="el" href="green__led_8c.html#a6470934cf7f508640658b4996268c7f6">green_led.c</a>
 , <a class="el" href="red__led_8c.html#a6470934cf7f508640658b4996268c7f6">red_led.c</a>
 </li>
-<li>LED_PIN_ODR
-: <a class="el" href="green__led_8c.html#ac1b3758b1cbfce4bba994f44d3983b98">green_led.c</a>
-, <a class="el" href="red__led_8c.html#ac1b3758b1cbfce4bba994f44d3983b98">red_led.c</a>
-, <a class="el" href="blue__led_8c.html#ac1b3758b1cbfce4bba994f44d3983b98">blue_led.c</a>
-</li>
 <li>TIMER_FREQUENCY_HZ
 : <a class="el" href="tick_8c.html#a290a7b04bb56e02e733a35599442a915">tick.c</a>
-</li>
-<li>TRUE
-: <a class="el" href="common_8h.html#aa8cecfc5c5c054d2875c03e77b7be15d">common.h</a>
 </li>
 <li>UART_BRR_SAMPLING16
 : <a class="el" href="usart3_8c.html#a9250770f3a90b54703cf9fcb5023e617">usart3.c</a>
@@ -136,34 +132,16 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>UART_BRR_SAMPLING8
 : <a class="el" href="usart3_8c.html#aa80d222c1ad6f9ca0fddfc0b87fe8464">usart3.c</a>
 </li>
-<li>UART_DIV_SAMPLING16
-: <a class="el" href="usart3_8c.html#ab2310ab757fb08c669469579b1473d6f">usart3.c</a>
-</li>
-<li>UART_DIV_SAMPLING8
-: <a class="el" href="usart3_8c.html#a0e55478fdf2c9b39dd62c6597c2dca8f">usart3.c</a>
-</li>
-<li>UART_DIVFRAQ_SAMPLING16
-: <a class="el" href="usart3_8c.html#afcf53b01680a979ffd4d0926917c48ce">usart3.c</a>
-</li>
-<li>UART_DIVFRAQ_SAMPLING8
-: <a class="el" href="usart3_8c.html#a0fff17c6d76fe4f6fd078844402b0469">usart3.c</a>
-</li>
-<li>UART_DIVMANT_SAMPLING16
-: <a class="el" href="usart3_8c.html#a56f0995cf9f319c31a2f745454c583c2">usart3.c</a>
-</li>
-<li>UART_DIVMANT_SAMPLING8
-: <a class="el" href="usart3_8c.html#ad83fe23ff14c5b3abdcd17289fda4805">usart3.c</a>
-</li>
-<li>USART_OVER_SAMPLE_16
-: <a class="el" href="common_8h.html#ace3cf997a72cea2830f5c5cb8e4b05fc">common.h</a>
-</li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.11
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.11 </li>
+  </ul>
+</div>
 </body>
 </html>

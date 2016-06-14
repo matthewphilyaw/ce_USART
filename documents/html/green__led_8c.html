@@ -8,6 +8,14 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -66,6 +74,21 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="globals.html"><span>Globals</span></a></li>
     </ul>
   </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('green__led_8c.html','');});
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -80,11 +103,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_f4703b3db1bd5f8d2d3fca771c570947.html">MCU</a></li><li class="navelem"><a class="el" href="dir_e4b378e083a8876e67c355c7bfe7386a.html">LED</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#define-members">Macros</a> &#124;
@@ -97,30 +115,36 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <p>Led Driver.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &lt;<a class="el" href="blue__led_8h_source.html">MCU/LED/blue_led.h</a>&gt;</code><br />
+<div class="textblock"><code>#include &lt;MCU/LED/blue_led.h&gt;</code><br />
 </div>
 <p><a href="green__led_8c_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:a6470934cf7f508640658b4996268c7f6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="green__led_8c.html#a6470934cf7f508640658b4996268c7f6">LED_PIN_BS</a>&#160;&#160;&#160;GPIO_BSRR_BS_0</td></tr>
-<tr class="memdesc:a6470934cf7f508640658b4996268c7f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">GPIO defines for driving the output.  <a href="#a6470934cf7f508640658b4996268c7f6">More...</a><br /></td></tr>
+<tr class="memitem:a6470934cf7f508640658b4996268c7f6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6470934cf7f508640658b4996268c7f6"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="green__led_8c.html#a6470934cf7f508640658b4996268c7f6">LED_PIN_BS</a>&#160;&#160;&#160;GPIO_BSRR_BS_0</td></tr>
+<tr class="memdesc:a6470934cf7f508640658b4996268c7f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">GPIO defines for driving the output. <br /></td></tr>
 <tr class="separator:a6470934cf7f508640658b4996268c7f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a744c1f7ff451f751c71b8783569998ef"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="green__led_8c.html#a744c1f7ff451f751c71b8783569998ef">LED_PIN_BR</a>&#160;&#160;&#160;GPIO_BSRR_BR_0</td></tr>
+<tr class="memitem:a744c1f7ff451f751c71b8783569998ef"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a744c1f7ff451f751c71b8783569998ef"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>LED_PIN_BR</b>&#160;&#160;&#160;GPIO_BSRR_BR_0</td></tr>
 <tr class="separator:a744c1f7ff451f751c71b8783569998ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac1b3758b1cbfce4bba994f44d3983b98"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="green__led_8c.html#ac1b3758b1cbfce4bba994f44d3983b98">LED_PIN_ODR</a>&#160;&#160;&#160;GPIO_ODR_ODR_0</td></tr>
+<tr class="memitem:ac1b3758b1cbfce4bba994f44d3983b98"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac1b3758b1cbfce4bba994f44d3983b98"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>LED_PIN_ODR</b>&#160;&#160;&#160;GPIO_ODR_ODR_0</td></tr>
 <tr class="separator:ac1b3758b1cbfce4bba994f44d3983b98"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:aa3cd107f7f9db7f2beedfb7b2e7f332a"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="green__led_8c.html#aa3cd107f7f9db7f2beedfb7b2e7f332a">Led_On</a> (void)</td></tr>
-<tr class="memdesc:aa3cd107f7f9db7f2beedfb7b2e7f332a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Turn Led on.  <a href="#aa3cd107f7f9db7f2beedfb7b2e7f332a">More...</a><br /></td></tr>
+<tr class="memitem:aa3cd107f7f9db7f2beedfb7b2e7f332a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa3cd107f7f9db7f2beedfb7b2e7f332a"></a>
+static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="green__led_8c.html#aa3cd107f7f9db7f2beedfb7b2e7f332a">Led_On</a> (void)</td></tr>
+<tr class="memdesc:aa3cd107f7f9db7f2beedfb7b2e7f332a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Turn Led on. <br /></td></tr>
 <tr class="separator:aa3cd107f7f9db7f2beedfb7b2e7f332a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aee983f3e28e266f2a037501b7901f4f7"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="green__led_8c.html#aee983f3e28e266f2a037501b7901f4f7">Led_Off</a> (void)</td></tr>
-<tr class="memdesc:aee983f3e28e266f2a037501b7901f4f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Turn Led off.  <a href="#aee983f3e28e266f2a037501b7901f4f7">More...</a><br /></td></tr>
+<tr class="memitem:aee983f3e28e266f2a037501b7901f4f7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aee983f3e28e266f2a037501b7901f4f7"></a>
+static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="green__led_8c.html#aee983f3e28e266f2a037501b7901f4f7">Led_Off</a> (void)</td></tr>
+<tr class="memdesc:aee983f3e28e266f2a037501b7901f4f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Turn Led off. <br /></td></tr>
 <tr class="separator:aee983f3e28e266f2a037501b7901f4f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2285722b3e6652dd3ce14548abf30f5e"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="green__led_8c.html#a2285722b3e6652dd3ce14548abf30f5e">Led_Toggle</a> (void)</td></tr>
-<tr class="memdesc:a2285722b3e6652dd3ce14548abf30f5e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Toggle Led.  <a href="#a2285722b3e6652dd3ce14548abf30f5e">More...</a><br /></td></tr>
+<tr class="memitem:a2285722b3e6652dd3ce14548abf30f5e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2285722b3e6652dd3ce14548abf30f5e"></a>
+static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="green__led_8c.html#a2285722b3e6652dd3ce14548abf30f5e">Led_Toggle</a> (void)</td></tr>
+<tr class="memdesc:a2285722b3e6652dd3ce14548abf30f5e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Toggle Led. <br /></td></tr>
 <tr class="separator:a2285722b3e6652dd3ce14548abf30f5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac8c703767486bbeda9335c95f2f10c66"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="green__led_8c.html#ac8c703767486bbeda9335c95f2f10c66">Led_Init</a> (void)</td></tr>
 <tr class="memdesc:ac8c703767486bbeda9335c95f2f10c66"><td class="mdescLeft">&#160;</td><td class="mdescRight">Init Led.  <a href="#ac8c703767486bbeda9335c95f2f10c66">More...</a><br /></td></tr>
@@ -137,52 +161,7 @@ Variables</h2></td></tr>
 <dl class="section author"><dt>Author</dt><dd>Matthew Philyaw Green Led on the Nucleo F446ZE board </dd></dl>
 
 <p>Definition in file <a class="el" href="green__led_8c_source.html">green_led.c</a>.</p>
-</div><h2 class="groupheader">Macro Definition Documentation</h2>
-<a class="anchor" id="a744c1f7ff451f751c71b8783569998ef"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define LED_PIN_BR&#160;&#160;&#160;GPIO_BSRR_BR_0</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="green__led_8c_source.html#l00015">15</a> of file <a class="el" href="green__led_8c_source.html">green_led.c</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a6470934cf7f508640658b4996268c7f6"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define LED_PIN_BS&#160;&#160;&#160;GPIO_BSRR_BS_0</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>GPIO defines for driving the output. </p>
-
-<p>Definition at line <a class="el" href="green__led_8c_source.html#l00014">14</a> of file <a class="el" href="green__led_8c_source.html">green_led.c</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="ac1b3758b1cbfce4bba994f44d3983b98"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">#define LED_PIN_ODR&#160;&#160;&#160;GPIO_ODR_ODR_0</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Definition at line <a class="el" href="green__led_8c_source.html#l00016">16</a> of file <a class="el" href="green__led_8c_source.html">green_led.c</a>.</p>
-
-</div>
-</div>
-<h2 class="groupheader">Function Documentation</h2>
+</div><h2 class="groupheader">Function Documentation</h2>
 <a class="anchor" id="ac8c703767486bbeda9335c95f2f10c66"></a>
 <div class="memitem">
 <div class="memproto">
@@ -210,89 +189,7 @@ Variables</h2></td></tr>
 
 <p>Definition at line <a class="el" href="green__led_8c_source.html#l00049">49</a> of file <a class="el" href="green__led_8c_source.html">green_led.c</a>.</p>
 
-</div>
-</div>
-<a class="anchor" id="aee983f3e28e266f2a037501b7901f4f7"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static void Led_Off </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Turn Led off. </p>
-
-<p>Definition at line <a class="el" href="green__led_8c_source.html#l00028">28</a> of file <a class="el" href="green__led_8c_source.html">green_led.c</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="aa3cd107f7f9db7f2beedfb7b2e7f332a"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static void Led_On </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Turn Led on. </p>
-
-<p>Definition at line <a class="el" href="green__led_8c_source.html#l00021">21</a> of file <a class="el" href="green__led_8c_source.html">green_led.c</a>.</p>
-
-</div>
-</div>
-<a class="anchor" id="a2285722b3e6652dd3ce14548abf30f5e"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">static void Led_Toggle </td>
-          <td>(</td>
-          <td class="paramtype">void&#160;</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Toggle Led. </p>
-
-<p>Definition at line <a class="el" href="green__led_8c_source.html#l00035">35</a> of file <a class="el" href="green__led_8c_source.html">green_led.c</a>.</p>
+<p>References <a class="el" href="green__led_8c_source.html#l00028">Led_Off()</a>.</p>
 
 </div>
 </div>
@@ -315,14 +212,20 @@ Variables</h2></td></tr>
 
 <p>Definition at line <a class="el" href="green__led_8c_source.html#l00064">64</a> of file <a class="el" href="green__led_8c_source.html">green_led.c</a>.</p>
 
+<p>Referenced by <a class="el" href="main_8c_source.html#l00027">main()</a>.</p>
+
 </div>
 </div>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.11
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_f4703b3db1bd5f8d2d3fca771c570947.html">MCU</a></li><li class="navelem"><a class="el" href="dir_e4b378e083a8876e67c355c7bfe7386a.html">LED</a></li><li class="navelem"><a class="el" href="green__led_8c.html">green_led.c</a></li>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.11 </li>
+  </ul>
+</div>
 </body>
 </html>

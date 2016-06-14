@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['en_5fdebug_5finterface',['EN_DEBUG_INTERFACE',['../common_8h.html#a5d95e93610ec76137962e82eebebd723',1,'common.h']]]
+  ['timer_5ffrequency_5fhz',['TIMER_FREQUENCY_HZ',['../tick_8c.html#a290a7b04bb56e02e733a35599442a915',1,'tick.c']]]
 ];

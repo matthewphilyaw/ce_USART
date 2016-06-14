@@ -8,6 +8,14 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -66,6 +74,21 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="globals.html"><span>Globals</span></a></li>
     </ul>
   </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('serial__interface_8h.html','');});
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -80,33 +103,113 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-<div id="nav-path" class="navpath">
-  <ul>
-<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li>  </ul>
-</div>
-</div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Data Structures</a>  </div>
+<a href="#nested-classes">Data Structures</a> &#124;
+<a href="#enum-members">Enumerations</a>  </div>
   <div class="headertitle">
 <div class="title">serial_interface.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="common_8h_source.html">common.h</a>&quot;</code><br />
+
+<p>Header for the <a class="el" href="struct_serial_interface.html" title="SerialInterface struct represents an interface to USART device. ">SerialInterface</a> struct and result codes.  
+<a href="#details">More...</a></p>
+<div class="textblock"><code>#include &quot;common.h&quot;</code><br />
 </div>
 <p><a href="serial__interface_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_serial_interface.html">SerialInterface</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="struct_serial_interface.html" title="SerialInterface struct represents an interface to USART device. ">SerialInterface</a> struct represents an interface to USART device.  <a href="struct_serial_interface.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
+Enumerations</h2></td></tr>
+<tr class="memitem:ae172a5da9c6ce3d48a6d31f5f40739c4"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="serial__interface_8h.html#ae172a5da9c6ce3d48a6d31f5f40739c4">SerialResult_t</a> { <br />
+&#160;&#160;<a class="el" href="serial__interface_8h.html#ae172a5da9c6ce3d48a6d31f5f40739c4ab99bd95ffdb27b080ca1fe560850b5ab">SERIAL_SUCCESS</a> = 0, 
+<a class="el" href="serial__interface_8h.html#ae172a5da9c6ce3d48a6d31f5f40739c4afdd840cf5bc0b40993401d8fde63f2de">SERIAL_FAIL</a> = -1, 
+<a class="el" href="serial__interface_8h.html#ae172a5da9c6ce3d48a6d31f5f40739c4a0879a49fbdb0e47aaa276fcb220a8c3d">SERIAL_CLOSED</a> = -2, 
+<a class="el" href="serial__interface_8h.html#ae172a5da9c6ce3d48a6d31f5f40739c4ad5c3886d458a256e0b67c0d6b970d107">SERIAL_NO_DATA</a> = -3, 
+<br />
+&#160;&#160;<a class="el" href="serial__interface_8h.html#ae172a5da9c6ce3d48a6d31f5f40739c4ae133c7a55b6965d12bb7ac064122d9e3">SERIAL_OVER_RUN</a> = -4, 
+<a class="el" href="serial__interface_8h.html#ae172a5da9c6ce3d48a6d31f5f40739c4ac62ffdef80ba784471e2d93d542f70a9">SERIAL_FRAMING_ERROR</a> = -5, 
+<a class="el" href="serial__interface_8h.html#ae172a5da9c6ce3d48a6d31f5f40739c4a9147882c852ea4d177e166639f46950a">SERIAL_PARITY_ERROR</a> = -6, 
+<a class="el" href="serial__interface_8h.html#ae172a5da9c6ce3d48a6d31f5f40739c4a1f76bf2d1cbdcd940607bea205fcbaa8">SERIAL_NOISE_ERROR</a> = - 7, 
+<br />
+&#160;&#160;<a class="el" href="serial__interface_8h.html#ae172a5da9c6ce3d48a6d31f5f40739c4a52750d0b660b42a28b8314214170aeb6">SERIAL_LINE_BREAK_ERROR</a> = -8, 
+<a class="el" href="serial__interface_8h.html#ae172a5da9c6ce3d48a6d31f5f40739c4a059de7834a940e20373a833f7d2fefb0">SERIAL_INVALID_PARAMETER</a> = -9
+<br />
+ }<tr class="memdesc:ae172a5da9c6ce3d48a6d31f5f40739c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">SerialResult_t contains possible error codes the interface will return.  <a href="serial__interface_8h.html#ae172a5da9c6ce3d48a6d31f5f40739c4">More...</a><br /></td></tr>
+</td></tr>
+<tr class="separator:ae172a5da9c6ce3d48a6d31f5f40739c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Header for the <a class="el" href="struct_serial_interface.html" title="SerialInterface struct represents an interface to USART device. ">SerialInterface</a> struct and result codes. </p>
+<dl class="section author"><dt>Author</dt><dd>Matthew Philyaw (<a href="#" onclick="location.href='mai'+'lto:'+'mat'+'th'+'ew.'+'ph'+'ily'+'aw'+'@gm'+'ai'+'l.c'+'om'; return false;">matth<span style="display: none;">.nosp@m.</span>ew.p<span style="display: none;">.nosp@m.</span>hilya<span style="display: none;">.nosp@m.</span>w@gm<span style="display: none;">.nosp@m.</span>ail.c<span style="display: none;">.nosp@m.</span>om</a>)</dd></dl>
+<p>Any function that can return errors will return a SerialResult_t enum that can then be used to determine the exact nature of the error </p>
+
+<p>Definition in file <a class="el" href="serial__interface_8h_source.html">serial_interface.h</a>.</p>
+</div><h2 class="groupheader">Enumeration Type Documentation</h2>
+<a class="anchor" id="ae172a5da9c6ce3d48a6d31f5f40739c4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="serial__interface_8h.html#ae172a5da9c6ce3d48a6d31f5f40739c4">SerialResult_t</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>SerialResult_t contains possible error codes the interface will return. </p>
+<p>The codes listed below represent the possible error states certain functions can return and should be checked by the caller where SERIAL_SUCCESS is 0 (logical false). Thus errors can be detected by checking if SerialResult_t is true.</p>
+<p>Example: </p><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;uint8_t byte;</div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;SerialResult_t err = SomeSerialInstance.GetByte(&amp;byte);</div><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div><div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;if (err) {</div><div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;  switch(err) {</div><div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;    case SERIAL_FAIL:</div><div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;      // do something</div><div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;      break;</div><div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;    case SERIAL_NO_DATA:</div><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;      // do something</div><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;      break;</div><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    ...</div><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;  }</div><div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;}</div></div><!-- fragment --> <table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a class="anchor" id="ae172a5da9c6ce3d48a6d31f5f40739c4ab99bd95ffdb27b080ca1fe560850b5ab"></a>SERIAL_SUCCESS&#160;</td><td class="fielddoc">
+<p>Operation succeeded </p>
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="ae172a5da9c6ce3d48a6d31f5f40739c4afdd840cf5bc0b40993401d8fde63f2de"></a>SERIAL_FAIL&#160;</td><td class="fielddoc">
+<p>Operation fail without a specific case </p>
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="ae172a5da9c6ce3d48a6d31f5f40739c4a0879a49fbdb0e47aaa276fcb220a8c3d"></a>SERIAL_CLOSED&#160;</td><td class="fielddoc">
+<p>Serial interface is closed </p>
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="ae172a5da9c6ce3d48a6d31f5f40739c4ad5c3886d458a256e0b67c0d6b970d107"></a>SERIAL_NO_DATA&#160;</td><td class="fielddoc">
+<p>No data available on interface </p>
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="ae172a5da9c6ce3d48a6d31f5f40739c4ae133c7a55b6965d12bb7ac064122d9e3"></a>SERIAL_OVER_RUN&#160;</td><td class="fielddoc">
+<p>Over run detected </p>
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="ae172a5da9c6ce3d48a6d31f5f40739c4ac62ffdef80ba784471e2d93d542f70a9"></a>SERIAL_FRAMING_ERROR&#160;</td><td class="fielddoc">
+<p>Framing error detected </p>
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="ae172a5da9c6ce3d48a6d31f5f40739c4a9147882c852ea4d177e166639f46950a"></a>SERIAL_PARITY_ERROR&#160;</td><td class="fielddoc">
+<p>Parity error detected </p>
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="ae172a5da9c6ce3d48a6d31f5f40739c4a1f76bf2d1cbdcd940607bea205fcbaa8"></a>SERIAL_NOISE_ERROR&#160;</td><td class="fielddoc">
+<p>Noise error detected </p>
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="ae172a5da9c6ce3d48a6d31f5f40739c4a52750d0b660b42a28b8314214170aeb6"></a>SERIAL_LINE_BREAK_ERROR&#160;</td><td class="fielddoc">
+<p>Line break detected </p>
+</td></tr>
+<tr><td class="fieldname"><a class="anchor" id="ae172a5da9c6ce3d48a6d31f5f40739c4a059de7834a940e20373a833f7d2fefb0"></a>SERIAL_INVALID_PARAMETER&#160;</td><td class="fielddoc">
+<p>Invalid parameter passed to a serial interface function </p>
+</td></tr>
+</table>
+
+<p>Definition at line <a class="el" href="serial__interface_8h_source.html#l00041">41</a> of file <a class="el" href="serial__interface_8h_source.html">serial_interface.h</a>.</p>
+
+</div>
+</div>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.11
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="serial__interface_8h.html">serial_interface.h</a></li>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.11 </li>
+  </ul>
+</div>
 </body>
 </html>

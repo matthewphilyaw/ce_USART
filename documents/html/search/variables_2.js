@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['delayms',['DelayMs',['../struct_tick_type.html#ae36f6fdb594fce60714a15611d8cfffa',1,'TickType']]]
+  ['getbyte',['GetByte',['../struct_serial_interface.html#ab8e8ae0a4c118c9a4347a860df4c6aa5',1,'SerialInterface']]],
+  ['greenled',['GreenLed',['../green__led_8c.html#a1f857926d52094e172f6a3b1d176f7a7',1,'green_led.c']]]
 ];

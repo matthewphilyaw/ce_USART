@@ -1,8 +1,10 @@
 /**
- * \file
- * \brief Entry point
+ * @file main.c
+ * @author Matthew Philyaw (matthew.philyaw@gmail.com)
  *
- * \author Matthew Philyaw (matthew.philyaw@gmail.com)
+ * @brief USART echo server project
+ *
+ * A simple project to test out USART driver
  */
 #include "common.h"
 #include <MCU/LED/green_led.h>
@@ -11,13 +13,16 @@
 #include "MCU/tick.h"
 #include "MCU/usart3.h"
 
+/**
+ * @brief Sets the baudrate for the serial port
+ */
 #define BAUDRATE 115200
 
 static void PrintHeader(void);
 void HardFault_Handler(void);
 
 /**
- * \brief Main function
+ * @brief Main function for USART echo server
  */
 int main(void) {
   Tick_Init();
@@ -33,7 +38,8 @@ int main(void) {
   uint8_t chr = 0;
   SerialResult_t err = SERIAL_SUCCESS;
   for (;;) {
-    if((err = SerialPort3.GetByte(&chr))) {
+    err = SerialPort3.GetByte(&chr);
+    if(err) {
       switch(err) {
         case SERIAL_NO_DATA:
           continue;
@@ -56,9 +62,10 @@ int main(void) {
 }
 
 /**
- * \brief Print serial header
+ * @brief Print info header
  *
- * Prints a header out to the USART device that contains details about the firmware/hardware version
+ * This function prints a info head to the serial device that contains the
+ * firmware and hardware versions as well as last compile date.
  */
 static void PrintHeader() {
   SerialPort3.SendString("\e[2J");
@@ -76,7 +83,7 @@ static void PrintHeader() {
 }
 
 /**
- * \brief override default fault handlers to blink red led
+ * @brief Provides a implementation for the CMSIS hard fault handler
  */
 void HardFault_Handler(void) {
   for(;;) {
@@ -85,9 +92,3 @@ void HardFault_Handler(void) {
   }
 }
 
-void UsageFault_Handler(void) {
-  for(;;) {
-    RedLed.Toggle();
-    for (int i = 0; i < 100000; i++);
-  }
-}

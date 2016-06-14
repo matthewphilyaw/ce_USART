@@ -8,6 +8,14 @@
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="resize.js"></script>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript">
+  $(document).ready(initResizable);
+  $(window).load(resizeHeight);
+</script>
 <link href="search/search.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="search/searchdata.js"></script>
 <script type="text/javascript" src="search/search.js"></script>
@@ -67,6 +75,21 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       <li><a href="functions.html"><span>Data&#160;Fields</span></a></li>
     </ul>
   </div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){initNavTree('struct_serial_interface.html','');});
+</script>
+<div id="doc-content">
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -81,7 +104,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </iframe>
 </div>
 
-</div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#pub-attribs">Data Fields</a>  </div>
@@ -90,30 +112,34 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 
+<p><a class="el" href="struct_serial_interface.html" title="SerialInterface struct represents an interface to USART device. ">SerialInterface</a> struct represents an interface to USART device.  
+ <a href="struct_serial_interface.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="serial__interface_8h_source.html">serial_interface.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Data Fields</h2></td></tr>
 <tr class="memitem:a5e72e5c9ff8f55863484f5a31a044a10"><td class="memItemLeft" align="right" valign="top">uint_fast8_t(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_serial_interface.html#a5e72e5c9ff8f55863484f5a31a044a10">IsOpen</a> )(void)</td></tr>
 <tr class="separator:a5e72e5c9ff8f55863484f5a31a044a10"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aafb5a65915da9b72df39987f9c20050d"><td class="memItemLeft" align="right" valign="top">uint_fast8_t(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_serial_interface.html#aafb5a65915da9b72df39987f9c20050d">Open</a> )(uint32_t baudrate)</td></tr>
-<tr class="separator:aafb5a65915da9b72df39987f9c20050d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae603f800dccc4228f3f3d04fccb805c5"><td class="memItemLeft" align="right" valign="top">uint_fast8_t(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_serial_interface.html#ae603f800dccc4228f3f3d04fccb805c5">RxBufferHasData</a> )(void)</td></tr>
+<tr class="separator:ae603f800dccc4228f3f3d04fccb805c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa2d76da3890cfc7a607ff02eefb3dddc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="serial__interface_8h.html#ae172a5da9c6ce3d48a6d31f5f40739c4">SerialResult_t</a>(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_serial_interface.html#aa2d76da3890cfc7a607ff02eefb3dddc">Open</a> )(uint32_t baudrate)</td></tr>
+<tr class="separator:aa2d76da3890cfc7a607ff02eefb3dddc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afe54572dbd83578a45d1cd4156c0979d"><td class="memItemLeft" align="right" valign="top">void(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_serial_interface.html#afe54572dbd83578a45d1cd4156c0979d">Close</a> )(void)</td></tr>
 <tr class="separator:afe54572dbd83578a45d1cd4156c0979d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a49276961133a48866ca6550472cd2696"><td class="memItemLeft" align="right" valign="top">uint_fast8_t(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_serial_interface.html#a49276961133a48866ca6550472cd2696">SendByte</a> )(uint8_t)</td></tr>
-<tr class="separator:a49276961133a48866ca6550472cd2696"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af6bdcb2e604bd52ceba2ffdaffbb4341"><td class="memItemLeft" align="right" valign="top">uint_fast8_t(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_serial_interface.html#af6bdcb2e604bd52ceba2ffdaffbb4341">SendString</a> )(const uint8_t *source)</td></tr>
-<tr class="separator:af6bdcb2e604bd52ceba2ffdaffbb4341"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7e615bf5681ba25bcaba8afb1cc33c39"><td class="memItemLeft" align="right" valign="top">uint_fast8_t(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_serial_interface.html#a7e615bf5681ba25bcaba8afb1cc33c39">SendArray</a> )(const uint8_t *source, uint32_t length)</td></tr>
-<tr class="separator:a7e615bf5681ba25bcaba8afb1cc33c39"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ace39ec2bddbae9971dd0aab419ccd4b7"><td class="memItemLeft" align="right" valign="top">int_fast8_t(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_serial_interface.html#ace39ec2bddbae9971dd0aab419ccd4b7">RxBufferHasData</a> )(void)</td></tr>
-<tr class="separator:ace39ec2bddbae9971dd0aab419ccd4b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae3fb059727674674e6bc14ce661fff6d"><td class="memItemLeft" align="right" valign="top">int_fast8_t(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_serial_interface.html#ae3fb059727674674e6bc14ce661fff6d">GetByte</a> )(uint8_t *destination)</td></tr>
-<tr class="separator:ae3fb059727674674e6bc14ce661fff6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c150e306b2b7cc0319ac45bf53d670c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="serial__interface_8h.html#ae172a5da9c6ce3d48a6d31f5f40739c4">SerialResult_t</a>(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_serial_interface.html#a8c150e306b2b7cc0319ac45bf53d670c">SendByte</a> )(uint8_t)</td></tr>
+<tr class="separator:a8c150e306b2b7cc0319ac45bf53d670c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a97b86c88b82a09265faaef7e80ad26af"><td class="memItemLeft" align="right" valign="top"><a class="el" href="serial__interface_8h.html#ae172a5da9c6ce3d48a6d31f5f40739c4">SerialResult_t</a>(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_serial_interface.html#a97b86c88b82a09265faaef7e80ad26af">SendString</a> )(const char *source)</td></tr>
+<tr class="separator:a97b86c88b82a09265faaef7e80ad26af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a720d88fb7492be2ea10fae0f4df1de07"><td class="memItemLeft" align="right" valign="top"><a class="el" href="serial__interface_8h.html#ae172a5da9c6ce3d48a6d31f5f40739c4">SerialResult_t</a>(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_serial_interface.html#a720d88fb7492be2ea10fae0f4df1de07">SendArray</a> )(const uint8_t *source, uint32_t length)</td></tr>
+<tr class="separator:a720d88fb7492be2ea10fae0f4df1de07"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab8e8ae0a4c118c9a4347a860df4c6aa5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="serial__interface_8h.html#ae172a5da9c6ce3d48a6d31f5f40739c4">SerialResult_t</a>(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_serial_interface.html#ab8e8ae0a4c118c9a4347a860df4c6aa5">GetByte</a> )(uint8_t *destination)</td></tr>
+<tr class="separator:ab8e8ae0a4c118c9a4347a860df4c6aa5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p>Definition at line <a class="el" href="serial__interface_8h_source.html#l00006">6</a> of file <a class="el" href="serial__interface_8h_source.html">serial_interface.h</a>.</p>
+<div class="textblock"><p><a class="el" href="struct_serial_interface.html" title="SerialInterface struct represents an interface to USART device. ">SerialInterface</a> struct represents an interface to USART device. </p>
+
+<p>Definition at line <a class="el" href="serial__interface_8h_source.html#l00058">58</a> of file <a class="el" href="serial__interface_8h_source.html">serial_interface.h</a>.</p>
 </div><h2 class="groupheader">Field Documentation</h2>
 <a class="anchor" id="afe54572dbd83578a45d1cd4156c0979d"></a>
 <div class="memitem">
@@ -124,22 +150,26 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Closes interface </p>
 
-<p>Definition at line <a class="el" href="serial__interface_8h_source.html#l00009">9</a> of file <a class="el" href="serial__interface_8h_source.html">serial_interface.h</a>.</p>
+<p>Definition at line <a class="el" href="serial__interface_8h_source.html#l00062">62</a> of file <a class="el" href="serial__interface_8h_source.html">serial_interface.h</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="ae3fb059727674674e6bc14ce661fff6d"></a>
+<a class="anchor" id="ab8e8ae0a4c118c9a4347a860df4c6aa5"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int_fast8_t(* GetByte) (uint8_t *destination)</td>
+          <td class="memname"><a class="el" href="serial__interface_8h.html#ae172a5da9c6ce3d48a6d31f5f40739c4">SerialResult_t</a>(* GetByte) (uint8_t *destination)</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Retrieve one byte from the interface </p>
 
-<p>Definition at line <a class="el" href="serial__interface_8h_source.html#l00014">14</a> of file <a class="el" href="serial__interface_8h_source.html">serial_interface.h</a>.</p>
+<p>Definition at line <a class="el" href="serial__interface_8h_source.html#l00066">66</a> of file <a class="el" href="serial__interface_8h_source.html">serial_interface.h</a>.</p>
+
+<p>Referenced by <a class="el" href="main_8c_source.html#l00027">main()</a>.</p>
 
 </div>
 </div>
@@ -152,78 +182,90 @@ Data Fields</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Check if interface is open </p>
 
-<p>Definition at line <a class="el" href="serial__interface_8h_source.html#l00007">7</a> of file <a class="el" href="serial__interface_8h_source.html">serial_interface.h</a>.</p>
+<p>Definition at line <a class="el" href="serial__interface_8h_source.html#l00059">59</a> of file <a class="el" href="serial__interface_8h_source.html">serial_interface.h</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="aafb5a65915da9b72df39987f9c20050d"></a>
+<a class="anchor" id="aa2d76da3890cfc7a607ff02eefb3dddc"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint_fast8_t(* Open) (uint32_t baudrate)</td>
+          <td class="memname"><a class="el" href="serial__interface_8h.html#ae172a5da9c6ce3d48a6d31f5f40739c4">SerialResult_t</a>(* Open) (uint32_t baudrate)</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Open interface and initialize with specified baudrate </p>
 
-<p>Definition at line <a class="el" href="serial__interface_8h_source.html#l00008">8</a> of file <a class="el" href="serial__interface_8h_source.html">serial_interface.h</a>.</p>
+<p>Definition at line <a class="el" href="serial__interface_8h_source.html#l00061">61</a> of file <a class="el" href="serial__interface_8h_source.html">serial_interface.h</a>.</p>
+
+<p>Referenced by <a class="el" href="main_8c_source.html#l00027">main()</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="ace39ec2bddbae9971dd0aab419ccd4b7"></a>
+<a class="anchor" id="ae603f800dccc4228f3f3d04fccb805c5"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">int_fast8_t(* RxBufferHasData) (void)</td>
+          <td class="memname">uint_fast8_t(* RxBufferHasData) (void)</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Check if data is available </p><dl class="section note"><dt>Note</dt><dd>other functions may return this </dd></dl>
 
-<p>Definition at line <a class="el" href="serial__interface_8h_source.html#l00013">13</a> of file <a class="el" href="serial__interface_8h_source.html">serial_interface.h</a>.</p>
+<p>Definition at line <a class="el" href="serial__interface_8h_source.html#l00060">60</a> of file <a class="el" href="serial__interface_8h_source.html">serial_interface.h</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a7e615bf5681ba25bcaba8afb1cc33c39"></a>
+<a class="anchor" id="a720d88fb7492be2ea10fae0f4df1de07"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint_fast8_t(* SendArray) (const uint8_t *source, uint32_t length)</td>
+          <td class="memname"><a class="el" href="serial__interface_8h.html#ae172a5da9c6ce3d48a6d31f5f40739c4">SerialResult_t</a>(* SendArray) (const uint8_t *source, uint32_t length)</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Send an array of bytes over the interface </p>
 
-<p>Definition at line <a class="el" href="serial__interface_8h_source.html#l00012">12</a> of file <a class="el" href="serial__interface_8h_source.html">serial_interface.h</a>.</p>
+<p>Definition at line <a class="el" href="serial__interface_8h_source.html#l00065">65</a> of file <a class="el" href="serial__interface_8h_source.html">serial_interface.h</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a49276961133a48866ca6550472cd2696"></a>
+<a class="anchor" id="a8c150e306b2b7cc0319ac45bf53d670c"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint_fast8_t(* SendByte) (uint8_t)</td>
+          <td class="memname"><a class="el" href="serial__interface_8h.html#ae172a5da9c6ce3d48a6d31f5f40739c4">SerialResult_t</a>(* SendByte) (uint8_t)</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Send one byte over the interface </p>
 
-<p>Definition at line <a class="el" href="serial__interface_8h_source.html#l00010">10</a> of file <a class="el" href="serial__interface_8h_source.html">serial_interface.h</a>.</p>
+<p>Definition at line <a class="el" href="serial__interface_8h_source.html#l00063">63</a> of file <a class="el" href="serial__interface_8h_source.html">serial_interface.h</a>.</p>
+
+<p>Referenced by <a class="el" href="main_8c_source.html#l00027">main()</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="af6bdcb2e604bd52ceba2ffdaffbb4341"></a>
+<a class="anchor" id="a97b86c88b82a09265faaef7e80ad26af"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint_fast8_t(* SendString) (const uint8_t *source)</td>
+          <td class="memname"><a class="el" href="serial__interface_8h.html#ae172a5da9c6ce3d48a6d31f5f40739c4">SerialResult_t</a>(* SendString) (const char *source)</td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>Send a string over the interface </p>
 
-<p>Definition at line <a class="el" href="serial__interface_8h_source.html#l00011">11</a> of file <a class="el" href="serial__interface_8h_source.html">serial_interface.h</a>.</p>
+<p>Definition at line <a class="el" href="serial__interface_8h_source.html#l00064">64</a> of file <a class="el" href="serial__interface_8h_source.html">serial_interface.h</a>.</p>
+
+<p>Referenced by <a class="el" href="main_8c_source.html#l00070">PrintHeader()</a>.</p>
 
 </div>
 </div>
@@ -231,11 +273,15 @@ Data Fields</h2></td></tr>
 <li>include/<a class="el" href="serial__interface_8h_source.html">serial_interface.h</a></li>
 </ul>
 </div><!-- contents -->
+</div><!-- doc-content -->
 <!-- start footer part -->
-<hr class="footer"/><address class="footer"><small>
-Generated by &#160;<a href="http://www.doxygen.org/index.html">
-<img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.11
-</small></address>
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a class="el" href="struct_serial_interface.html">SerialInterface</a></li>
+    <li class="footer">Generated by
+    <a href="http://www.doxygen.org/index.html">
+    <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.11 </li>
+  </ul>
+</div>
 </body>
 </html>
