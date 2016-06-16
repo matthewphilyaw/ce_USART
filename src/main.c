@@ -1,12 +1,3 @@
-/**
- * @file main.c
- * @author Matthew Philyaw (matthew.philyaw@gmail.com)
- *
- * @brief USART echo server project
- *
- * A simple project to test out USART driver
- */
-#include "common.h"
 #include <MCU/LED/green_led.h>
 #include <MCU/LED/blue_led.h>
 #include <MCU/LED/red_led.h>
@@ -24,7 +15,7 @@ void HardFault_Handler(void);
 /**
  * @brief Main function for USART echo server
  */
-int main(void) {
+void main(void) {
   Tick_Init();
 
   GreenLed.Init();

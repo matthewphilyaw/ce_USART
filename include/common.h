@@ -15,4 +15,6 @@
 #define EN_DEBUG_INTERFACE
 #define USART_OVER_SAMPLE_16
 
+#define FIFO_UINT8_t
+
 #endif
