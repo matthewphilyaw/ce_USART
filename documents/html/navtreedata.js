@@ -27,7 +27,7 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"annotated.html"
+"_8ycm__extra__conf_8py_source.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

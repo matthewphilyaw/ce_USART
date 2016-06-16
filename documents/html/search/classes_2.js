@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['ticktype',['TickType',['../struct_tick_type.html',1,'']]]
+  ['serialinterface',['SerialInterface',['../struct_serial_interface.html',1,'']]]
 ];

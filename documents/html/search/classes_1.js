@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['serialinterface',['SerialInterface',['../struct_serial_interface.html',1,'']]]
+  ['ledinterface',['LedInterface',['../struct_led_interface.html',1,'']]]
 ];

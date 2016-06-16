@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['open',['Open',['../struct_serial_interface.html#aa2d76da3890cfc7a607ff02eefb3dddc',1,'SerialInterface']]]
+  ['maxsize',['MaxSize',['../struct_f_i_f_o_context___type_def.html#abe50e976a0d1139b86fae5a57bb5fc4a',1,'FIFOContext_TypeDef']]]
 ];
