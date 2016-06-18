@@ -115,8 +115,7 @@ $(document).ready(function(){initNavTree('_f_i_f_o_8h.html','');});
 
 <p>FIFO setup and utilization.  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;common.h&quot;</code><br />
-<code>#include &lt;stdint.h&gt;</code><br />
+<div class="textblock"><code>#include &lt;stdint.h&gt;</code><br />
 </div>
 <p><a href="_f_i_f_o_8h_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -141,7 +140,7 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a0360f161ce3024111eba058db9bb88a8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_f_i_f_o_8h.html#a0360f161ce3024111eba058db9bb88a8">FIFO_Init</a> (<a class="el" href="struct_f_i_f_o_context___type_def.html">FIFOContext_TypeDef</a> *ctx, uint32_t maxSize, uint32_t bufferWidth, void *buffer)</td></tr>
+<tr class="memitem:a0360f161ce3024111eba058db9bb88a8"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_f_i_f_o_8h.html#a0360f161ce3024111eba058db9bb88a8">FIFO_Init</a> (<a class="el" href="struct_f_i_f_o_context___type_def.html">FIFOContext_TypeDef</a> *ctx, uint32_t maxSize, uint32_t bufferWidth, void *<a class="el" href="usart3_8c.html#abfe345da035e4935f46380f363615231">buffer</a>)</td></tr>
 <tr class="memdesc:a0360f161ce3024111eba058db9bb88a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize FIFO Context.  <a href="#a0360f161ce3024111eba058db9bb88a8">More...</a><br /></td></tr>
 <tr class="separator:a0360f161ce3024111eba058db9bb88a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9cf06ed55ea1bb2a69456d901c721025"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_f_i_f_o_8h.html#a9cf06ed55ea1bb2a69456d901c721025">FIFO_Write</a> (<a class="el" href="struct_f_i_f_o_context___type_def.html">FIFOContext_TypeDef</a> *ctx, void(*setFun)(void *, void *), void *val)</td></tr>
@@ -156,7 +155,7 @@ Functions</h2></td></tr>
 <dl class="section author"><dt>Author</dt><dd>Matthew Philyaw (<a href="#" onclick="location.href='mai'+'lto:'+'mat'+'th'+'ew.'+'ph'+'ily'+'aw'+'@gm'+'ai'+'l.c'+'om'; return false;">matth<span style="display: none;">.nosp@m.</span>ew.p<span style="display: none;">.nosp@m.</span>hilya<span style="display: none;">.nosp@m.</span>w@gm<span style="display: none;">.nosp@m.</span>ail.c<span style="display: none;">.nosp@m.</span>om</a>)</dd></dl>
 <p>Below are a set of ifdefs that allow selective inclusion of FIFO api macros for a given types. One must define the symbol for the type to make the macos available for use.</p>
 <p>These symbols also enable the generation of other components needed by these calls namel the set/gen Funs in the <a class="el" href="_f_i_f_o_8c.html" title="FIFO implementation. ">FIFO.c</a></p>
-<p>To enable a particular set of functions for example take the following: </p><div class="fragment"><div class="line"><span class="comment">// common.h</span></div><div class="line"><span class="preprocessor">#define FIFO_UINT8_T</span></div><div class="line"><span class="preprocessor">#define FIFO_UINT32_T</span></div><div class="line"></div><div class="line"><span class="comment">//usage</span></div><div class="line">FIFO_Init_uint8_t(ctx, MAX_SIZE, buffer)</div><div class="line">FIFO_Init_uint32_t(ctx32, MAX_SIZE, buffer)</div><div class="line"></div><div class="line">uint8_t foo = 12;</div><div class="line">uint8_t out;</div><div class="line">FIFO_Write_uint8_t(ctx, foo); <span class="comment">// only available due to defining the symbol</span></div><div class="line">FIFO_Read_uint8_t(ctx, out);</div><div class="line"></div><div class="line"><span class="comment">// or</span></div><div class="line"></div><div class="line">uint32_t bar = 12;</div><div class="line">uint32_t out_bar;</div><div class="line">FIFO_Write_uint8_t(ctx32, bar);</div><div class="line">FIFO_Read_uint8_t(ctx32, out_bar);</div><div class="line"></div><div class="line"><span class="comment">// out == foo</span></div></div><!-- fragment --> 
+<p>To enable a particular set of functions for example take the following: </p><div class="fragment"><div class="line"><span class="comment">// common.h</span></div><div class="line"><span class="preprocessor">#define FIFO_UINT8_T</span></div><div class="line"><span class="preprocessor">#define FIFO_UINT32_T</span></div><div class="line"></div><div class="line"><span class="comment">//usage</span></div><div class="line">FIFO_Init_uint8_t(ctx, MAX_SIZE, <a class="code" href="usart3_8c.html#abfe345da035e4935f46380f363615231">buffer</a>)</div><div class="line">FIFO_Init_uint32_t(ctx32, MAX_SIZE, <a class="code" href="usart3_8c.html#abfe345da035e4935f46380f363615231">buffer</a>)</div><div class="line"></div><div class="line">uint8_t foo = 12;</div><div class="line">uint8_t out;</div><div class="line">FIFO_Write_uint8_t(ctx, foo); <span class="comment">// only available due to defining the symbol</span></div><div class="line">FIFO_Read_uint8_t(ctx, out);</div><div class="line"></div><div class="line"><span class="comment">// or</span></div><div class="line"></div><div class="line">uint32_t bar = 12;</div><div class="line">uint32_t out_bar;</div><div class="line">FIFO_Write_uint8_t(ctx32, bar);</div><div class="line">FIFO_Read_uint8_t(ctx32, out_bar);</div><div class="line"></div><div class="line"><span class="comment">// out == foo</span></div></div><!-- fragment --> 
 <p>Definition in file <a class="el" href="_f_i_f_o_8h_source.html">FIFO.h</a>.</p>
 </div><h2 class="groupheader">Macro Definition Documentation</h2>
 <a class="anchor" id="a7771a2125e3002c8ca4639720946a283"></a>
@@ -173,7 +172,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line"><span class="keywordtype">void</span> TOKENPASTE2(FIFO_Set_, type)(<span class="keywordtype">void</span> *addr, <span class="keywordtype">void</span> *val) { *((type *)addr) = *((type *)val); }\</div><div class="line">void TOKENPASTE2(FIFO_Get_, type)(<span class="keywordtype">void</span> *addr, <span class="keywordtype">void</span> *val) { *((type *)val) = *((type *)addr); }</div></div><!-- fragment -->
-<p>Definition at line <a class="el" href="_f_i_f_o_8h_source.html#l00072">72</a> of file <a class="el" href="_f_i_f_o_8h_source.html">FIFO.h</a>.</p>
+<p>Definition at line <a class="el" href="_f_i_f_o_8h_source.html#l00071">71</a> of file <a class="el" href="_f_i_f_o_8h_source.html">FIFO.h</a>.</p>
 
 </div>
 </div>
@@ -191,7 +190,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <b>Value:</b><div class="fragment"><div class="line"><span class="keywordtype">void</span> TOKENPASTE2(FIFO_Set_, type)(<span class="keywordtype">void</span> *addr, <span class="keywordtype">void</span> *val); \</div><div class="line">void TOKENPASTE2(FIFO_Get_, type)(<span class="keywordtype">void</span> *addr, <span class="keywordtype">void</span> *val)</div></div><!-- fragment -->
-<p>Definition at line <a class="el" href="_f_i_f_o_8h_source.html#l00076">76</a> of file <a class="el" href="_f_i_f_o_8h_source.html">FIFO.h</a>.</p>
+<p>Definition at line <a class="el" href="_f_i_f_o_8h_source.html#l00075">75</a> of file <a class="el" href="_f_i_f_o_8h_source.html">FIFO.h</a>.</p>
 
 </div>
 </div>
@@ -235,9 +234,7 @@ Functions</h2></td></tr>
 <p>Initialize FIFO Context. </p>
 <dl class="section note"><dt>Note</dt><dd>It's recommend to use the generated macros for the target data type instead of using this directly </dd></dl>
 
-<p>Definition at line <a class="el" href="_f_i_f_o_8c_source.html#l00018">18</a> of file <a class="el" href="_f_i_f_o_8c_source.html">FIFO.c</a>.</p>
-
-<p>References <a class="el" href="_f_i_f_o_8h_source.html#l00058">FIFOContext_TypeDef::Buffer</a>, <a class="el" href="_f_i_f_o_8h_source.html#l00057">FIFOContext_TypeDef::BufferWidth</a>, <a class="el" href="_f_i_f_o_8h_source.html#l00054">FIFOContext_TypeDef::CurrentSize</a>, <a class="el" href="_f_i_f_o_8h_source.html#l00053">FIFOContext_TypeDef::MaxSize</a>, <a class="el" href="_f_i_f_o_8h_source.html#l00056">FIFOContext_TypeDef::ReadPos</a>, and <a class="el" href="_f_i_f_o_8h_source.html#l00055">FIFOContext_TypeDef::WritePos</a>.</p>
+<p>Definition at line <a class="el" href="_f_i_f_o_8c_source.html#l00017">17</a> of file <a class="el" href="_f_i_f_o_8c_source.html">FIFO.c</a>.</p>
 
 </div>
 </div>
@@ -276,9 +273,7 @@ Functions</h2></td></tr>
 <p>These getter functions are defined via ifdef switched on a per type basis with the bodies defined in this module via macros.</p>
 <dl class="section note"><dt>Note</dt><dd>It's recommended to use the Api macros for a given data type instead of using this directly. Those macros will handle choosing the right getter for the data type in use. </dd></dl>
 
-<p>Definition at line <a class="el" href="_f_i_f_o_8c_source.html#l00076">76</a> of file <a class="el" href="_f_i_f_o_8c_source.html">FIFO.c</a>.</p>
-
-<p>References <a class="el" href="_f_i_f_o_8h_source.html#l00058">FIFOContext_TypeDef::Buffer</a>, <a class="el" href="_f_i_f_o_8h_source.html#l00057">FIFOContext_TypeDef::BufferWidth</a>, <a class="el" href="_f_i_f_o_8h_source.html#l00054">FIFOContext_TypeDef::CurrentSize</a>, <a class="el" href="_f_i_f_o_8h_source.html#l00053">FIFOContext_TypeDef::MaxSize</a>, and <a class="el" href="_f_i_f_o_8h_source.html#l00056">FIFOContext_TypeDef::ReadPos</a>.</p>
+<p>Definition at line <a class="el" href="_f_i_f_o_8c_source.html#l00075">75</a> of file <a class="el" href="_f_i_f_o_8c_source.html">FIFO.c</a>.</p>
 
 </div>
 </div>
@@ -317,9 +312,7 @@ Functions</h2></td></tr>
 <p>These setter functions are defined via ifdef switched on a per type basis with the bodies defined in this module via macros.</p>
 <dl class="section note"><dt>Note</dt><dd>It's recommended to use the Api macros for a given data type instead of using this directly. Those macros will handle choosing the right setter for the data type in use. </dd></dl>
 
-<p>Definition at line <a class="el" href="_f_i_f_o_8c_source.html#l00045">45</a> of file <a class="el" href="_f_i_f_o_8c_source.html">FIFO.c</a>.</p>
-
-<p>References <a class="el" href="_f_i_f_o_8h_source.html#l00058">FIFOContext_TypeDef::Buffer</a>, <a class="el" href="_f_i_f_o_8h_source.html#l00057">FIFOContext_TypeDef::BufferWidth</a>, <a class="el" href="_f_i_f_o_8h_source.html#l00054">FIFOContext_TypeDef::CurrentSize</a>, <a class="el" href="_f_i_f_o_8h_source.html#l00053">FIFOContext_TypeDef::MaxSize</a>, and <a class="el" href="_f_i_f_o_8h_source.html#l00055">FIFOContext_TypeDef::WritePos</a>.</p>
+<p>Definition at line <a class="el" href="_f_i_f_o_8c_source.html#l00044">44</a> of file <a class="el" href="_f_i_f_o_8c_source.html">FIFO.c</a>.</p>
 
 </div>
 </div>

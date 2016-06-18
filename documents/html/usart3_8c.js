@@ -17,6 +17,8 @@ var usart3_8c =
     [ "SendArray", "usart3_8c.html#aa649202856760a048c8dfe0a251037f0", null ],
     [ "SendByte", "usart3_8c.html#afe2d4770c55ca2fe8c7249c1f48d3300", null ],
     [ "SendString", "usart3_8c.html#aeabdd89dec120209e25bd7e09fbfb8dc", null ],
+    [ "buffer", "usart3_8c.html#abfe345da035e4935f46380f363615231", null ],
+    [ "fifoContext", "usart3_8c.html#a1121b069844f7d5f14b4487415e0f892", null ],
     [ "IsOpenFlag", "usart3_8c.html#adf6f26cc20f78150aa4127b23518f30e", null ],
     [ "SerialPort3", "usart3_8c.html#ae19ffa17d001ef05e437ddea8fff2321", null ]
 ];

@@ -116,6 +116,7 @@ $(document).ready(function(){initNavTree('usart3_8c.html','');});
 <p>USART Driver implementation for SerialPort3.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;MCU/usart3.h&quot;</code><br />
+<code>#include &quot;<a class="el" href="_f_i_f_o_8h_source.html">FIFO.h</a>&quot;</code><br />
 </div>
 <p><a href="usart3_8c_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
@@ -179,6 +180,13 @@ static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hre
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 Variables</h2></td></tr>
+<tr class="memitem:abfe345da035e4935f46380f363615231"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abfe345da035e4935f46380f363615231"></a>
+static uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usart3_8c.html#abfe345da035e4935f46380f363615231">buffer</a> [USART_MAX_BUFFER]</td></tr>
+<tr class="memdesc:abfe345da035e4935f46380f363615231"><td class="mdescLeft">&#160;</td><td class="mdescRight">buffer config section <br /></td></tr>
+<tr class="separator:abfe345da035e4935f46380f363615231"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1121b069844f7d5f14b4487415e0f892"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1121b069844f7d5f14b4487415e0f892"></a>
+static <a class="el" href="struct_f_i_f_o_context___type_def.html">FIFOContext_TypeDef</a>&#160;</td><td class="memItemRight" valign="bottom"><b>fifoContext</b></td></tr>
+<tr class="separator:a1121b069844f7d5f14b4487415e0f892"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adf6f26cc20f78150aa4127b23518f30e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adf6f26cc20f78150aa4127b23518f30e"></a>
 static uint_fast8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="usart3_8c.html#adf6f26cc20f78150aa4127b23518f30e">IsOpenFlag</a> = FALSE</td></tr>
 <tr class="memdesc:adf6f26cc20f78150aa4127b23518f30e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Internal flag for open status. <br /></td></tr>
@@ -219,9 +227,7 @@ static uint_fast8_t&#160;</td><td class="memItemRight" valign="bottom"><a class=
 <b>Value:</b><div class="fragment"><div class="line">(((UART_DIVMANT_SAMPLING16((_PCLK_), (_BAUD_)) &lt;&lt; 4U) + \</div><div class="line">                                                        (UART_DIVFRAQ_SAMPLING16((_PCLK_), (_BAUD_)) &amp; 0xF0U)) + \</div><div class="line">                                                        (UART_DIVFRAQ_SAMPLING16((_PCLK_), (_BAUD_)) &amp; 0x0FU))</div></div><!-- fragment -->
 <p>These macros set that fractional buad rate this has been taken from the STM provided HAL. </p>
 
-<p>Definition at line <a class="el" href="usart3_8c_source.html#l00022">22</a> of file <a class="el" href="usart3_8c_source.html">usart3.c</a>.</p>
-
-<p>Referenced by <a class="el" href="usart3_8c_source.html#l00086">Open()</a>.</p>
+<p>Definition at line <a class="el" href="usart3_8c_source.html#l00029">29</a> of file <a class="el" href="usart3_8c_source.html">usart3.c</a>.</p>
 
 </div>
 </div>
@@ -251,9 +257,7 @@ static uint_fast8_t&#160;</td><td class="memItemRight" valign="bottom"><a class=
 <b>Value:</b><div class="fragment"><div class="line">(((UART_DIVMANT_SAMPLING8((_PCLK_), (_BAUD_)) &lt;&lt; 4U) + \</div><div class="line">                                                        ((UART_DIVFRAQ_SAMPLING8((_PCLK_), (_BAUD_)) &amp; 0xF8U) &lt;&lt; 1U)) + \</div><div class="line">                                                        (UART_DIVFRAQ_SAMPLING8((_PCLK_), (_BAUD_)) &amp; 0x07U))</div></div><!-- fragment -->
 <p>These macros set that fractional buad rate this has been taken from the STM provided HAL. </p>
 
-<p>Definition at line <a class="el" href="usart3_8c_source.html#l00030">30</a> of file <a class="el" href="usart3_8c_source.html">usart3.c</a>.</p>
-
-<p>Referenced by <a class="el" href="usart3_8c_source.html#l00086">Open()</a>.</p>
+<p>Definition at line <a class="el" href="usart3_8c_source.html#l00037">37</a> of file <a class="el" href="usart3_8c_source.html">usart3.c</a>.</p>
 
 </div>
 </div>
@@ -296,9 +300,7 @@ SERIAL_FRAMING_ERROR -&gt; Byte in data register is likely junk and issue with b
 SERIAL_PARITY_ERROR -&gt; Byte in data register is likely junk and parity check failed<br />
 SERIAL_NOISE_ERROR -&gt; Byte is data register is likely junk and noise was detected on the line </dd></dl>
 
-<p>Definition at line <a class="el" href="usart3_8c_source.html#l00151">151</a> of file <a class="el" href="usart3_8c_source.html">usart3.c</a>.</p>
-
-<p>References <a class="el" href="usart3_8c_source.html#l00036">IsOpenFlag</a>, <a class="el" href="usart3_8c_source.html#l00074">RxBufferHasData()</a>, <a class="el" href="serial__interface_8h_source.html#l00044">SERIAL_CLOSED</a>, <a class="el" href="serial__interface_8h_source.html#l00048">SERIAL_FRAMING_ERROR</a>, <a class="el" href="serial__interface_8h_source.html#l00052">SERIAL_INVALID_PARAMETER</a>, <a class="el" href="serial__interface_8h_source.html#l00051">SERIAL_LINE_BREAK_ERROR</a>, <a class="el" href="serial__interface_8h_source.html#l00045">SERIAL_NO_DATA</a>, <a class="el" href="serial__interface_8h_source.html#l00050">SERIAL_NOISE_ERROR</a>, <a class="el" href="serial__interface_8h_source.html#l00047">SERIAL_OVER_RUN</a>, <a class="el" href="serial__interface_8h_source.html#l00049">SERIAL_PARITY_ERROR</a>, and <a class="el" href="serial__interface_8h_source.html#l00042">SERIAL_SUCCESS</a>.</p>
+<p>Definition at line <a class="el" href="usart3_8c_source.html#l00160">160</a> of file <a class="el" href="usart3_8c_source.html">usart3.c</a>.</p>
 
 </div>
 </div>
@@ -328,9 +330,7 @@ SERIAL_NOISE_ERROR -&gt; Byte is data register is likely junk and noise was dete
 <dl class="section return"><dt>Returns</dt><dd>1 -&gt; Open<br />
 0 -&gt; Closed </dd></dl>
 
-<p>Definition at line <a class="el" href="usart3_8c_source.html#l00045">45</a> of file <a class="el" href="usart3_8c_source.html">usart3.c</a>.</p>
-
-<p>References <a class="el" href="usart3_8c_source.html#l00036">IsOpenFlag</a>.</p>
+<p>Definition at line <a class="el" href="usart3_8c_source.html#l00052">52</a> of file <a class="el" href="usart3_8c_source.html">usart3.c</a>.</p>
 
 </div>
 </div>
@@ -360,9 +360,7 @@ SERIAL_NOISE_ERROR -&gt; Byte is data register is likely junk and noise was dete
 <dl class="section return"><dt>Returns</dt><dd>1 -&gt; Write in progress<br />
 0 -&gt; Interface ready </dd></dl>
 
-<p>Definition at line <a class="el" href="usart3_8c_source.html#l00063">63</a> of file <a class="el" href="usart3_8c_source.html">usart3.c</a>.</p>
-
-<p>Referenced by <a class="el" href="usart3_8c_source.html#l00125">SendByte()</a>.</p>
+<p>Definition at line <a class="el" href="usart3_8c_source.html#l00070">70</a> of file <a class="el" href="usart3_8c_source.html">usart3.c</a>.</p>
 
 </div>
 </div>
@@ -398,9 +396,7 @@ SERIAL_NOISE_ERROR -&gt; Byte is data register is likely junk and noise was dete
 <dl class="section return"><dt>Returns</dt><dd>SERIAL_FAIL -&gt; interface is open, nothing to do<br />
 SERIAL_SUCCESS -&gt; interface was opened and initialized </dd></dl>
 
-<p>Definition at line <a class="el" href="usart3_8c_source.html#l00086">86</a> of file <a class="el" href="usart3_8c_source.html">usart3.c</a>.</p>
-
-<p>References <a class="el" href="usart3_8c_source.html#l00036">IsOpenFlag</a>, <a class="el" href="serial__interface_8h_source.html#l00043">SERIAL_FAIL</a>, <a class="el" href="serial__interface_8h_source.html#l00042">SERIAL_SUCCESS</a>, <a class="el" href="usart3_8c_source.html#l00022">UART_BRR_SAMPLING16</a>, and <a class="el" href="usart3_8c_source.html#l00030">UART_BRR_SAMPLING8</a>.</p>
+<p>Definition at line <a class="el" href="usart3_8c_source.html#l00093">93</a> of file <a class="el" href="usart3_8c_source.html">usart3.c</a>.</p>
 
 </div>
 </div>
@@ -430,9 +426,7 @@ SERIAL_SUCCESS -&gt; interface was opened and initialized </dd></dl>
 <dl class="section return"><dt>Returns</dt><dd>1 -&gt; Data to read<br />
 0 -&gt; No data to read </dd></dl>
 
-<p>Definition at line <a class="el" href="usart3_8c_source.html#l00074">74</a> of file <a class="el" href="usart3_8c_source.html">usart3.c</a>.</p>
-
-<p>Referenced by <a class="el" href="usart3_8c_source.html#l00151">GetByte()</a>.</p>
+<p>Definition at line <a class="el" href="usart3_8c_source.html#l00081">81</a> of file <a class="el" href="usart3_8c_source.html">usart3.c</a>.</p>
 
 </div>
 </div>
@@ -481,9 +475,7 @@ SERIAL_INVALID_PARAMETER -&gt; source pointer is a null pointer<br />
 SERIAL_FAIL -&gt; SendByte failed<br />
 SERIAL_SUCCESS -&gt; String has been sent </dd></dl>
 
-<p>Definition at line <a class="el" href="usart3_8c_source.html#l00229">229</a> of file <a class="el" href="usart3_8c_source.html">usart3.c</a>.</p>
-
-<p>References <a class="el" href="usart3_8c_source.html#l00036">IsOpenFlag</a>, <a class="el" href="usart3_8c_source.html#l00125">SendByte()</a>, <a class="el" href="serial__interface_8h_source.html#l00044">SERIAL_CLOSED</a>, <a class="el" href="serial__interface_8h_source.html#l00043">SERIAL_FAIL</a>, <a class="el" href="serial__interface_8h_source.html#l00052">SERIAL_INVALID_PARAMETER</a>, and <a class="el" href="serial__interface_8h_source.html#l00042">SERIAL_SUCCESS</a>.</p>
+<p>Definition at line <a class="el" href="usart3_8c_source.html#l00238">238</a> of file <a class="el" href="usart3_8c_source.html">usart3.c</a>.</p>
 
 </div>
 </div>
@@ -519,11 +511,7 @@ SERIAL_SUCCESS -&gt; String has been sent </dd></dl>
 <dl class="section return"><dt>Returns</dt><dd>SERIAL_CLOSED -&gt; Interface is closed and nothing is done<br />
 SERIAL_SUCCESS -&gt; Byte has been sent </dd></dl>
 
-<p>Definition at line <a class="el" href="usart3_8c_source.html#l00125">125</a> of file <a class="el" href="usart3_8c_source.html">usart3.c</a>.</p>
-
-<p>References <a class="el" href="usart3_8c_source.html#l00036">IsOpenFlag</a>, <a class="el" href="usart3_8c_source.html#l00063">IsWriteBusy()</a>, <a class="el" href="serial__interface_8h_source.html#l00044">SERIAL_CLOSED</a>, and <a class="el" href="serial__interface_8h_source.html#l00042">SERIAL_SUCCESS</a>.</p>
-
-<p>Referenced by <a class="el" href="usart3_8c_source.html#l00229">SendArray()</a>, and <a class="el" href="usart3_8c_source.html#l00199">SendString()</a>.</p>
+<p>Definition at line <a class="el" href="usart3_8c_source.html#l00134">134</a> of file <a class="el" href="usart3_8c_source.html">usart3.c</a>.</p>
 
 </div>
 </div>
@@ -561,9 +549,7 @@ SERIAL_INVALID_PARAMETER -&gt; source pointer is a null pointer<br />
 SERIAL_FAIL -&gt; SendByte failed<br />
 SERIAL_SUCCESS -&gt; String has been sent </dd></dl>
 
-<p>Definition at line <a class="el" href="usart3_8c_source.html#l00199">199</a> of file <a class="el" href="usart3_8c_source.html">usart3.c</a>.</p>
-
-<p>References <a class="el" href="usart3_8c_source.html#l00036">IsOpenFlag</a>, <a class="el" href="usart3_8c_source.html#l00125">SendByte()</a>, <a class="el" href="serial__interface_8h_source.html#l00044">SERIAL_CLOSED</a>, <a class="el" href="serial__interface_8h_source.html#l00043">SERIAL_FAIL</a>, <a class="el" href="serial__interface_8h_source.html#l00052">SERIAL_INVALID_PARAMETER</a>, and <a class="el" href="serial__interface_8h_source.html#l00042">SERIAL_SUCCESS</a>.</p>
+<p>Definition at line <a class="el" href="usart3_8c_source.html#l00208">208</a> of file <a class="el" href="usart3_8c_source.html">usart3.c</a>.</p>
 
 </div>
 </div>
@@ -577,18 +563,18 @@ SERIAL_SUCCESS -&gt; String has been sent </dd></dl>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Initial value:</b><div class="fragment"><div class="line">= {</div><div class="line">  <a class="code" href="usart3_8c.html#a906f1aace64469fd0373adb7fd869d52">IsOpen</a>,</div><div class="line">  <a class="code" href="usart3_8c.html#a27203de5fad47a3b0c36c1ff50d8bf51">RxBufferHasData</a>,</div><div class="line">  <a class="code" href="usart3_8c.html#af57aef940f133b369bc710f0bea493c2">Open</a>,</div><div class="line">  <a class="code" href="usart3_8c.html#a8b9655401063a7ddbd2a686c298c47cd">Close</a>,</div><div class="line">  <a class="code" href="usart3_8c.html#afe2d4770c55ca2fe8c7249c1f48d3300">SendByte</a>,</div><div class="line">  <a class="code" href="usart3_8c.html#aeabdd89dec120209e25bd7e09fbfb8dc">SendString</a>,</div><div class="line">  <a class="code" href="usart3_8c.html#aa649202856760a048c8dfe0a251037f0">SendArray</a>,</div><div class="line">  <a class="code" href="usart3_8c.html#a05a3d555d7db61ea60d126ad67129b0b">GetByte</a></div><div class="line">}</div><div class="ttc" id="usart3_8c_html_a8b9655401063a7ddbd2a686c298c47cd"><div class="ttname"><a href="usart3_8c.html#a8b9655401063a7ddbd2a686c298c47cd">Close</a></div><div class="ttdeci">static void Close(void)</div><div class="ttdoc">Closes open interface. </div><div class="ttdef"><b>Definition:</b> <a href="usart3_8c_source.html#l00052">usart3.c:52</a></div></div>
-<div class="ttc" id="usart3_8c_html_aa649202856760a048c8dfe0a251037f0"><div class="ttname"><a href="usart3_8c.html#aa649202856760a048c8dfe0a251037f0">SendArray</a></div><div class="ttdeci">static SerialResult_t SendArray(const uint8_t *source, uint32_t length)</div><div class="ttdoc">Send string over interface. </div><div class="ttdef"><b>Definition:</b> <a href="usart3_8c_source.html#l00229">usart3.c:229</a></div></div>
-<div class="ttc" id="usart3_8c_html_afe2d4770c55ca2fe8c7249c1f48d3300"><div class="ttname"><a href="usart3_8c.html#afe2d4770c55ca2fe8c7249c1f48d3300">SendByte</a></div><div class="ttdeci">static SerialResult_t SendByte(uint8_t source)</div><div class="ttdoc">Send one byte over the interface. </div><div class="ttdef"><b>Definition:</b> <a href="usart3_8c_source.html#l00125">usart3.c:125</a></div></div>
-<div class="ttc" id="usart3_8c_html_af57aef940f133b369bc710f0bea493c2"><div class="ttname"><a href="usart3_8c.html#af57aef940f133b369bc710f0bea493c2">Open</a></div><div class="ttdeci">static SerialResult_t Open(uint32_t baudrate)</div><div class="ttdoc">Open serial interface with specified baudrate. </div><div class="ttdef"><b>Definition:</b> <a href="usart3_8c_source.html#l00086">usart3.c:86</a></div></div>
-<div class="ttc" id="usart3_8c_html_aeabdd89dec120209e25bd7e09fbfb8dc"><div class="ttname"><a href="usart3_8c.html#aeabdd89dec120209e25bd7e09fbfb8dc">SendString</a></div><div class="ttdeci">static SerialResult_t SendString(const char *source)</div><div class="ttdoc">Send string over interface. </div><div class="ttdef"><b>Definition:</b> <a href="usart3_8c_source.html#l00199">usart3.c:199</a></div></div>
-<div class="ttc" id="usart3_8c_html_a27203de5fad47a3b0c36c1ff50d8bf51"><div class="ttname"><a href="usart3_8c.html#a27203de5fad47a3b0c36c1ff50d8bf51">RxBufferHasData</a></div><div class="ttdeci">static uint_fast8_t RxBufferHasData(void)</div><div class="ttdoc">Checks if there is data to read. </div><div class="ttdef"><b>Definition:</b> <a href="usart3_8c_source.html#l00074">usart3.c:74</a></div></div>
-<div class="ttc" id="usart3_8c_html_a05a3d555d7db61ea60d126ad67129b0b"><div class="ttname"><a href="usart3_8c.html#a05a3d555d7db61ea60d126ad67129b0b">GetByte</a></div><div class="ttdeci">static SerialResult_t GetByte(uint8_t *destination)</div><div class="ttdoc">Retrieve byte from interface. </div><div class="ttdef"><b>Definition:</b> <a href="usart3_8c_source.html#l00151">usart3.c:151</a></div></div>
-<div class="ttc" id="usart3_8c_html_a906f1aace64469fd0373adb7fd869d52"><div class="ttname"><a href="usart3_8c.html#a906f1aace64469fd0373adb7fd869d52">IsOpen</a></div><div class="ttdeci">static uint_fast8_t IsOpen(void)</div><div class="ttdoc">Return the status of the Interface. </div><div class="ttdef"><b>Definition:</b> <a href="usart3_8c_source.html#l00045">usart3.c:45</a></div></div>
+<b>Initial value:</b><div class="fragment"><div class="line">= {</div><div class="line">  <a class="code" href="usart3_8c.html#a906f1aace64469fd0373adb7fd869d52">IsOpen</a>,</div><div class="line">  <a class="code" href="usart3_8c.html#a27203de5fad47a3b0c36c1ff50d8bf51">RxBufferHasData</a>,</div><div class="line">  <a class="code" href="usart3_8c.html#af57aef940f133b369bc710f0bea493c2">Open</a>,</div><div class="line">  <a class="code" href="usart3_8c.html#a8b9655401063a7ddbd2a686c298c47cd">Close</a>,</div><div class="line">  <a class="code" href="usart3_8c.html#afe2d4770c55ca2fe8c7249c1f48d3300">SendByte</a>,</div><div class="line">  <a class="code" href="usart3_8c.html#aeabdd89dec120209e25bd7e09fbfb8dc">SendString</a>,</div><div class="line">  <a class="code" href="usart3_8c.html#aa649202856760a048c8dfe0a251037f0">SendArray</a>,</div><div class="line">  <a class="code" href="usart3_8c.html#a05a3d555d7db61ea60d126ad67129b0b">GetByte</a></div><div class="line">}</div><div class="ttc" id="usart3_8c_html_a8b9655401063a7ddbd2a686c298c47cd"><div class="ttname"><a href="usart3_8c.html#a8b9655401063a7ddbd2a686c298c47cd">Close</a></div><div class="ttdeci">static void Close(void)</div><div class="ttdoc">Closes open interface. </div><div class="ttdef"><b>Definition:</b> <a href="usart3_8c_source.html#l00059">usart3.c:59</a></div></div>
+<div class="ttc" id="usart3_8c_html_aa649202856760a048c8dfe0a251037f0"><div class="ttname"><a href="usart3_8c.html#aa649202856760a048c8dfe0a251037f0">SendArray</a></div><div class="ttdeci">static SerialResult_t SendArray(const uint8_t *source, uint32_t length)</div><div class="ttdoc">Send string over interface. </div><div class="ttdef"><b>Definition:</b> <a href="usart3_8c_source.html#l00238">usart3.c:238</a></div></div>
+<div class="ttc" id="usart3_8c_html_afe2d4770c55ca2fe8c7249c1f48d3300"><div class="ttname"><a href="usart3_8c.html#afe2d4770c55ca2fe8c7249c1f48d3300">SendByte</a></div><div class="ttdeci">static SerialResult_t SendByte(uint8_t source)</div><div class="ttdoc">Send one byte over the interface. </div><div class="ttdef"><b>Definition:</b> <a href="usart3_8c_source.html#l00134">usart3.c:134</a></div></div>
+<div class="ttc" id="usart3_8c_html_af57aef940f133b369bc710f0bea493c2"><div class="ttname"><a href="usart3_8c.html#af57aef940f133b369bc710f0bea493c2">Open</a></div><div class="ttdeci">static SerialResult_t Open(uint32_t baudrate)</div><div class="ttdoc">Open serial interface with specified baudrate. </div><div class="ttdef"><b>Definition:</b> <a href="usart3_8c_source.html#l00093">usart3.c:93</a></div></div>
+<div class="ttc" id="usart3_8c_html_aeabdd89dec120209e25bd7e09fbfb8dc"><div class="ttname"><a href="usart3_8c.html#aeabdd89dec120209e25bd7e09fbfb8dc">SendString</a></div><div class="ttdeci">static SerialResult_t SendString(const char *source)</div><div class="ttdoc">Send string over interface. </div><div class="ttdef"><b>Definition:</b> <a href="usart3_8c_source.html#l00208">usart3.c:208</a></div></div>
+<div class="ttc" id="usart3_8c_html_a27203de5fad47a3b0c36c1ff50d8bf51"><div class="ttname"><a href="usart3_8c.html#a27203de5fad47a3b0c36c1ff50d8bf51">RxBufferHasData</a></div><div class="ttdeci">static uint_fast8_t RxBufferHasData(void)</div><div class="ttdoc">Checks if there is data to read. </div><div class="ttdef"><b>Definition:</b> <a href="usart3_8c_source.html#l00081">usart3.c:81</a></div></div>
+<div class="ttc" id="usart3_8c_html_a05a3d555d7db61ea60d126ad67129b0b"><div class="ttname"><a href="usart3_8c.html#a05a3d555d7db61ea60d126ad67129b0b">GetByte</a></div><div class="ttdeci">static SerialResult_t GetByte(uint8_t *destination)</div><div class="ttdoc">Retrieve byte from interface. </div><div class="ttdef"><b>Definition:</b> <a href="usart3_8c_source.html#l00160">usart3.c:160</a></div></div>
+<div class="ttc" id="usart3_8c_html_a906f1aace64469fd0373adb7fd869d52"><div class="ttname"><a href="usart3_8c.html#a906f1aace64469fd0373adb7fd869d52">IsOpen</a></div><div class="ttdeci">static uint_fast8_t IsOpen(void)</div><div class="ttdoc">Return the status of the Interface. </div><div class="ttdef"><b>Definition:</b> <a href="usart3_8c_source.html#l00052">usart3.c:52</a></div></div>
 </div><!-- fragment -->
 <p>Initializing SerialPort3. </p>
 
-<p>Definition at line <a class="el" href="usart3_8c_source.html#l00251">251</a> of file <a class="el" href="usart3_8c_source.html">usart3.c</a>.</p>
+<p>Definition at line <a class="el" href="usart3_8c_source.html#l00260">260</a> of file <a class="el" href="usart3_8c_source.html">usart3.c</a>.</p>
 
 </div>
 </div>
