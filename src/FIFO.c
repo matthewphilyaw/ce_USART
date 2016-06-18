@@ -6,7 +6,6 @@
  *
  */
 #include "FIFO.h"
-#include "common.h"
 
 #define AccessBuffer(buffer, index, index_width) ((uint8_t *)(buffer))+((index) * (index_width))
 

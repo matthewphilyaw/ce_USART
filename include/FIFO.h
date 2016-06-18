@@ -39,7 +39,6 @@
 #ifndef __FIFO_H__
 #define __FIFO_H__
 
-#include "common.h"
 #include <stdint.h>
 
 /**
@@ -82,9 +81,6 @@ void TOKENPASTE2(FIFO_Get_, type)(void *addr, void *val)
 **********************************************************************/
 /**
  * @brief ifdefs for type specific FIFO impl
- *
-
- * @endcode
  */
 #ifdef FIFO_INT8_T
 CREATE_FIFO_SETTER_PROTO(int8_t);
