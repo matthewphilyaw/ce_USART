@@ -26,29 +26,14 @@ void main(void) {
 
   PrintHeader();
 
-  uint8_t chr = 0;
-  SerialResult_t err = SERIAL_SUCCESS;
+  uint8_t buf[USART_MAX_BUFFER];
+  uint32_t numRead = 0;
   for (;;) {
-    err = SerialPort3.GetByte(&chr);
-    if(err) {
-      switch(err) {
-        case SERIAL_NO_DATA:
-          continue;
-          break;
-        case SERIAL_FRAMING_ERROR:
-          GreenLed.On();
-          continue;
-          break;
-        case SERIAL_OVER_RUN:
-          BlueLed.On();
-          break;
-        default:
-          HardFault_Handler();
-          break;
-      }
+    numRead = SerialPort3.GetByte(buf, USART_MAX_BUFFER);
+    if (numRead > 0) {
+      SerialPort3.SendArray(buf, numRead);
     }
-
-    SerialPort3.SendByte(chr);
+    Tick_DelayMs(500);
   }
 }
 

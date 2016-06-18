@@ -39,6 +39,7 @@
 #ifndef __FIFO_H__
 #define __FIFO_H__
 
+#include "common.h"
 #include <stdint.h>
 
 /**

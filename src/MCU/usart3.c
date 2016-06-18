@@ -4,7 +4,9 @@
  *
  * @brief USART Driver implementation for SerialPort3
  */
+#include "common.h"
 #include "MCU/usart3.h"
+#include "FIFO.h"
 
 #define UART_DIV_SAMPLING16(_PCLK_, _BAUD_)            (((_PCLK_)*25U)/(4U*(_BAUD_)))
 #define UART_DIVMANT_SAMPLING16(_PCLK_, _BAUD_)        (UART_DIV_SAMPLING16((_PCLK_), (_BAUD_))/100U)
@@ -14,6 +16,7 @@
 #define UART_DIV_SAMPLING8(_PCLK_, _BAUD_)             (((_PCLK_)*25U)/(2U*(_BAUD_)))
 #define UART_DIVMANT_SAMPLING8(_PCLK_, _BAUD_)         (UART_DIV_SAMPLING8((_PCLK_), (_BAUD_))/100U)
 #define UART_DIVFRAQ_SAMPLING8(_PCLK_, _BAUD_)         (((UART_DIV_SAMPLING8((_PCLK_), (_BAUD_)) - (UART_DIVMANT_SAMPLING8((_PCLK_), (_BAUD_)) * 100U)) * 8U + 50U) / 100U)
+
 
 /**
  * @brief These macros set that fractional buad rate this has been taken from the STM provided HAL
@@ -31,9 +34,26 @@
                                                         ((UART_DIVFRAQ_SAMPLING8((_PCLK_), (_BAUD_)) & 0xF8U) << 1U)) + \
                                                         (UART_DIVFRAQ_SAMPLING8((_PCLK_), (_BAUD_)) & 0x07U))
 /**
+ * @brief buffer config section
+ */
+static uint8_t buffer[USART_MAX_BUFFER];
+static FIFOContext_TypeDef fifoContext;
+
+/**
  * @brief Internal flag for open status
  */
 static uint_fast8_t IsOpenFlag = FALSE;
+static SerialResult_t lastError;
+
+static void EnableISR() {
+  NVIC_EnableIRQ(USART3_IRQn);
+  NVIC_SetPriority(USART3_IRQn, 1);
+  USART3->CR1 |= USART_CR1_RXNEIE;
+}
+
+static void DisableISR() {
+  NVIC_DisableIRQ(USART3_IRQn);
+}
 
 /**
  * @brief Return the status of the Interface
@@ -51,6 +71,7 @@ static uint_fast8_t IsOpen(void) {
  */
 static void Close(void) {
   USART3->CR1 &= ~(1);
+  DisableISR();
 }
 
 /**
@@ -75,6 +96,10 @@ static uint_fast8_t RxBufferHasData(void) {
   return USART3->SR & USART_SR_RXNE;
 }
 
+static SerialResult_t GetLastError() {
+  return lastError;
+}
+
 /**
  * @brief Open serial interface with specified baudrate
  * @param baudrate is the desired baudrate
@@ -87,6 +112,8 @@ static SerialResult_t Open(uint32_t baudrate) {
   if (IsOpenFlag) {
     return SERIAL_FAIL;
   }
+
+  FIFO_Init_uint8_t(fifoContext, USART_MAX_BUFFER, buffer);
 
   RCC->AHB1ENR |= RCC_AHB1ENR_GPIODEN;
   GPIOD->MODER &= ~GPIO_MODER_MODER8 | GPIO_MODER_MODER9;
@@ -109,6 +136,8 @@ static SerialResult_t Open(uint32_t baudrate) {
 #endif
 
   USART3->CR1 |= USART_CR1_UE | USART_CR1_TE | USART_CR1_RE;
+
+  EnableISR();
 
   IsOpenFlag = TRUE;
   return SERIAL_SUCCESS;
@@ -148,7 +177,38 @@ static SerialResult_t SendByte(uint8_t source) {
  * SERIAL_PARITY_ERROR -> Byte in data register is likely junk and parity check failed\n
  * SERIAL_NOISE_ERROR -> Byte is data register is likely junk and noise was detected on the line
  */
-static SerialResult_t GetByte(uint8_t *destination) {
+void USART3_IRQHandler() {
+  uint32_t sr = USART3->SR;
+
+  volatile uint8_t data = USART3->DR;
+
+  if (sr & USART_SR_FE) {
+    lastError = SERIAL_FRAMING_ERROR;
+    return;
+  }
+  else if (sr & USART_SR_PE) {
+    lastError = SERIAL_PARITY_ERROR;
+    return;
+  }
+  else if (sr & USART_SR_LBD) {
+    lastError = SERIAL_LINE_BREAK_ERROR;
+    return;
+  }
+  else if (sr & USART_SR_NE) {
+    lastError = SERIAL_NOISE_ERROR;
+    return;
+  }
+  else if (sr & USART_SR_ORE) {
+    lastError = SERIAL_OVER_RUN;
+  }
+
+  lastError = SERIAL_SUCCESS;
+
+  FIFO_Write_uint8_t(fifoContext, data);
+}
+
+
+static int32_t GetByte(uint8_t *destination, uint32_t length) {
   if (!IsOpenFlag) {
     return SERIAL_CLOSED;
   }
@@ -157,33 +217,20 @@ static SerialResult_t GetByte(uint8_t *destination) {
     return SERIAL_INVALID_PARAMETER;
   }
 
-
-  uint_fast8_t hasData = RxBufferHasData();
-
-  uint32_t sr = USART3->SR;
-  *destination = USART3->DR;
-
-  if (!hasData) {
-    return SERIAL_NO_DATA;
+  if (length == 0) {
+    return 0;
   }
 
-  if (sr & USART_SR_ORE) {
-    return SERIAL_OVER_RUN;
-  }
-  else if (sr & USART_SR_FE) {
-    return SERIAL_FRAMING_ERROR;
-  }
-  else if (sr & USART_SR_PE) {
-    return SERIAL_PARITY_ERROR;
-  }
-  else if (sr & USART_SR_LBD) {
-    return SERIAL_LINE_BREAK_ERROR;
-  }
-  else if (sr & USART_SR_NE) {
-    return SERIAL_NOISE_ERROR;
-  }
+  DisableISR();
+  uint32_t minReadLength = (fifoContext.CurrentSize < length) ? fifoContext.CurrentSize : length;
 
-  return SERIAL_SUCCESS;
+  if (minReadLength > 0) {
+    for (uint32_t i = 0; i < minReadLength; i++) {
+      FIFO_Read_uint8_t(fifoContext, destination[i]);
+    }
+  }
+  EnableISR();
+  return minReadLength;
 }
 
 /**
@@ -234,7 +281,7 @@ static SerialResult_t SendArray(const uint8_t *source, uint32_t length) {
   if (!source) {
     return SERIAL_INVALID_PARAMETER;
   }
-  
+
   for ( ; length; length--) {
     if (SendByte(*source)) {
       return SERIAL_FAIL;

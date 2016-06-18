@@ -18,6 +18,7 @@ static volatile uint32_t TickCounter;
  */
 void Tick_Init(void) {
   SysTick_Config(SystemCoreClock / TIMER_FREQUENCY_HZ);
+  NVIC_SetPriority(SysTick_IRQn, 0);
 }
 
 /**
